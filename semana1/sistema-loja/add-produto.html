@@ -22,30 +22,36 @@
     <h2>Adicionar Produto</h2>
     <form action="#">
         <div>
-            <label for="link-foto">Link para foto: </label>
-            <input type="url" id="link-foto" name="link-foto">
+            <label for="link-capa">Link para capa: </label>
+            <input type="url" id="link-capa" name="link-capa">
         </div>
         
         <div>
-            <label for="descricao">Descrição do produto: </label>
-            <!-- Adicione o id apropriado para o input abaixo -->
-            <input type="text" id="descricao" name="descrição">
+            <label for="titulo">Título do produto: </label>
+            <input type="text" id="titulo" name="titulo">
+        </div>
+
+        <div>
+            <label for="plataforma">Plataforma: </label>
+            <input type="text" id="plataforma" name="plataforma">
+        </div>
+
+        <div>
+            <label for="genero">Gênero: </label>
+            <input type="text" id="genero" name="genero">
         </div>
         
         <div>
             <label for="preco">Preço (em R$): </label>
-            <!-- Adicione o id apropriado e o type para receber números abaixo -->
-            <input type="text" id="preco" name="preço">
+            <input type="text" id="preco" name="preco">
         </div>
         
         <div>
-            <!-- Preencha as propriedades necessárias para os elementos abaixo -->
             <label for="quantidade">Quantidade disponível: </label>
             <input type="number" id="quantidade" name="quantidade" min="0">
         </div>
 
         <div class="form-add">
-            <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
             <button type="submit">Adicionar</button>
         </div>
 

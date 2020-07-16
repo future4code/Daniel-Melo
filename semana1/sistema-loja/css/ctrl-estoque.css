@@ -7,6 +7,10 @@
 body {
   font-size: 24px;
   height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #C1BDB3;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -42,4 +46,28 @@ nav {
 
 .nav-item:hover {
   background-color: #7F7979;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #3D3B3C;
+  flex: 1;
+}
+
+th, tr, td {
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.capa-jogo {
+  height: 100px;
 }

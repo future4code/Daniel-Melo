@@ -32,11 +32,12 @@ nav {
 }
 
 .nav-item {
+  border-radius: 30px;
   text-decoration: none;
   color: #C1BDB3;
   font-size: 20px;
   margin: 0px 10px;
-  padding: 20px 5px;
+  padding: 10px;
 }
 
 .nav-item:hover {

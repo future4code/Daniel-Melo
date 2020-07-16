@@ -7,6 +7,10 @@
 body {
   font-size: 24px;
   height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #C1BDB3;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -42,4 +46,39 @@ nav {
 
 .nav-item:hover {
   background-color: #7F7979;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #3D3B3C;
+  flex: 1;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+li > img {
+  margin-bottom: 10px;
+  height: 200px;
+  width: 200px;
+}
+
+li > span {
+  margin-bottom: 10px;
 }

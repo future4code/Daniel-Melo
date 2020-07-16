@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <div>
+        <h1>Games Benu</h1>
+    </div>
+    
+    <div>
+        <a href="index.html">Página Inicial</a>
+        <a href="ctrl-estoque.html">Controle de Estoque</a>
+        <a href="add-produto.html">Adicionar Produto</a>
+        <a href="funcionarios.html">Funcionários</a>
+    </div>
+
+    
+    <h2>Adicionar Produto</h2>
+    <form action="#">
+        <div>
+            <label for="link-capa">Link para capa: </label>
+            <input type="url" id="link-capa" name="link-capa">
+        </div>
+        
+        <div>
+            <label for="titulo">Título do produto: </label>
+            <input type="text" id="titulo" name="titulo">
+        </div>
+
+        <div>
+            <label for="plataforma">Plataforma: </label>
+            <input type="text" id="plataforma" name="plataforma">
+        </div>
+
+        <div>
+            <label for="genero">Gênero: </label>
+            <input type="text" id="genero" name="genero">
+        </div>
+        
+        <div>
+            <label for="preco">Preço (em R$): </label>
+            <input type="text" id="preco" name="preco">
+        </div>
+        
+        <div>
+            <label for="quantidade">Quantidade disponível: </label>
+            <input type="number" id="quantidade" name="quantidade" min="0">
+        </div>
+
+        <div class="form-add">
+            <button type="submit">Adicionar</button>
+        </div>
+
+    </form>
+
+</body>
+</html>

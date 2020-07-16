@@ -5,6 +5,10 @@
 }
 
 body {
+  background-image: url('../img/capaloja.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   font-size: 24px;
   height: 100vh;
   display: flex;
@@ -15,7 +19,6 @@ body {
 
 header {
   display: flex;
-  background-color: #323031;
   justify-content: space-between;
   align-items: stretch;
   height: 75px;
@@ -49,10 +52,6 @@ nav {
 }
 
 main {
-  background-image: url('../img/capaloja.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   padding: 10px;
   flex: 1;
 

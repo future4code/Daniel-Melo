@@ -1,0 +1,12 @@
+* {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  color: #092532;
+  background-color: #e1ffc2;
+  height: 100vh;
+}

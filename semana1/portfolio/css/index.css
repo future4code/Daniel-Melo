@@ -50,7 +50,7 @@ header {
 .nav-item {
   text-decoration: none;
   color: var(--steel-blue);
-  font-size: 16px;
+  font-size: 20px;
   padding: 10px;
   transition: color 0.5s;
 }

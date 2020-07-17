@@ -93,6 +93,7 @@ p, span {
 #apresentacao p {
   text-align: center;
   margin: 24px;
+  width: 1000px;
 }
 
 .card-container-projetos {
@@ -163,5 +164,6 @@ p, span {
 
 .descricao-experiencia {
   margin: 24px;
+  width: 1000px;
   text-align: center;
 }

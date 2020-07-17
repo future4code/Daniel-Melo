@@ -34,6 +34,19 @@ header {
   color: var(--steel-blue)
 }
 
+.logo .social-medias {
+  margin: 0px;
+}
+
+.logo .social-medias img {
+  height: 24px;
+}
+
+.logo .social-medias a {
+  height: 24px;
+  margin: 0px 5px;
+}
+
 .nav-item {
   text-decoration: none;
   color: var(--steel-blue);
@@ -235,6 +248,6 @@ footer span {
   margin: 0px 10px;
 }
 
-footer img {
+.social-medias img {
   height: 50px;
 }

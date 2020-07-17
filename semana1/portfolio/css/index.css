@@ -214,3 +214,27 @@ button:active {
   background-color: var(--dark-jungle-green);
   box-shadow: none;
 }
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+footer span {
+  font-weight: 400;
+}
+
+.social-medias {
+  margin: 20px;
+}
+
+.social-medias a {
+  text-decoration: none;
+  margin: 0px 10px;
+}
+
+footer img {
+  height: 50px;
+}

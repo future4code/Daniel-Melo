@@ -139,3 +139,29 @@ p, span {
 .projeto a img {
   height: 25px;
 }
+
+#formacoes, #experiencias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formacao, .experiencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formacao h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.empresa {
+  margin-bottom: 0px;
+}
+
+.descricao-experiencia {
+  margin: 24px;
+  text-align: center;
+}

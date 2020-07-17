@@ -60,6 +60,9 @@ header {
 
 main > div {
   padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .par {
@@ -79,12 +82,6 @@ p, span {
   font-weight: 300;
 }
 
-#apresentacao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #apresentacao h1 {
   margin-bottom: 0px;
 }
@@ -96,4 +93,45 @@ p, span {
 #apresentacao p {
   text-align: center;
   margin: 24px;
+}
+
+.card-container-projetos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.projeto {
+  border: 3px solid var(--charcoal);
+  border-radius: 10px;
+  background-color: var(--powder-blue);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 30px;
+  overflow: hidden;
+  width: 250px;
+}
+
+.projeto > img {
+  width: 100%;
+  height: 35%;
+  margin-bottom: 10px;
+}
+
+.projeto h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.projeto p {
+  margin: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.projeto a img {
+  height: 25px;
 }

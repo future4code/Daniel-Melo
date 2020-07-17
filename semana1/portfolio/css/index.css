@@ -57,3 +57,43 @@ header {
   color: var(--powder-blue);
   background-color: var(--charcoal);
 }
+
+main > div {
+  padding: 30px 30px;
+}
+
+.par {
+  background-color: var(--middle-blue-gree);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+p, span {
+  font-weight: 300;
+}
+
+#apresentacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#apresentacao h1 {
+  margin-bottom: 0px;
+}
+
+#apresentacao h2 {
+  margin-top: 0px;
+}
+
+#apresentacao p {
+  text-align: center;
+  margin: 24px;
+}

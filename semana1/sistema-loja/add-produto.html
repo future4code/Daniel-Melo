@@ -4,58 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/add-produto.css">
     <title>Adicionar Produto</title>
 </head>
 <body>
-    <div>
-        <h1>Games Benu</h1>
-    </div>
+    <header>
+        <a id="logo" href="index.html">🎮 Games Benu</a>
+        <nav>
+            <a class="nav-item" href="index.html">Página Inicial</a>
+            <a class="nav-item" href="venda.html">Venda</a>
+            <a class="nav-item" href="historico.html">Histórico</a>
+            <a class="nav-item" href="ctrl-estoque.html">Estoque</a>
+            <a class="nav-item" href="add-produto.html">Adicionar Produto</a>
+            <a class="nav-item" href="funcionarios.html">Funcionários</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Adicionar Produto</h2>
+        <form action="#">
+            <div id='form-link-capa'>
+                <label for="link-capa">Link para capa: </label>
+                <input type="url" id="link-capa" name="link-capa">
+            </div>
+            
+            <div id='form-titulo'>
+                <label for="titulo">Título do produto: </label>
+                <input type="text" id="titulo" name="titulo">
+            </div>
     
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-    </div>
-
-    
-    <h2>Adicionar Produto</h2>
-    <form action="#">
-        <div>
-            <label for="link-capa">Link para capa: </label>
-            <input type="url" id="link-capa" name="link-capa">
-        </div>
-        
-        <div>
-            <label for="titulo">Título do produto: </label>
-            <input type="text" id="titulo" name="titulo">
-        </div>
-
-        <div>
-            <label for="plataforma">Plataforma: </label>
-            <input type="text" id="plataforma" name="plataforma">
-        </div>
-
-        <div>
-            <label for="genero">Gênero: </label>
-            <input type="text" id="genero" name="genero">
-        </div>
-        
-        <div>
-            <label for="preco">Preço (em R$): </label>
-            <input type="text" id="preco" name="preco">
-        </div>
-        
-        <div>
-            <label for="quantidade">Quantidade disponível: </label>
-            <input type="number" id="quantidade" name="quantidade" min="0">
-        </div>
-
-        <div class="form-add">
-            <button type="submit">Adicionar</button>
-        </div>
-
-    </form>
+            <div id='form-plataforma-genero'>
+                <label for="plataforma">Plataforma: </label>
+                <input type="text" id="plataforma" name="plataforma">
+                <label for="genero">Gênero: </label>
+                <input type="text" id="genero" name="genero">
+            </div>
+            
+            <div id='form-preco-quantidade'>
+                <label for="preco">Preço (em R$): </label>
+                <input type="text" id="preco" name="preco">
+                <label for="quantidade">Quantidade disponível: </label>
+                <input type="number" id="quantidade" name="quantidade" min="0">
+            </div>
+            
+            <div class="form-add">
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+    </main>
 
 </body>
 </html>

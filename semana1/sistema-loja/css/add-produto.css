@@ -1,0 +1,102 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 24px;
+  height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #C1BDB3;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  background-color: #323031;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 75px;
+}
+
+#logo {
+  margin: 10px;
+  text-decoration: none;
+  color: #C1BDB3;
+  padding: 10px 0;
+}
+
+nav {
+  display: flex;
+  margin: 0px 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  border-radius: 30px;
+  text-decoration: none;
+  color: #C1BDB3;
+  font-size: 20px;
+  margin: 0px 10px;
+  padding: 10px;
+}
+
+.nav-item:hover {
+  background-color: #7F7979;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #3D3B3C;
+  flex: 1;
+}
+
+form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+form > div {
+  display: flex;
+  margin: 15px;
+  align-items: stretch;
+}
+
+input {
+  margin: 0px 10px;
+  background-color: #3D3B3C;
+  color: #7F7979;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  flex: 1;
+}
+
+.form-add {
+  align-self: center;
+}
+
+button {
+  background-color: #3D3B3C;
+  color: #7F7979;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  outline: none;
+  padding: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #323031;
+  color: #7F7979;
+}

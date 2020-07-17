@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/venda.css">
+  <title>Venda</title>
+</head>
+<body>
+  <header>
+    <a id="logo" href="index.html">🎮 Games Benu</a>
+        <nav>
+            <a class="nav-item" href="index.html">Página Inicial</a>
+            <a class="nav-item" href="venda.html">Venda</a>
+            <a class="nav-item" href="historico.html">Histórico</a>
+            <a class="nav-item" href="ctrl-estoque.html">Estoque</a>
+            <a class="nav-item" href="add-produto.html">Adicionar Produto</a>
+            <a class="nav-item" href="funcionarios.html">Funcionários</a>
+        </nav>
+  </header>
+
+  <main>
+      <h2>Venda de produto</h2>
+      <form class="venda" action="#">
+          <div id='form-titulo'>
+              <label for="titulo">Título do produto: </label>
+              <select name="titulo" id="titulo">
+                  <option value="">--- Selecione o jogo ---</option>
+                  <option value="Last of Us II">Last of Us II</option>
+                  <option value="Far Cry 6">Far Cry 6</option>
+                  <option value="Cyberpunk 2077">Cyberpunk 2077</option>
+                  <option value="Assassins Creed Valhala">Assassins Creed Valhala</option>
+                  <option value="Crash Bandicoot 4: it's About Time">Crash Bandicoot 4: it's About Time</option>
+                  <option value="DragonBall Xenoverse 2">DragonBall Xenoverse 2</option>
+                  <option value="Mortal Kombat 11">Mortal Kombat 11</option>
+                  <option value="Fifa 20">Fifa 20</option>
+              </select>
+          </div>
+  
+          <div id='form-plataforma-genero'>
+              <label for="plataforma">Plataforma: </label>
+              <select name="plataforma" id="plataforma">
+                <option value="" selected>--- Selecione a plataforma ---</option>
+                <option value="ps4">PS 4</option>
+                <option value="xbox1">Xbox One</option>
+              </select>
+          </div>
+          
+          <div id='form-preco-quantidade'>
+            <label for="preco">Preço (em R$): </label>
+            <input type="text" id="preco" name="preco">
+            <label for="quantidade">Quantidade: </label>
+            <input type="number" id="quantidade" name="quantidade" min="0">
+          </div>
+          
+          <div id='form-vendedor'>
+              <label for="plataforma">Plataforma: </label>
+              <select name="plataforma" id="plataforma">
+                <option value="" selected>--- Selecione ao vendedor ---</option>
+                <option value="daniel">Daniel</option>
+                <option value="simone">Simone</option>
+                <option value="rivaldo">Rivaldo</option>
+                <option value="daniele">Daniele</option>
+              </select>
+          </div>
+          
+          <div class="form-add">
+              <button type="submit">Adicionar à sacola</button>
+          </div>
+      </form>
+
+      <div class="sacola">
+        <h2>Sacola</h2>
+        <table>
+          <thead>
+            <tr>
+                <th>Título</th>
+                <th>Plataforma</th>
+                <th>Gênero</th>
+                <th>Quantidade</th>
+                <th>Preço (R$)</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr>
+                <td>Last of Us II</td>
+                <td>PS 4</td>
+                <td>Aventura</td>
+                <td>1</td>
+                <td>R$ 279,90</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="4">Valor Total:</td>
+              <td>R$ 279,90</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <form class='pagamento' action="#">
+          <div>
+            <label for="forma-pagamento">Forma de Pagamento</label>
+            <select name="forma-pagamento" id="forma-pagamento">
+              <option value="dinheiro">Dinheiro</option>
+              <option value="cartao">Cartão</option>
+            </select>
+          </div>
+          
+          <button type="submit">Finalizar venda</button>
+          <button type="submit">Cancelar venda</button>
+        </form>
+      </div>
+
+  </main>
+</body>
+</html>

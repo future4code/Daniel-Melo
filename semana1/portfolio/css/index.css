@@ -185,6 +185,37 @@ p, span {
   text-align: center;
 }
 
+#habilidades {
+  align-items: stretch;
+}
+
+#habilidades h1 {
+  text-align: center;
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+}
+
+.skills div {
+  margin: 0px 100px;
+}
+
+.skills ul {
+  padding: 0;
+}
+
+.skills p {
+  width: 200px;
+  margin-top: 0px;
+  font-size: 16px;
+}
+
+.hard-skills li {
+  margin: 20px;
+}
+
 form {
   display: flex;
   flex-direction: column;

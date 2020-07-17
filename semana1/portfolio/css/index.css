@@ -171,3 +171,46 @@ p, span {
   width: 1000px;
   text-align: center;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 10px 0px;
+}
+
+input {
+  margin: 10px 0px;
+  outline: none;
+  border: none;
+  background-color: var(--middle-blue-gree);
+  border-bottom: 1px solid var(--charcoal);
+  font-weight: 300;
+}
+
+textarea {
+  background-color: var(--middle-blue-gree);
+  font-weight: 300;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--dark-jungle-green);
+}
+
+button {
+  margin: 10px 0px;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  color: var(--middle-blue-gree);
+  box-shadow: 1px 1px 1px 1px #000;
+}
+
+button:active {
+  background-color: var(--dark-jungle-green);
+  box-shadow: none;
+}

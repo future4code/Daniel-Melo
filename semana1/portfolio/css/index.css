@@ -1,0 +1,284 @@
+:root {
+  --steel-blue: #4F7CAC;
+  --powder-blue: #C0E0DE;
+  --dark-jungle-green: #162521;
+  --charcoal: #3C474B;
+  --middle-blue-gree: #9EEFE5;
+}
+
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+  color: var(--charcoal);
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--powder-blue);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+.logo {
+  color: var(--steel-blue)
+}
+
+.logo .social-medias {
+  margin: 0px;
+}
+
+.logo .social-medias img {
+  height: 24px;
+}
+
+.logo .social-medias a {
+  height: 24px;
+  margin: 0px 5px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--steel-blue);
+  font-size: 20px;
+  padding: 10px;
+  transition: color 0.5s;
+}
+
+.nav-item:hover {
+  color: var(--charcoal)
+}
+
+.nav-item.contato {
+  border: 3px solid var(--charcoal);
+  color: var(--charcoal);
+  border-radius: 25px;
+  transition: background-color 0.5s;
+}
+
+.nav-item.contato:hover {
+  color: var(--powder-blue);
+  background-color: var(--charcoal);
+}
+
+main > div {
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main > div:nth-child(even) {
+  background-color: var(--middle-blue-gree)
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+p, span {
+  font-weight: 300;
+}
+
+#apresentacao h1 {
+  margin-bottom: 0px;
+}
+
+#apresentacao h2 {
+  margin-top: 0px;
+}
+
+#apresentacao p {
+  text-align: center;
+  margin: 24px;
+  width: 1000px;
+}
+
+.card-container-projetos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.projeto {
+  border: 3px solid var(--charcoal);
+  border-radius: 10px;
+  background-color: var(--powder-blue);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+  width: 300px;
+  height: 400px;
+  margin: 10px 30px;
+  overflow: hidden;
+}
+
+.projeto > img {
+  width: 100%;
+  height: 40%;
+  margin-bottom: 10px;
+}
+
+.projeto h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.projeto p {
+  margin: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.projeto a img {
+  height: 25px;
+}
+
+#formacoes, #experiencias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formacao, .experiencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formacao h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.formacao h3 {
+  text-align: center;
+}
+
+.empresa {
+  margin-bottom: 0px;
+}
+
+.descricao-experiencia {
+  margin: 24px;
+  width: 1000px;
+  text-align: center;
+}
+
+#habilidades {
+  align-items: stretch;
+}
+
+#habilidades h1 {
+  text-align: center;
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+}
+
+.skills div {
+  margin: 0px 100px;
+}
+
+.skills ul {
+  padding: 0;
+}
+
+.skills p {
+  width: 200px;
+  margin-top: 0px;
+  font-size: 16px;
+}
+
+.hard-skills li {
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 10px 0px;
+}
+
+input {
+  margin: 10px 0px;
+  outline: none;
+  border: none;
+  background-color: var(--middle-blue-gree);
+  border-bottom: 1px solid var(--charcoal);
+  font-weight: 300;
+}
+
+textarea {
+  background-color: var(--middle-blue-gree);
+  font-weight: 300;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--dark-jungle-green);
+}
+
+button {
+  margin: 10px 0px;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  color: var(--middle-blue-gree);
+  box-shadow: 1px 1px 1px 1px #000;
+}
+
+button:active {
+  background-color: var(--dark-jungle-green);
+  box-shadow: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+footer span {
+  font-weight: 400;
+}
+
+.social-medias {
+  margin: 20px;
+}
+
+.social-medias a {
+  text-decoration: none;
+  margin: 0px 10px;
+}
+
+.social-medias img {
+  height: 50px;
+}

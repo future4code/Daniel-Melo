@@ -72,7 +72,9 @@ img {
 }
 
 #container-de-descricao>ol {
-    padding: 15px 380px;
+    width: 300px;
+    margin: 0 auto;
+    padding: 15px 0px;
 }
 
 #container-para-comprar {

@@ -78,8 +78,8 @@ main > div {
   align-items: center;
 }
 
-.par {
-  background-color: var(--middle-blue-gree);
+main > div:nth-child(even) {
+  background-color: var(--middle-blue-gree)
 }
 
 h1 {

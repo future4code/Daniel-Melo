@@ -30,6 +30,10 @@ input:focus {
     border-bottom: 2px solid black;
 }
 
+button {
+    outline: none;
+}
+
 button:active {
     color: white;
 }

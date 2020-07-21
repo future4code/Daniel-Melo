@@ -111,7 +111,7 @@ main {
 }
 
 .filters {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
 .post {
@@ -160,5 +160,19 @@ aside > p {
   text-decoration: none;
   color: #08090a;
   font-weight: bold;
+}
+
+.filters > button {
+  padding: 5px 10px;
+  margin: 0px 10px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+}
+
+.filters > button:focus {
+  background-color: lightblue;
+  box-shadow: 3px 3px 1px #3b49df;
+  border: 1px solid #3b49df;
 }
 

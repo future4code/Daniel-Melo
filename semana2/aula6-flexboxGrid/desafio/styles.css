@@ -20,7 +20,7 @@ header {
   right: 0px;
   height: 54px;
   background-color: white;
-  padding: 8px 200px;
+  padding: 8px 100px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   
 
@@ -97,8 +97,7 @@ header > div:first-child {
 }
 
 .page-wrapper {
-  padding: 80px 200px 0px 200px;
-  
+  padding: 80px 100px 0px 100px;
 
   display: flex;
   justify-content: space-between;
@@ -121,20 +120,45 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 0px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .page-wrapper-item {
-  border: 1px solid black;
-  padding: 10px
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+aside.page-wrapper-item {
+  width: 240px;
 }
 
 main.page-wrapper-item {
+  padding: 0px 30px;
   border: none;
+  box-shadow: none;
+  background-color: #eef0f1;
 }
 
 aside > nav {
   display: flex;
   flex-direction: column;
+}
+
+aside > p {
+  color:  grey;
+  font-size: 12px;
+}
+
+.tags-nav-bar > a {
+  margin: 10px 0px;
+  text-decoration: none;
+  color: #08090a;
+  font-weight: bold;
 }
 

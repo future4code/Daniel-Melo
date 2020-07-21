@@ -28,6 +28,11 @@ header {
   justify-content: space-between;
 }
 
+header > div:first-child {
+  display: flex;
+
+}
+
 .logo {
   color: white;
   background-color: black;
@@ -42,6 +47,7 @@ header {
   border-radius: 3px;
   padding: 7px 8px;
   outline: none;
+  margin: 0px 16px;
 }
 
 #search-bar:focus {

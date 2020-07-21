@@ -168,6 +168,7 @@ aside > p {
   outline: none;
   border: none;
   font-weight: bold;
+  border: 1px solid transparent;
 }
 
 .filters > button:focus {

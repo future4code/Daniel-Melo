@@ -1,0 +1,82 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#main-container {
+    display: grid;
+
+    grid-template: repeat(7, 50px) 100px 100px repeat(3, 50px) / 1fr;
+}
+
+#main-container > :not(:first-child) {
+    border: 1px solid black;
+    margin: 5px;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#first-block {
+    background-color: red;
+}
+
+.blue-block {
+    background-color: blue;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+}
+
+.white-block {
+    background-color: white;
+}
+
+@media screen and (min-width: 420px) and (max-width: 650px) {
+    #main-container {
+        grid-template: repeat(5, 50px) 100px repeat(2, 50px) / 1fr 1fr;
+    }
+
+    #first-block {
+        grid-column-end: span 2;
+    }
+
+    .green-block {
+        grid-column-end: span 2;
+    }
+
+    .last-block {
+        grid-column-end: span 2;
+    }
+}
+
+@media screen and (min-width: 651px) {
+    #main-container {
+        grid-template: repeat(5, 50px) 100px repeat(2, 50px) / 1fr 1fr;
+    }
+
+    #first-block {
+        grid-column-end: span 2;
+    }
+
+    .green-block {
+        grid-column-end: span 2;
+    }
+
+    .last-block {
+        grid-column-end: span 2;
+    }
+}

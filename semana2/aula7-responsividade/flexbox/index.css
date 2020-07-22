@@ -61,48 +61,39 @@ div {
 @media screen and (min-width: 420px) and (max-width: 650px) {
     .blue-block {
         min-width: 45%;
-        flex-grow: 1;
     }
     
     .yellow-block {
         min-width: 45%;
-        flex-grow: 1;
     }
     
     .black-block {
         min-width: 45%;
-        flex-grow: 1;
     }
     
     .white-block {
         min-width: 45%;
-        flex-grow: 1;
     }
 }
 
 @media screen and (min-width: 651px) {
     .blue-block {
         min-width: 30%;
-        flex-grow: 1;
     }
     
     .yellow-block {
         min-width: 30%;
-        flex-grow: 1;
     }
     
     .green-block {
         min-width: 30%;
-        flex-grow: 1;
     }
     
     .black-block {
         min-width: 45%;
-        flex-grow: 1;
     }
     
     .white-block {
         min-width: 30%;
-        flex-grow: 1;
     }
 }

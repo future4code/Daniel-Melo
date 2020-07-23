@@ -35,8 +35,28 @@ input {
   padding: 5px;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 article {
   border: 1px solid brown;
   margin: 10px;
   text-align: center;
+  max-width: 420px;
+
+  flex-grow: 1;
+}
+
+article > img {
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

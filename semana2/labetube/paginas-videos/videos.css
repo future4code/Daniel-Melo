@@ -44,5 +44,12 @@ main {
 }
 
 video {
-  width: 100%;
+  width: 470px;
+  height: 255px;
+}
+
+@media screen and (max-width: 470px) {
+  video {
+    width: 100%;
+  }
 }

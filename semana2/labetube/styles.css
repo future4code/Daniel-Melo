@@ -3,6 +3,10 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -45,7 +49,6 @@ article {
   border: 1px solid brown;
   margin: 10px;
   text-align: center;
-  max-width: 420px;
 
   flex-grow: 1;
 }

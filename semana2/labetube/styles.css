@@ -8,7 +8,7 @@ body {
   height: 100vh;
 }
 
-header {
+header, footer {
   height: 60px;
   background-color: brown;
 }

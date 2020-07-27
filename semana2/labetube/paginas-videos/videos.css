@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  height: 60px;
+  background-color: brown;
+  padding: 10px;
+}
+
+#logo {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+}
+
+form {
+  height: 80%;
+}
+
+input {
+  outline: none;
+  border: none;
+  height: 100%;
+  padding: 5px;
+}
+
+main {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+video {
+  width: 470px;
+  height: 255px;
+}
+
+@media screen and (max-width: 470px) {
+  video {
+    width: 100%;
+  }
+}

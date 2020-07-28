@@ -54,3 +54,55 @@ const email = prompt('Qual o seu email?')
 
 const msg = 'O e-mail ' + email + ' foi cadastrado com sucesso. Seja bem-vind@, ' + nome + '!'
 console.log(msg)
+
+// DESAFIOS
+// 1. 
+let temperaturaEmFahrenheit = 77
+let temperaturaEmKelvin = (temperaturaEmFahrenheit - 32)*5/9 + 273.15
+let mensagemComConversao = temperaturaEmFahrenheit + '°F = ' + temperaturaEmKelvin + 'K'
+console.log(mensagemComConversao)
+
+let temperaturaEmCelcius = 80
+temperaturaEmFahrenheit = temperaturaEmCelcius*9/5 + 32
+mensagemComConversao = temperaturaEmCelcius + '°C = ' + temperaturaEmFahrenheit + '°F'
+console.log(mensagemComConversao)
+
+temperaturaEmCelcius = Number(prompt('Insira o valor da temperatura em graus Celsius'))
+temperaturaEmFahrenheit = temperaturaEmCelcius*9/5 + 32
+temperaturaEmKelvin = (temperaturaEmFahrenheit - 32)*5/9 + 273.15
+mensagemComConversao = temperaturaEmCelcius + '°C = ' + temperaturaEmFahrenheit + '°F = ' + temperaturaEmKelvin + 'K'
+console.log(mensagemComConversao)
+
+// 2.
+const consumoEmKWh = Number(prompt('Qual o consumo da sua residência em KWh?'))
+const valorDoKWh = 0.05
+const desconto = 0.15
+const valorTotal = consumoEmKWh * valorDoKWh
+const valorComDesconto = valorTotal * (1 - desconto)
+console.log('Valor total: R$', valorTotal, 'Valor com desconto: R$', valorComDesconto)
+
+// 3.
+const massaEmLb = Number(prompt('massa em libras'))
+let massaEmKg = massaEmLb / 2.20462
+console.log(massaEmLb + 'lb equivalem a ' + massaEmKg + ' kg')
+
+const massaEmOz = 10.5
+massaEmKg = massaEmOz / 35.274
+console.log(massaEmOz + 'oz equivalem a ' + massaEmKg + ' kg')
+
+const comprimentoEmMilhas = 100
+let comprimentoEmMetros = comprimentoEmMilhas * 1609
+console.log(comprimentoEmMilhas + 'mi equivalem a ' + comprimentoEmMetros + ' m')
+
+const comprimentoEmPes = 50
+comprimentoEmMetros = comprimentoEmPes / 3.281
+console.log(comprimentoEmPes + 'ft equivalem a ' + comprimentoEmMetros + ' m')
+
+const volumeEmGalao = 103.56
+let volumeEmLitros = volumeEmGalao * 4.546
+console.log(volumeEmGalao + 'gal equivalem a ' + volumeEmLitros + ' l')
+
+const volumeEmXicara = 450
+volumeEmLitros = volumeEmXicara / 3.52
+console.log(volumeEmXicara + 'xic equivalem a ' + volumeEmLitros + ' l')
+

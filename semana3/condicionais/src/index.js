@@ -24,3 +24,55 @@ No caso do usuário entrar com o valor -10 só será apresentado o erro
 c. Sim, haverá erro. Uma vez que a variável 'mensagem' foi declarada dentro do bloco
 do if, ela não poderá ser acessada fora desse bloco, isto é, fora de seu escopo.
 */
+
+// EXERCÍCIOS DE ESCRITA DE CÓDIGO
+// 4.
+const idade = Number(prompt('Qual sua idade?'))
+
+if (idade >= 18) {
+  console.log('Você pode dirigir')
+} else {
+  console.log('Você não pode dirigir')
+}
+
+// 5. e 6.
+const turno = prompt('Em qual turno você estuda? (M)atutino / (V)espertino / (N)orturno').toUpperCase()
+
+let msg = ''
+
+if (turno === 'M') {
+  msg = 'Bom dia!'
+} else if (turno === 'V') {
+  msg = 'Boa tarde!'
+} else if (turno === 'N') {
+  msg = 'Boa noite!'
+} else {
+  msg = 'Informe um valor válido'
+}
+
+switch (turno) {
+  case 'M':
+    msg = 'Bom dia!'
+    break
+  case 'V':
+    msg = 'Boa tarde!'
+    break
+  case 'N':
+    msg = 'Boa noite!'
+    break
+  default:
+    msg = 'Informe um valor válido'
+    break
+}
+
+console.log(msg)
+
+// 7.
+const genero = prompt('Qual o gênero do filme?').toLowerCase()
+const preco = Number(prompt('Qual o preço do ingresso?'))
+
+if (genero === 'fantasia' && preco < 15) {
+  console.log('Bom filme!')
+} else {
+  console.log('Escolha outro filme! :(')
+}

@@ -26,53 +26,172 @@ do if, ela não poderá ser acessada fora desse bloco, isto é, fora de seu esco
 */
 
 // EXERCÍCIOS DE ESCRITA DE CÓDIGO
-// 4.
-const idade = Number(prompt('Qual sua idade?'))
+// // 4.
+// const idade = Number(prompt('Qual sua idade?'))
 
-if (idade >= 18) {
-  console.log('Você pode dirigir')
-} else {
-  console.log('Você não pode dirigir')
-}
+// if (idade >= 18) {
+//   console.log('Você pode dirigir')
+// } else {
+//   console.log('Você não pode dirigir')
+// }
 
-// 5. e 6.
-const turno = prompt('Em qual turno você estuda? (M)atutino / (V)espertino / (N)orturno').toUpperCase()
+// // 5. e 6.
+// const turno = prompt('Em qual turno você estuda? (M)atutino / (V)espertino / (N)orturno').toUpperCase()
 
-let msg = ''
+// let msg = ''
 
-if (turno === 'M') {
-  msg = 'Bom dia!'
-} else if (turno === 'V') {
-  msg = 'Boa tarde!'
-} else if (turno === 'N') {
-  msg = 'Boa noite!'
-} else {
-  msg = 'Informe um valor válido'
-}
+// if (turno === 'M') {
+//   msg = 'Bom dia!'
+// } else if (turno === 'V') {
+//   msg = 'Boa tarde!'
+// } else if (turno === 'N') {
+//   msg = 'Boa noite!'
+// } else {
+//   msg = 'Informe um valor válido'
+// }
 
-switch (turno) {
-  case 'M':
-    msg = 'Bom dia!'
+// switch (turno) {
+//   case 'M':
+//     msg = 'Bom dia!'
+//     break
+//   case 'V':
+//     msg = 'Boa tarde!'
+//     break
+//   case 'N':
+//     msg = 'Boa noite!'
+//     break
+//   default:
+//     msg = 'Informe um valor válido'
+//     break
+// }
+
+// console.log(msg)
+
+// // 7.
+// const genero = prompt('Qual o gênero do filme?').toLowerCase()
+// const preco = Number(prompt('Qual o preço do ingresso?'))
+
+// if (genero === 'fantasia' && preco < 15) {
+//   console.log('Bom filme!')
+// } else {
+//   console.log('Escolha outro filme! :(')
+// }
+
+// DESAFIOS
+// 1.
+// const genero = prompt('Qual o gênero do filme?').toLowerCase()
+// const preco = Number(prompt('Qual o preço do ingresso?'))
+
+// if (genero === 'fantasia' && preco < 15) {
+//   const snack = prompt('Qual snack você quer comprar?')
+//   console.log('Bom filme!')
+//   console.log('... com', snack)
+// } else {
+//   console.log('Escolha outro filme! :(')
+// }
+
+// 2.
+const nome = prompt('Bem vindo! Qual seu nome completo?')
+const tipo = prompt('Qual o tipo de jogo? IN: Internacional / DO: Domésticos').toUpperCase()
+const etapa = prompt('Qual a etapa do jogo? SF: Semi-final / DT: Decisão de terceiro / FI: Final').toUpperCase()
+const categoria = Number(prompt('Qual a categoria? 1 / 2 / 3 / 4'))
+const quantidadeDeIngressos = Number(prompt('Quantos ingressos?'))
+
+const RAZAO_DOLAR_REAL = 4.10
+const precoEmRealDasSemiFinais = [1320, 880, 550, 220]
+const precoEmRealDaDisputaDeTerceiro = [660, 440, 330, 170]
+const precoEmRealDasFinais = [1980, 1320, 880, 330]
+
+let mensagemTipo = 'Tipo do jogo: ' 
+let mensagemEtapa = 'Etapa do jogo: '
+let mensagemPrecoUnitario = 'Valor do ingresso: '
+let mensagemValorTotal = 'Valor total: '
+let moeda
+let precoUnitarioEmReal
+let precoUnitarioEmDolar
+let valorTotal
+
+
+switch (tipo) {
+  case 'IN':
+    mensagemTipo += 'Internacional'
+    moeda = 'U$ '
+
+    switch (etapa) {
+      case 'SF':
+        mensagemEtapa += 'Semi-final'
+        precoUnitarioEmReal = precoEmRealDasSemiFinais[categoria - 1]
+        precoUnitarioEmDolar = precoUnitarioEmReal / RAZAO_DOLAR_REAL
+        valorTotal = precoUnitarioEmDolar * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmDolar
+        mensagemValorTotal += moeda + valorTotal
+        break
+      case 'DT':
+        mensagemEtapa += 'Decisão de terceiro colocado'
+        precoUnitarioEmReal = precoEmRealDaDisputaDeTerceiro[categoria - 1]
+        precoUnitarioEmDolar = precoUnitarioEmReal / RAZAO_DOLAR_REAL
+        valorTotal = precoUnitarioEmDolar * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmDolar
+        mensagemValorTotal += moeda + valorTotal
+        break
+      case 'FI':
+        mensagemEtapa += 'Final'
+        precoUnitarioEmReal = precoEmRealDasFinais[categoria - 1]
+        precoUnitarioEmDolar = precoUnitarioEmReal / RAZAO_DOLAR_REAL
+        valorTotal = precoUnitarioEmDolar * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmDolar
+        mensagemValorTotal += moeda + valorTotal
+        break
+      default:
+        console.log('Etapa de jogo inválida')
+        break
+    }
+    
     break
-  case 'V':
-    msg = 'Boa tarde!'
-    break
-  case 'N':
-    msg = 'Boa noite!'
+  case 'DO':
+    mensagemTipo += 'Nacional'
+    moeda = 'R$ '
+
+    switch (etapa) {
+      case 'SF':
+        mensagemEtapa += 'Semi-final'
+        precoUnitarioEmReal = precoEmRealDasSemiFinais[categoria - 1]
+        valorTotal = precoUnitarioEmReal * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmReal
+        mensagemValorTotal += moeda + valorTotal
+        break
+      case 'DT':
+        mensagemEtapa += 'Decisão de terceiro colocado'
+        precoUnitarioEmReal = precoEmRealDaDisputaDeTerceiro[categoria - 1]
+        valorTotal = precoUnitarioEmReal * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmReal
+        mensagemValorTotal += moeda + valorTotal
+        break
+      case 'FI':
+        mensagemEtapa += 'Final'
+        precoUnitarioEmReal = precoEmRealDasFinais[categoria - 1]
+        valorTotal = precoUnitarioEmReal * quantidadeDeIngressos
+        mensagemPrecoUnitario += moeda + precoUnitarioEmReal
+        mensagemValorTotal += moeda + valorTotal
+        break
+      default:
+        console.log('Etapa de jogo inválida')
+        break
+    }
+
     break
   default:
-    msg = 'Informe um valor válido'
+    console.log('Tipo de jogo inválido')
     break
 }
 
-console.log(msg)
 
-// 7.
-const genero = prompt('Qual o gênero do filme?').toLowerCase()
-const preco = Number(prompt('Qual o preço do ingresso?'))
-
-if (genero === 'fantasia' && preco < 15) {
-  console.log('Bom filme!')
-} else {
-  console.log('Escolha outro filme! :(')
-}
+console.log('---Dados da compra---')
+console.log('Nome do cliente:', nome)
+console.log(mensagemTipo)
+console.log(mensagemEtapa)
+console.log('Categoria:', categoria)
+console.log('Quantidade de ingressos:', quantidadeDeIngressos, 'ingressos')
+console.log('---Valores---')
+console.log(mensagemPrecoUnitario)
+console.log(mensagemValorTotal)

@@ -31,3 +31,54 @@ O resultado impresso será:
 0000
 
 */
+
+// --- EXERCÍCIOS DE ESCRITA DE CÓDIGO ---
+// 3.
+const arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
+
+// Resposta item a
+for (let numero of arrayOriginal) {
+  console.log(numero)
+}
+
+// Resposta item b
+for (let numero of arrayOriginal) {
+  console.log(numero / 10)
+}
+
+// Resposta item c
+const arrayComNumerosPares = []
+
+for (let numero of arrayOriginal) {
+  if (numero % 2 === 0) {
+    arrayComNumerosPares.push(numero)
+  }
+}
+
+console.log(arrayComNumerosPares)
+
+// Reposta item d
+const arrayDeMensagens = []
+
+// Poderia fazer também usado o for...in
+// for (let i in arrayOriginal) {
+for (let i = 0; i < arrayOriginal.length; i++) {
+  const mensagem = `O elemento de índex ${i} é ${arrayOriginal[i]}`
+  arrayDeMensagens.push(mensagem)
+}
+
+console.log(arrayDeMensagens)
+
+// Resposta item e 
+let valorMaximo = arrayOriginal[0]
+let valorMinimo = arrayOriginal[0]
+
+for (numero of arrayOriginal) {
+  if (numero > valorMaximo) {
+    valorMaximo = numero
+  } else if (numero < valorMinimo) {
+    valorMinimo = numero
+  }
+}
+
+console.log(`O maior número é ${valorMaximo} e o menor é ${valorMinimo}`)

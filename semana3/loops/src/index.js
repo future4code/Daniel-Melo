@@ -5,7 +5,7 @@
 Será impresso na tela: 10
 
 2. 
-a. 19 21 23 25 27 30 - Cada um em uma linha serada
+a. 19 21 23 25 27 30 - Cada um em uma linha separada
 b. A estrutura for...of por si só não basta, mas há formas de se fazer.
 A forma mais indica é usar o for...in (não foi dado no curso) e também
 pode-se usar o for com a condição de parada de forma explícita.

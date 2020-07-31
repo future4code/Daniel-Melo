@@ -33,7 +33,7 @@ function cartasToString(cartas) {
       return `${naipes} ${carta.texto}`
    },'')
 
-   return `cartas:${texto} - pontuação:${pontos}`
+   return `cartas:${texto} - pontuação: ${pontos}`
 }
 
 function determinarVencedor(cartasUsuario, cartasComputador) {

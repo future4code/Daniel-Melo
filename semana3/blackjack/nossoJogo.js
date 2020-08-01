@@ -11,34 +11,35 @@
  * 
  */
 
-function jogar() {
+console.log("Bem vindo ao jogo de Blackjack!")
+const iniciarJogo = confirm('Quer iniciar um jogo de blackjack?')
+
+if(iniciarJogo) {
    const cartasUsuario = [comprarCarta(), comprarCarta()]
    const cartasComputador = [comprarCarta(), comprarCarta()]
-   
-   const cartasUsuarioEmString = cartasToString(cartasUsuario)
-   const cartasComputadorEmString = cartasToString(cartasComputador)
- 
-   const mensagemUsuario = `Usuário - ${cartasUsuarioEmString}`
-   const mensagemComputador = `Computador - ${cartasComputadorEmString}`
+
+   console.log(cartasUsuario)
+   console.log(cartasComputador)
+
+   let pontosUsuario = 0
+   let cartasDoUsuarioToString = ''
+   for (let carta of cartasUsuario) {
+      pontosUsuario += carta.valor
+      cartasDoUsuarioToString += ` ${carta.texto}`
+   }
+
+   let pontosComputador = 0
+   let cartasDoComputadorToString = ''
+   for (let carta of cartasComputador) {
+      pontosComputador += carta.valor
+      cartasDoComputadorToString += ` ${carta.texto}`
+   }
+
+   const mensagemUsuario = `Usuário - ${cartasDoUsuarioToString} - Pontuação: ${pontosUsuario}`
+   const mensagemComputador = `Usuário - ${cartasDoComputadorToString} - Pontuação: ${pontosComputador}`
 
    console.log(mensagemUsuario)
    console.log(mensagemComputador)
-
-   determinarVencedor(cartasUsuario, cartasComputador)
-}
-
-function cartasToString(cartas) {
-   const pontos = contarPontos(cartas)
-   const texto = cartas.reduce((naipes, carta) => {
-      return `${naipes} ${carta.texto}`
-   },'')
-
-   return `cartas:${texto} - pontuação: ${pontos}`
-}
-
-function determinarVencedor(cartasUsuario, cartasComputador) {
-   const pontosUsuario = contarPontos(cartasUsuario)
-   const pontosComputador = contarPontos(cartasComputador)
 
    if (pontosUsuario > pontosComputador) {
       console.log('O usuário venceu!')
@@ -48,19 +49,6 @@ function determinarVencedor(cartasUsuario, cartasComputador) {
       console.log('Empate!')
    }
 }
-
-function contarPontos(cartas) {
-   return cartas.reduce((pontos, carta) => {
-      return pontos + carta.valor
-   }, 0)
-}
-
-
-
-console.log("Bem vindo ao jogo de Blackjack!")
-const iniciarJogo = confirm('Quer iniciar um jogo de blackjack?')
-
-iniciarJogo && jogar()
 
 console.log('O jogo acabou')
 

@@ -36,7 +36,7 @@ if(iniciarJogo) {
    }
 
    const mensagemUsuario = `Usuário - ${cartasDoUsuarioToString} - Pontuação: ${pontosUsuario}`
-   const mensagemComputador = `Usuário - ${cartasDoComputadorToString} - Pontuação: ${pontosComputador}`
+   const mensagemComputador = `Computador - ${cartasDoComputadorToString} - Pontuação: ${pontosComputador}`
 
    console.log(mensagemUsuario)
    console.log(mensagemComputador)

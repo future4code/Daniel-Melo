@@ -12,9 +12,9 @@
  */
 
 console.log("Bem vindo ao jogo de Blackjack!")
-const iniciarJogo = confirm('Quer iniciar um jogo de blackjack?')
+let iniciarJogo = confirm('Quer iniciar um jogo de blackjack?')
 
-if(iniciarJogo) {
+while(iniciarJogo) {
    const cartasUsuario = []
    let pontosUsuario = 0
    let cartasUsuarioToString = ''
@@ -89,6 +89,7 @@ if(iniciarJogo) {
    }
 
    alert(mensagem)
+   iniciarJogo = confirm('Deseja jogar novamente?')
 }
 
 console.log('O jogo acabou')

@@ -18,27 +18,53 @@ e outra função para elevar um número ao quadrado, poderíamos chamá-la eleva
 
 // 4.
 // a.
-function apresentarCaio() {
-  console.log("Eu sou Caio, tenho 23 anos, moro em São Paulo e sou estudante")
-}
+// function apresentarCaio() {
+//   console.log("Eu sou Caio, tenho 23 anos, moro em São Paulo e sou estudante")
+// }
 
-function apresentarDaniel() {
-  console.log("Eu sou Daniel, tenho 25 anos, moro em Recife e sou estudante")
-}
+// function apresentarDaniel() {
+//   console.log("Eu sou Daniel, tenho 25 anos, moro em Recife e sou estudante")
+// }
 
-apresentarCaio()
-apresentarDaniel()
+// apresentarCaio()
+// apresentarDaniel()
 
 // b.
-function apresentar(nome, idade, endereco, isEstudante) {
-  let souEstudante = ''
-  if (isEstudante) {
-    souEstudante = 'sou'
-  } else {
-    souEstudante = 'não sou'
-  }
+// function apresentar(nome, idade, endereco, isEstudante) {
+//   let souEstudante = ''
+//   if (isEstudante) {
+//     souEstudante = 'sou'
+//   } else {
+//     souEstudante = 'não sou'
+//   }
   
-  console.log(`Eu sou ${nome}, tenho ${idade} anos, moro em ${endereco} e ${souEstudante} estudante`)
+//   console.log(`Eu sou ${nome}, tenho ${idade} anos, moro em ${endereco} e ${souEstudante} estudante`)
+// }
+
+// apresentar('Daniel', 25, 'Av. Parnamirim 327', true)
+
+// 5.
+// a.
+function soma(x, y) {
+  return x + y
 }
 
-apresentar('Daniel', 25, 'Av. Parnamirim 327', true)
+console.log(soma(1, 2))
+
+// b.
+function isMaior(x, y) {
+  return x >= y
+}
+
+console.log(isMaior(1, 2))
+console.log(isMaior(1, 1))
+console.log(isMaior(2, 1))
+
+// c.
+function repetir(mensagem) {
+  for (let i = 0; i < 10; i++) {
+    console.log(mensagem)
+  }
+}
+
+repetir('Uma mensagem qualquer')

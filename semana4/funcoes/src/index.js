@@ -112,7 +112,69 @@ e outra função para elevar um número ao quadrado, poderíamos chamá-la eleva
 
 // --- DESAFIOS ---
 // 1.
-const escreva = (mensagem) => { console.log(mensagem) }
-const soma = (x, y) => { escreva(x + y) }
+// const escreva = (mensagem) => { console.log(mensagem) }
+// const soma = (x, y) => { escreva(x + y) }
 
-soma(1, 2)
+// soma(1, 2)
+
+// 2.
+const numeros = [0, 8, 23, 16, 10, 15, 41, 12, 13]
+
+// a.
+function filtrarnumerosParesEMultiplicarPor2(array) {
+  let numerosParesVezesDois = []
+  
+  for (let element of array) {
+    if (element % 2 === 0) {
+      numerosParesVezesDois.push(element * 2)
+    }
+  }
+
+  return numerosParesVezesDois
+}
+
+console.log(filtrarnumerosParesEMultiplicarPor2(numeros))
+
+// b. 
+function maiorNumero(array) {
+  let maiorNumero = array[0];
+
+  for(let i = 1; i < array.length; i++) {
+    if (array[i] > maiorNumero) {
+      maiorNumero = array[i]
+    }
+  }
+
+  return maiorNumero
+}
+
+console.log(maiorNumero(numeros))
+
+// c.
+function indiceDoMaiorNumero(array) {
+  let indiceDoMaiorNumero = 0;
+
+  for(let i = 1; i < array.length; i++) {
+    if (array[i] > array[indiceDoMaiorNumero]) {
+      indiceDoMaiorNumero = i
+    }
+  }
+  
+  return indiceDoMaiorNumero
+  }
+
+console.log(indiceDoMaiorNumero(numeros))
+
+// d.
+function inverterArray(array) {
+  const arrayInvertido = []
+
+  for(let i = array.length - 1; i >= 0; i--) {
+    arrayInvertido.push(array[i])
+  }
+
+  return arrayInvertido
+}
+
+console.log(numeros)
+console.log(inverterArray(numeros))

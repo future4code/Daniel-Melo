@@ -70,42 +70,49 @@ e outra função para elevar um número ao quadrado, poderíamos chamá-la eleva
 // repetir('Uma mensagem qualquer')
 
 // 6.
-const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+// const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
 
 // a.
-function myLength(array) {
-  // return array.length
+// function myLength(array) {
+//   // return array.length
 
-  let length = 0
+//   let length = 0
   
-  for (let element of array) {
-    length++
-  }
+//   for (let element of array) {
+//     length++
+//   }
 
-  return length
-}
+//   return length
+// }
 
-console.log(myLength(array))
+// console.log(myLength(array))
 
 // b.
-function isPar(x) {
-  return x % 2 === 0
-}
+// function isPar(x) {
+//   return x % 2 === 0
+// }
 
-console.log(isPar(1))
-console.log(isPar(2))
+// console.log(isPar(1))
+// console.log(isPar(2))
 
 // c. e d.
-function contarNumerosPares(array) {
-  let contador = 0
+// function contarNumerosPares(array) {
+//   let contador = 0
 
-  for(let element of array) {
-    if(isPar(element)) {
-      contador++
-    }
-  }
+//   for(let element of array) {
+//     if(isPar(element)) {
+//       contador++
+//     }
+//   }
 
-  return contador
-}
+//   return contador
+// }
 
-console.log(contarNumerosPares(array))
+// console.log(contarNumerosPares(array))
+
+// --- DESAFIOS ---
+// 1.
+const escreva = (mensagem) => { console.log(mensagem) }
+const soma = (x, y) => { escreva(x + y) }
+
+soma(1, 2)

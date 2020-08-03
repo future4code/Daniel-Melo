@@ -45,26 +45,67 @@ e outra função para elevar um número ao quadrado, poderíamos chamá-la eleva
 
 // 5.
 // a.
-function soma(x, y) {
-  return x + y
-}
+// function soma(x, y) {
+//   return x + y
+// }
 
-console.log(soma(1, 2))
+// console.log(soma(1, 2))
 
 // b.
-function isMaior(x, y) {
-  return x >= y
-}
+// function isMaior(x, y) {
+//   return x >= y
+// }
 
-console.log(isMaior(1, 2))
-console.log(isMaior(1, 1))
-console.log(isMaior(2, 1))
+// console.log(isMaior(1, 2))
+// console.log(isMaior(1, 1))
+// console.log(isMaior(2, 1))
 
 // c.
-function repetir(mensagem) {
-  for (let i = 0; i < 10; i++) {
-    console.log(mensagem)
+// function repetir(mensagem) {
+//   for (let i = 0; i < 10; i++) {
+//     console.log(mensagem)
+//   }
+// }
+
+// repetir('Uma mensagem qualquer')
+
+// 6.
+const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
+
+// a.
+function myLength(array) {
+  // return array.length
+
+  let length = 0
+  
+  for (let element of array) {
+    length++
   }
+
+  return length
 }
 
-repetir('Uma mensagem qualquer')
+console.log(myLength(array))
+
+// b.
+function isPar(x) {
+  return x % 2 === 0
+}
+
+console.log(isPar(1))
+console.log(isPar(2))
+
+// c. e d.
+function contarNumerosPares(array) {
+  let contador = 0
+
+  for(let element of array) {
+    if(isPar(element)) {
+      contador++
+    }
+  }
+
+  return contador
+}
+
+console.log(contarNumerosPares(array))

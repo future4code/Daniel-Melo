@@ -16,6 +16,13 @@ function criarTarefa() {
   }
 }
 
+function limparTarefas() {
+  const tasks = document.getElementsByTagName('li')
+
+  while (tasks.length > 0) {
+    tasks.item(0).remove()
+  }
+}
 
 function toggleTask(task) {
   if (task.style.textDecoration === '') {

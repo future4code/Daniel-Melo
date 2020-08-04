@@ -1,18 +1,20 @@
 function criarTarefa() {
   const taskInput = document.getElementById('tarefa')
   const weekDaySelector = document.getElementById('dias-semana')
+  const timeInput = document.getElementById('horario')
   
   const task = taskInput.value
   const weekDay = weekDaySelector.value
-
-  if (task !== '') {
+  const time = timeInput.value
+  
+  if (task !== '' && time !== '') {
     const taskListContainer = document.getElementById(`${weekDay}`)
   
-    taskListContainer.innerHTML += `<li onclick="toggleTask(this)">${task}</li>`
+    taskListContainer.innerHTML += `<li onclick="toggleTask(this)">${time} - ${task}</li>`
   
     taskInput.value = ""
   } else {
-    alert('Tarefa inválida')
+    alert('Preencha todos os campos')
   }
 }
 

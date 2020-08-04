@@ -26,3 +26,25 @@ section {
 li:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width: 400px) {
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    form > * {
+        margin: 3px 0px;
+    }
+
+    section {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .semana {
+        width: 100%;
+        height: 200px;
+    }
+}

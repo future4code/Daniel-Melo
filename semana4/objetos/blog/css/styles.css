@@ -43,4 +43,33 @@ button {
 #container-de-posts {
     margin: 10px;
     border-top: 3px double rgb(77, 77, 77);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    #formulario {
+        height: fit-content;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    input {
+        border: none;
+        border-bottom: 1px solid black;
+    }
 }

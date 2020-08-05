@@ -1,5 +1,10 @@
 const posts = []
 
+if (sessionStorage.posts) {
+  const previousPosts = JSON.parse(sessionStorage.posts)
+  posts.push(...previousPosts)
+}
+
 function criarPost() {
   const titleInputElement = document.getElementById('titulo-post')
   const authorInputElement = document.getElementById('autor-post')
@@ -23,31 +28,19 @@ function criarPost() {
     }
     
     const post = {title, author, image, content}
-  
     posts.push(post)
-    publish(post)
-    
+  
+    location.href = './pages/posts.html'
+
     titleInputElement.value = ''
     authorInputElement.value = ''
     imageInputElement.value = ''
     contentInputElement.value = ''
+
+    sessionStorage.posts = JSON.stringify(posts)
   }
 }
 
 function isVoidString(text) {
   return text === ''
-}
-
-function publish(post) {
-  const postsContainer = document.getElementById('container-de-posts')
-  
-  const postCard = document.createElement('article')
-  postCard.className = 'post'
-
-  postCard.innerHTML += `<img src="${post.image}" alt="post image">`
-  postCard.innerHTML += `<h2>${post.title}</h2>`
-  postCard.innerHTML += `<h3>${post.author}</h3>`
-  postCard.innerHTML += `<p>${post.content}</p>`
-
-  postsContainer.insertAdjacentElement("afterbegin", postCard)
 }

@@ -76,6 +76,7 @@ button {
     display: flex;
     flex-direction: column;
     margin: 20px 0px;
+    width: 70vw;
 }
 
 img {
@@ -85,6 +86,7 @@ img {
 @media screen and (max-width: 500px) {
     #formulario {
         height: fit-content;
+        width: 95%;
     }
 
     form {
@@ -94,5 +96,9 @@ img {
     input {
         border: none;
         border-bottom: 1px solid black;
+    }
+
+    .post, nav {
+        width: 95%;
     }
 }

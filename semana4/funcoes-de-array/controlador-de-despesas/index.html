@@ -57,8 +57,10 @@
         <input type="number" id="min-value" name="min-value" min="0" required>
       </fieldset>
 
-      <button type="submit">Filtra</button>
-      <button onclick="cleanFilters(event)">Limpar Filtro</button>
+      <div id="filter-buttons">
+        <button type="submit">Filtra</button>
+        <button onclick="cleanFilters(event)">Limpar Filtro</button>
+      </div>
     </form>
 
     <div id="filtered-list-container">

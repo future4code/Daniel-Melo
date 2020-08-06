@@ -96,3 +96,13 @@ function cleanFilters(event) {
 
   updateExpensesList()
 }
+
+function sortList(event) {
+  event.preventDefault()
+
+  const sortedExpenses = expenses.sort((a, b) => b.cost - a.cost)
+
+  const sortedList = parseArrayToHtmlList(sortedExpenses)
+
+  expensesList.innerHTML = sortedList
+}

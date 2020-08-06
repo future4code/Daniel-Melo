@@ -1,4 +1,12 @@
 const expenses = []
+const expenseTypes = {
+  casa: { label: 'Casa', costAccumulated: 0},
+  lazer: { label: 'Lazer', costAccumulated: 0},
+  viagens: { label: 'Viagens', costAccumulated: 0},
+  alimentacao: { label: 'Alimentação', costAccumulated: 0},
+  transporte: { label: 'Transporte', costAccumulated: 0},
+  outros: { label: 'Outros', costAccumulated: 0},
+}
 
 const costInput = document.getElementById('cost')
 const typeSelect = document.getElementById('expense-type')
@@ -9,6 +17,9 @@ const filterTypeSelect = document.getElementById('filter-type')
 const maxValueFilterInput = document.getElementById('max-value')
 const minValueFilterInput = document.getElementById('min-value')
 
+const tableBody = document.querySelector('tbody')
+const totalCostRow = document.getElementById('total-cost')
+
 function cadastrarDespesa(event) {
   event.preventDefault()
 
@@ -18,6 +29,8 @@ function cadastrarDespesa(event) {
 
   const expense = {cost, type, description}
 
+  expenseTypes[type].costAccumulated += cost
+  
   expenses.push(expense)
 
   costInput.value = ''
@@ -36,7 +49,9 @@ function updateExpensesList() {
 
 function parseArrayToHtmlList(array) {
   return array.reduce((list, expense) => {
-    list += `<li>[${expense.type}] ${expense.description} : R$ ${expense.cost},00</li>`
+    const expenseTypeLabel = expenseTypes[expense.type].label
+
+    list += `<li>[${expenseTypeLabel}] ${expense.description} : R$ ${expense.cost},00</li>`
     return list
   }, '')
 }
@@ -68,23 +83,16 @@ function cleanFilters(event) {
 }
 
 function updateExtract() {
-  const currentTypesCost = expenses.reduce((acc, expense) => {
-    if (acc[expense.type]) {
-      acc[expense.type] += expense.cost
-    } else {
-      acc[expense.type] = expense.cost
+  const tableRows = Object.values(expenseTypes).reduce((acc, type) => {
+    if (type.costAccumulated !== 0) {
+      acc += `<tr><td>${type.label}</td><td>R$ ${type.costAccumulated},00</td></tr>`
     }
 
     return acc
-  }, {})
-
-  Object.keys(currentTypesCost).forEach(type => {
-    const typeTotalCost = document.getElementById(`total-cost-${type}`)
-
-    typeTotalCost.innerHTML = `R$ ${currentTypesCost[type]},00`
-  })
-
-  const total = Object.values(currentTypesCost).reduce((total, cost) => total + cost)
-  const totalCost = document.getElementById('total-cost')
-  totalCost.innerText = `R$ ${total},00`
+  }, '')
+  
+  const totalCost = expenses.reduce((acc, expense) => acc + expense.cost, 0)
+  
+  tableBody.innerHTML = tableRows
+  totalCostRow.innerText = `R$ ${totalCost},00`
 }

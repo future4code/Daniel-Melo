@@ -35,7 +35,40 @@
   </section id>
 
   <section id="expenses-list">
+    <h1>Despesas detalhadas</h1>
+    <form id="filter-form" onsubmit="filterExpenses(event)">
+      <fieldset>
+        <label for="filter-type">Tipo de despesa:</label>
+        <select name="filter-type" id="filter-type" required>
+          <option value="" disabled selected>-- Selecione um tipo --</option>
+          <option value="casa">Casa</option>
+          <option value="lazer">Lazer</option>
+          <option value="viagens">Viagens</option>
+          <option value="alimentacao">Alimentação</option>
+          <option value="transporte">Transporte</option>
+          <option value="outros">Outros</option>
+        </select>
+      </fieldset>
+      
+      <fieldset>
+        <label for="max-value">Valor Máximo:</label>
+        <input type="number" id="max-value" name="max-value" required>
+        <label for="min-value">Valor Mínimo:</label>
+        <input type="number" id="min-value" name="min-value" required>
+      </fieldset>
 
+      <button type="submit">Filtra</button>
+      <button onclick="cleanFilters(event)">Limpar Filtro</button>
+    </form>
+
+    <div id="filtered-list-container">
+      <ul id="filtered-list">
+        <li>Descrição (tipo): gasto</li>
+        <li>Descrição (tipo): gasto</li>
+        <li>Descrição (tipo): gasto</li>
+        <li>Descrição (tipo): gasto</li>
+      </ul>
+    </div>
   </section id>
 
   <section id="extract">

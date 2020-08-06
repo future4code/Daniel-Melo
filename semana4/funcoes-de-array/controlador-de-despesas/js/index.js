@@ -56,6 +56,21 @@ function parseArrayToHtmlList(array) {
   }, '')
 }
 
+function updateExtract() {
+  const tableRows = Object.values(expenseTypes).reduce((acc, type) => {
+    if (type.costAccumulated !== 0) {
+      acc += `<tr><td>${type.label}</td><td>R$ ${type.costAccumulated},00</td></tr>`
+    }
+
+    return acc
+  }, '')
+  
+  const totalCost = expenses.reduce((acc, expense) => acc + expense.cost, 0)
+  
+  tableBody.innerHTML = tableRows
+  totalCostRow.innerText = `R$ ${totalCost},00`
+}
+
 function filterExpenses(event) {
   event.preventDefault()
 
@@ -80,19 +95,4 @@ function cleanFilters(event) {
   minValueFilterInput.value = ''
 
   updateExpensesList()
-}
-
-function updateExtract() {
-  const tableRows = Object.values(expenseTypes).reduce((acc, type) => {
-    if (type.costAccumulated !== 0) {
-      acc += `<tr><td>${type.label}</td><td>R$ ${type.costAccumulated},00</td></tr>`
-    }
-
-    return acc
-  }, '')
-  
-  const totalCost = expenses.reduce((acc, expense) => acc + expense.cost, 0)
-  
-  tableBody.innerHTML = tableRows
-  totalCostRow.innerText = `R$ ${totalCost},00`
 }

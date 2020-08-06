@@ -1,8 +1,120 @@
+:root {
+  --gold-crayola: #E5C687;
+  --ecru: #BCB382;
+  --sea-green: #09814A;
+  --msu-green: #2D4739;
+  --rich-black: #121619;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  height: 100vh;
   margin: 0px;
   padding: 0px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: var(--msu-green);
+  color: var(--msu-green)
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 50%;
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--gold-crayola);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
+}
+
+#registration {
+  flex-grow: 1;
+}
+
+#expenses-list {
+  flex-grow: 2;
+}
+
+#extract {
+  flex-grow: 1;
+}
+
+#registration-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#filter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#filter-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+#expense-type {
+  margin-bottom: 10px;
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--msu-green);
+}
+
+select {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--msu-green);
+}
+
+input:focus {
+  border-bottom: 2px solid var(--msu-green);
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--sea-green);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 1px 1px 2px 0px rgb(0, 0, 0);
+}
+
+button:active {
+  box-shadow: none;
+}
+
+fieldset {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+tfoot td {
+  border-top: 1px solid black;
 }

@@ -9,7 +9,27 @@
 </head>
 <body>
   <section id="registration">
-    
+    <h1>Cadastrar Despesa</h1>
+    <form onsubmit="cadastrarDespesa(event)">
+      <label for="cost">Valor (R$):</label>
+      <input type="number" name="cost" id="cost" min="0" required>
+      
+      <label for="expense-type">Tipo de despesa:</label>
+      <select name="expense-type" id="expense-type" required>
+        <option value="" disabled selected>-- Selecione um tipo --</option>
+        <option value="casa">Casa</option>
+        <option value="lazer">Lazer</option>
+        <option value="viagens">Viagens</option>
+        <option value="alimentacao">Alimentação</option>
+        <option value="transporte">Transporte</option>
+        <option value="outros">Outros</option>
+      </select>
+      
+      <label for="description">Descrição:</label>
+      <input type="text" name="description" id="description" required>
+
+      <button type="submit">Cadastrar despesas</button>
+    </form>
   </section id>
 
   <section id="expenses-list">

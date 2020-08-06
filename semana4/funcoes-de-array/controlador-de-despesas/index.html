@@ -10,9 +10,11 @@
 <body>
   <section id="registration">
     <h1>Cadastrar Despesa</h1>
-    <form onsubmit="cadastrarDespesa(event)">
-      <label for="cost">Valor (R$):</label>
-      <input type="number" name="cost" id="cost" min="0" required>
+    <form id="registration-form" onsubmit="cadastrarDespesa(event)">
+      <fieldset>
+        <label for="cost">Valor (R$):</label>
+        <input type="number" name="cost" id="cost" min="0" required>
+      </fieldset>
       
       <label for="expense-type">Tipo de despesa:</label>
       <select name="expense-type" id="expense-type" required>

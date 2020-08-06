@@ -29,23 +29,12 @@ section {
   align-items: center;
 
   min-height: 50%;
+  width: 30%;
   padding: 10px;
   margin: 10px;
   background-color: var(--gold-crayola);
   border-radius: 10px;
   box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
-}
-
-#registration {
-  flex-grow: 1;
-}
-
-#expenses-list {
-  flex-grow: 2;
-}
-
-#extract {
-  flex-grow: 1;
 }
 
 #registration-form {

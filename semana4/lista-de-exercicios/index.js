@@ -91,3 +91,39 @@ function exercicioCinco(a, b) {
   console.log(`${b} ${b % a === 0 ? 'é' : 'não é'} divisível por ${a}`)
   console.log(`A diferença entre ele é ${Math.abs(a - b)}`)
 } 
+
+// --- EXERCÍCIOS DE FUNÇÕES ---
+// 1.
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// segundosMaiorMenorElementos(array)
+
+function segundosMaiorMenorElementos(array) {
+  let maior = -Infinity
+  let menor = Infinity
+
+  const valores = array.reduce((segundo, numero) => {
+    if (numero > maior) {
+      segundo.maior = maior
+      maior = numero
+    } else if (numero > segundo.maior && numero !== maior) {
+      valores.segundoMaior = numero
+    }
+
+    if (numero < menor) {
+      segundo.menor = menor
+      menor = numero
+    } else if (numero < segundo.menor && numero !== menor) {
+      segundo.menor = numero
+    }
+
+    return segundo
+  }, {maior: -Infinity, menor: Infinity})
+
+  console.log(`Segundo maior número: ${valores.maior}`)
+  console.log(`Segundo menor número: ${valores.menor}`)
+}
+
+// 2. 
+const alerta = () => alert('Hello Future4')
+// alerta()

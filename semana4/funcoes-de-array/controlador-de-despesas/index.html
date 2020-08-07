@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/index.js"></script>
+  <title>Controlador de Despesas</title>
+</head>
+<body>
+  <section id="registration">
+    <h1>Cadastrar Despesa</h1>
+    <form id="registration-form" onsubmit="cadastrarDespesa(event)">
+      <fieldset>
+        <label for="cost">Valor (R$):</label>
+        <input type="number" name="cost" id="cost" min="0" required>
+      </fieldset>
+      
+      <label for="expense-type">Tipo de despesa:</label>
+      <select name="expense-type" id="expense-type" required>
+        <option value="" disabled selected>-- Selecione um tipo --</option>
+        <option value="casa">Casa</option>
+        <option value="lazer">Lazer</option>
+        <option value="viagens">Viagens</option>
+        <option value="alimentacao">Alimentação</option>
+        <option value="transporte">Transporte</option>
+        <option value="outros">Outros</option>
+      </select>
+      
+      <label for="description">Descrição:</label>
+      <input type="text" name="description" id="description" required>
+
+      <button type="submit">Cadastrar despesas</button>
+    </form>
+  </section>
+
+  <section id="expenses-list">
+    <h1>Despesas detalhadas</h1>
+    <form id="filter-form" onsubmit="filterExpenses(event)">
+      <fieldset>
+        <label for="filter-type">Tipo de despesa:</label>
+        <select name="filter-type" id="filter-type" required>
+          <option value="" disabled selected>-- Selecione um tipo --</option>
+          <option value="casa">Casa</option>
+          <option value="lazer">Lazer</option>
+          <option value="viagens">Viagens</option>
+          <option value="alimentacao">Alimentação</option>
+          <option value="transporte">Transporte</option>
+          <option value="outros">Outros</option>
+        </select>
+      </fieldset>
+      
+      <fieldset>
+        <label for="max-value">Valor Máximo:</label>
+        <input type="number" id="max-value" name="max-value" min="0" required>
+        <label for="min-value">Valor Mínimo:</label>
+        <input type="number" id="min-value" name="min-value" min="0" required>
+      </fieldset>
+
+      <div id="filter-buttons">
+        <button type="submit">Filtrar Lista</button>
+        <button onclick="cleanFilters(event)">Limpar Filtro</button>
+        <button onclick="sortList(event)">Ordenar Lista</button>
+      </div>
+    </form>
+
+    <div id="filtered-list-container">
+      <ul id="filtered-list"></ul>
+    </div>
+  </section>
+
+  <section id="extract">
+    <h1>Extrato</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo de Despesa</th>
+          <th>Gasto</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+
+      <tfoot>
+        <tr>
+          <td>Gasto Total</td>
+          <td id="total-cost">R$ 0,00</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+</body>
+</html>

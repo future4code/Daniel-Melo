@@ -127,3 +127,52 @@ function segundosMaiorMenorElementos(array) {
 // 2. 
 const alerta = () => alert('Hello Future4')
 // alerta()
+
+// --- EXERCÍCIOS DE OBJETOS ---
+/*
+1.
+Arrays são estruturas de dados na qual é possível armazenar mas de um valor de forma indexada.
+Objetos são estruturas de dados que se aproximam mais da "vida real", de forma simplificada, são um conjunto de pares chave/valor.
+Esse conjuntos são chamados de membros, que podem ser propriedades ou métodos, identificados por sua "chave". As propriedades são valores inerentes ao objeto, já os métodos
+são seus comportamentos, isto é, as funções que esse objeto possui.
+
+Os Arrays são mais utilizados quando queremos armazenar um conjunto de valor, os objetos são utilizados quando queremos criar um tipo de dado
+mais complexos, incluindo comportamentos e caracateríscas especificas para ele.
+*/
+
+// 2.
+// const retangulo = criaRetangulo(2, 4)
+// console.table(retangulo)
+
+function criaRetangulo(lado1, lado2) {
+  return {
+    largura: lado1,
+    altura: lado2,
+    perimetro: 2 * (lado1 + lado2),
+    area: lado1 * lado2
+  }
+}
+
+// 3.
+const filme = {
+  titulo: 'Inception',
+  ano: 2010,
+  diretor: 'Christopher Nolan',
+  elenco: ['Leonardo Di Caprio', 'Ellen Page','Joseph Gordon-Levitt'],
+}
+
+// console.log(`Venha assistir ao filme ${filme.titulo}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.elenco}`)
+
+// 4.
+const pessoa = {
+  nome: 'Daniel',
+  idade: 25,
+  email: 'daniel@daniel.com',
+  endereco: 'Av. Paranamirim 500'
+}
+
+// console.log(anonimizarPessoa(pessoa))
+
+function anonimizarPessoa(pessoa) {
+  return { ...pessoa, nome: 'ANÔNIMO'}
+}

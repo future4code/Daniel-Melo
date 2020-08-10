@@ -1,12 +1,5 @@
-body {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-
 .tela-inteira {
-  height: fit-content;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }

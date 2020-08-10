@@ -6,7 +6,7 @@ body {
 
 
 .tela-inteira {
-  height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -29,6 +29,10 @@ main {
   flex-basis: 200px;
   border-right-style: solid;
   border-right-width: thin;
+}
+
+.menu-vertical > ul {
+  padding-left: 10px;
 }
 
 .botoes-meunu-vertical {

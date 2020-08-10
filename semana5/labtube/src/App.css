@@ -21,7 +21,7 @@ header {
 }
 
 main {
-  min-height: 80%;
+  flex-grow: 1;
   display: flex;
 }
 
@@ -41,7 +41,7 @@ main {
   flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(4, 24.8% 0.2%);
-  grid-template-rows: repeat(4, 270px 20px);
+  grid-template-rows: repeat(2, 270px 20px);
 }
 
 .media1 {

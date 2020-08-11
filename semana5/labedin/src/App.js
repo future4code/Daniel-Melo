@@ -23,15 +23,15 @@ function App() {
       <div className="page-section-container">
         <h2>Experiências profissionais</h2>
         <CardGrande 
-          imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
-          nome="Labenu" 
-          descricao="Formando desenvolvedores para o mercado de trabalho!" 
+          imagem="https://media-exp1.licdn.com/dms/image/C4E0BAQHMShmG4cji_A/company-logo_200_200/0?e=1605139200&v=beta&t=YSvGJJoXra7P0bk6VZKZUWwOOdvRqOslLwg6KMUC7-w" 
+          nome="Centro Universitário FACOL" 
+          descricao="Professor do curso de Engenharia Civil. Cursos de Estabilidade das Estruturas II, Hidráulica Geral e Lógica de Programação" 
         />
         
         <CardGrande 
-          imagem="https://imagens.canaltech.com.br/empresas/4418.400.jpg" 
-          nome="NASA" 
-          descricao="Apontando defeitos." 
+          imagem="https://media-exp1.licdn.com/dms/image/C560BAQGSQ2RYkwPVPQ/company-logo_200_200/0?e=1605139200&v=beta&t=nl3x3KZH4Qe2x4hmjgaiEUoeWC8doie11-XpB7Nz1EU" 
+          nome="Baltar Tecnologia & Equipamentos LTDA." 
+          descricao="Desenvolvimento e Manutenção de Sistemas IoT, utilizando Arduino, Raspberry pi e ESP8266" 
         />
       </div>
 

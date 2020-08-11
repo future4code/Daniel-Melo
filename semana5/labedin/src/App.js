@@ -9,9 +9,9 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem="https://uploads-ssl.webflow.com/5d640f4558306be99cf47a0e/5dd57846babb597b77c6bb1d_PerfilFuture4_cor.png" 
-          nome="Astrodev" 
-          descricao="Oi, eu sou o Astrodev. Sou o chefe dos alunos da Labenu. Adoro pedir e-mails na sexta-feira e esperar os alunos responderem só para responder com uma bronca e dar mais trabalho para eles."
+          imagem="https://avatars2.githubusercontent.com/u/59712925?s=400&u=5b9703545a00a7aae09e46f62918ac620daf11e0&v=4" 
+          nome="Daniel Melo" 
+          descricao="Entusiasta e encantado pela área de desenvolvimento de softwares. Sempre estudando e aprendendo novas tecnologias e ferramentas através da comunidade, de cursos e da literatura. Um fascinado pelo processo de aprendizagem."
         />
         
         <ImagemButton 

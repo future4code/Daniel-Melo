@@ -46,6 +46,27 @@ function App() {
           descricao="Desenvolvimento e Manutenção de Sistemas IoT, utilizando Arduino, Raspberry pi e ESP8266" 
         />
       </div>
+      
+      <div className="page-section-container">
+        <h2>Formação Acadêmica</h2>
+        <CardGrande 
+          imagem="https://media-exp1.licdn.com/dms/image/C560BAQGXX-pQE9ZghQ/company-logo_200_200/0?e=1605139200&v=beta&t=XBE3yRvRtdtsvMnYvYFLH3oBC832j6QilfFOUy1f6Dk" 
+          nome="Labenu" 
+          descricao="Web Fullstack Development" 
+        />
+        
+        <CardGrande 
+          imagem="https://media-exp1.licdn.com/dms/image/C560BAQFNrgPWzQ521g/company-logo_200_200/0?e=1605139200&v=beta&t=pbf7nmP6yinraJ_y2nayO8qLId3_KYsZENwbT2erVek" 
+          nome="Universidade Federal de Pernambuco" 
+          descricao="Mestrado em Engenharia Civil. Ênfase em Simulação e Gerenciamento de Reservatórios de Petróleo" 
+        />
+        
+        <CardGrande 
+          imagem="https://media-exp1.licdn.com/dms/image/C560BAQFNrgPWzQ521g/company-logo_200_200/0?e=1605139200&v=beta&t=pbf7nmP6yinraJ_y2nayO8qLId3_KYsZENwbT2erVek" 
+          nome="Universidade Federal de Pernambuco" 
+          descricao="Bacharelado em Engenharia Civil" 
+        />
+      </div>
 
       <div className="page-section-container">
         <h2>Minhas redes sociais</h2>

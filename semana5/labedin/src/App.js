@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+import CardPequeno from './components/CardPequeno/CardPequeno'
 
 function App() {
   return (
@@ -17,6 +18,17 @@ function App() {
         <ImagemButton 
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
+        />
+
+        <CardPequeno
+          icon="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/612/aiga_mail_bg-512.png"
+          type="E-mail" 
+          value="daniel@gmail.com"
+          />
+        <CardPequeno
+          icon="https://cdn0.iconfinder.com/data/icons/buntu-mobile/100/gps_glyph_convert-512.png"
+          type="Endereço"
+          value="Av. Parnamirim"  
         />
       </div>
 

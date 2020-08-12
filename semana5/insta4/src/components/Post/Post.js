@@ -2,7 +2,11 @@ import React from 'react'
 import './Post.css'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
+import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
 
+
+import iconeBandeiraBranca from '../../img/outlined_flag-24px.svg'
+import iconeBandeiraPreta from '../../img/flag-24px.svg'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
@@ -13,7 +17,8 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    marcado: false
   }
 
   onClickCurtida = () => {
@@ -31,6 +36,12 @@ class Post extends React.Component {
     })
   }
 
+  onClickBandeira = () => {
+    this.setState({
+      marcado: !this.state.marcado
+    })
+  }
+
   aoEnviarComentario = () => {
     this.setState({
       comentando: false,
@@ -40,11 +51,18 @@ class Post extends React.Component {
 
   render() {
     let iconeCurtida
+    let iconeBandeira
 
     if(this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
+    }
+    
+    if(this.state.marcado) {
+      iconeBandeira = iconeBandeiraPreta
+    } else {
+      iconeBandeira = iconeBandeiraBranca
     }
 
     let componenteComentario
@@ -62,6 +80,7 @@ class Post extends React.Component {
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
 
       <div className={'post-footer'}>
+        <div className='like-comments'>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
@@ -72,6 +91,12 @@ class Post extends React.Component {
           icone={iconeComentario}
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
+        />
+        </div>
+        
+        <IconeSemContador
+          icone={iconeBandeira}
+          onClickIcone={this.onClickBandeira}
         />
       </div>
       {componenteComentario}

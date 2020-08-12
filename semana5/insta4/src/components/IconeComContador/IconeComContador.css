@@ -1,5 +1,6 @@
 .icon-container {
     display: flex;
+    margin-right: 5px;
 }
 
 .icon-container img {

@@ -29,3 +29,7 @@
 .post-photo {
     width: 100%;
 }
+
+.like-comments {
+    display: flex;
+}

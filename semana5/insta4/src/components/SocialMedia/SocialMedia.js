@@ -25,7 +25,7 @@ export class SocialMedia extends Component {
   }
   
   onClickTwitter = () => {
-    console.log(`Post compartilhado no Facebook coma mensagem: ${this.state.mensagem}`)
+    console.log(`Post compartilhado no Twitter coma mensagem: ${this.state.mensagem}`)
       this.setState({
         mensagem: ''
       })

@@ -30,6 +30,6 @@
     width: 100%;
 }
 
-.like-comments {
+.like-comments-container, .share-mark-container {
     display: flex;
 }

@@ -3,8 +3,9 @@ import './Post.css'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
+import {SocialMedia} from '../SocialMedia/SocialMedia'
 
-
+import iconeCompartilhar from '../../img/share.svg'
 import iconeBandeiraBranca from '../../img/outlined_flag-24px.svg'
 import iconeBandeiraPreta from '../../img/flag-24px.svg'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
@@ -18,7 +19,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    marcado: false
+    marcado: false,
+    compartilhando: false
   }
 
   onClickCurtida = () => {
@@ -39,6 +41,12 @@ class Post extends React.Component {
   onClickBandeira = () => {
     this.setState({
       marcado: !this.state.marcado
+    })
+  }
+
+  onClickShare = () => {
+    this.setState({
+      compartilhando: !this.state.compartilhando
     })
   }
 
@@ -66,9 +74,14 @@ class Post extends React.Component {
     }
 
     let componenteComentario
+    let componenteCompartilhar
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+    if(this.state.compartilhando) {
+      componenteCompartilhar = <SocialMedia></SocialMedia>
     }
 
     return <div className={'post-container'}>
@@ -80,7 +93,6 @@ class Post extends React.Component {
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
 
       <div className={'post-footer'}>
-        <div className='like-comments'>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
@@ -92,14 +104,19 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
-        </div>
         
         <IconeSemContador
           icone={iconeBandeira}
           onClickIcone={this.onClickBandeira}
         />
+        
+        <IconeSemContador
+          icone={iconeCompartilhar}
+          onClickIcone={this.onClickShare}
+        />
       </div>
       {componenteComentario}
+      {componenteCompartilhar}
     </div>
   }
 }

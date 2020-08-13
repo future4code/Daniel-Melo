@@ -60,7 +60,8 @@ class Post extends React.Component {
     numeroComentarios: 0,
     marcado: false,
     compartilhando: false,
-    comentarios: ['Comentario1', 'Comentario2', 'Comentario3']
+    comentario: '',
+    comentarios: []
   }
 
   onClickCurtida = () => {
@@ -90,10 +91,18 @@ class Post extends React.Component {
     })
   }
 
+  onChangeComentario = (event) => {
+    this.setState({ comentario: event.target.value})
+  }
+
   aoEnviarComentario = () => {
+    const comentarios = [ this.state.comentario, ...this.state.comentarios ]
+    
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      comentarios,
+      comentario: ''
     })
   }
 
@@ -117,7 +126,7 @@ class Post extends React.Component {
     let componenteCompartilhar
 
     if(this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario comentario={this.state.comentario} aoEnviar={this.aoEnviarComentario} aoMudar={this.onChangeComentario}/>
     }
 
     if(this.state.compartilhando) {

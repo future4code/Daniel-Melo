@@ -3,24 +3,38 @@ import './App.css';
 import Post from './components/Post/Post';
 
 class App extends React.Component {
+  state = {
+    posts: [
+      {
+        nomeUsuario: 'paulinha',
+        fotoUsuario: 'https://picsum.photos/50/50',
+        fotoPost: 'https://picsum.photos/200/150'
+      },
+      {
+        nomeUsuario: 'daniel',
+        fotoUsuario: 'https://picsum.photos/50/52',
+        fotoPost: 'https://picsum.photos/200/152'
+      },
+      {
+        nomeUsuario: 'simone',
+        fotoUsuario: 'https://picsum.photos/50/51',
+        fotoPost: 'https://picsum.photos/200/151'
+      },
+    ]
+  }
+
+
   render() {
     return (
       <div className={'app-container'}>
-        <Post
-          nomeUsuario={'paulinha'}
-          fotoUsuario={'https://picsum.photos/50/50'}
-          fotoPost={'https://picsum.photos/200/150'}
-        />
-        <Post
-          nomeUsuario={'daniel'}
-          fotoUsuario={'https://picsum.photos/51/51'}
-          fotoPost={'https://picsum.photos/201/151'}
-        />
-        <Post
-          nomeUsuario={'simone'}
-          fotoUsuario={'https://picsum.photos/52/52'}
-          fotoPost={'https://picsum.photos/202/152'}
-        />
+        {this.state.posts.map(post => (
+          <Post
+            key={post.nomeUsuario}
+            nomeUsuario={post.nomeUsuario}
+            fotoUsuario={post.fotoUsuario}
+            fotoPost={post.fotoPost}
+          />
+        ))}
       </div>
     );
   }

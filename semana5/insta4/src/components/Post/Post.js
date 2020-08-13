@@ -45,6 +45,13 @@ const PostFooter = styled.div`
   justify-content: space-between;
 `
 
+const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  font-size: 0.8rem;
+`
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -52,7 +59,8 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     marcado: false,
-    compartilhando: false
+    compartilhando: false,
+    comentarios: ['Comentario1', 'Comentario2', 'Comentario3']
   }
 
   onClickCurtida = () => {
@@ -147,8 +155,15 @@ class Post extends React.Component {
           onClickIcone={this.onClickShare}
         />
       </PostFooter>
-      {componenteComentario}
-      {componenteCompartilhar}
+
+        {componenteComentario}
+        {componenteCompartilhar}
+      
+      <CommentsContainer>
+        {this.state.comentarios.map((comentario, i) => (
+          <p key={i}>{comentario}</p>
+        ))}
+      </CommentsContainer>
     </PostContainer>
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Post.css'
+import styled from 'styled-components'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
@@ -12,6 +12,38 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+
+const PostContainer = styled.div`
+  border: 1px solid gray;
+  width: 300px;
+  margin-bottom: 10px;
+
+  & > img {
+    width: 100%
+  }
+`
+
+const PostHeader = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+
+  & > img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;  
+  }
+`
+
+const PostFooter = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+`
 
 class Post extends React.Component {
   state = {
@@ -84,15 +116,15 @@ class Post extends React.Component {
       componenteCompartilhar = <SocialMedia></SocialMedia>
     }
 
-    return <div className={'post-container'}>
-      <div className={'post-header'}>
-        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+    return <PostContainer>
+      <PostHeader>
+        <img src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
-      </div>
+      </PostHeader>
 
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <img src={this.props.fotoPost} alt={'Imagem do post'}/>
 
-      <div className={'post-footer'}>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
@@ -114,10 +146,10 @@ class Post extends React.Component {
           icone={iconeCompartilhar}
           onClickIcone={this.onClickShare}
         />
-      </div>
+      </PostFooter>
       {componenteComentario}
       {componenteCompartilhar}
-    </div>
+    </PostContainer>
   }
 }
 

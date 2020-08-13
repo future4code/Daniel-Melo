@@ -60,7 +60,7 @@ class App extends React.Component {
     const fotoUsuario = this.state.inputFotoUsuario
     const fotoPost = this.state.inputFotoPost
     
-    const posts = [...this.state.posts, {nomeUsuario, fotoUsuario, fotoPost}]
+    const posts = [{nomeUsuario, fotoUsuario, fotoPost}, ...this.state.posts]
     
     this.setState({
       posts,

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Post.css'
+import styled from 'styled-components'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
@@ -13,6 +13,45 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
+const PostContainer = styled.div`
+  border: 1px solid gray;
+  width: 300px;
+  margin-bottom: 10px;
+
+  & > img {
+    width: 100%
+  }
+`
+
+const PostHeader = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+
+  & > img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;  
+  }
+`
+
+const PostFooter = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+`
+
+const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  font-size: 0.8rem;
+`
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -20,7 +59,9 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     marcado: false,
-    compartilhando: false
+    compartilhando: false,
+    comentario: '',
+    comentarios: []
   }
 
   onClickCurtida = () => {
@@ -50,10 +91,18 @@ class Post extends React.Component {
     })
   }
 
+  onChangeComentario = (event) => {
+    this.setState({ comentario: event.target.value})
+  }
+
   aoEnviarComentario = () => {
+    const comentarios = [ this.state.comentario, ...this.state.comentarios ]
+    
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      comentarios,
+      comentario: ''
     })
   }
 
@@ -77,22 +126,22 @@ class Post extends React.Component {
     let componenteCompartilhar
 
     if(this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario comentario={this.state.comentario} aoEnviar={this.aoEnviarComentario} aoMudar={this.onChangeComentario}/>
     }
 
     if(this.state.compartilhando) {
       componenteCompartilhar = <SocialMedia></SocialMedia>
     }
 
-    return <div className={'post-container'}>
-      <div className={'post-header'}>
-        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+    return <PostContainer>
+      <PostHeader>
+        <img src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
-      </div>
+      </PostHeader>
 
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <img src={this.props.fotoPost} alt={'Imagem do post'}/>
 
-      <div className={'post-footer'}>
+      <PostFooter>
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
@@ -114,10 +163,17 @@ class Post extends React.Component {
           icone={iconeCompartilhar}
           onClickIcone={this.onClickShare}
         />
-      </div>
-      {componenteComentario}
-      {componenteCompartilhar}
-    </div>
+      </PostFooter>
+
+        {componenteComentario}
+        {componenteCompartilhar}
+      
+      <CommentsContainer>
+        {this.state.comentarios.map((comentario, i) => (
+          <p key={i}>{comentario}</p>
+        ))}
+      </CommentsContainer>
+    </PostContainer>
   }
 }
 

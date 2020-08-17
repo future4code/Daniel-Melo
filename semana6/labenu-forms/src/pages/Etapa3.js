@@ -13,16 +13,20 @@ class Etapa3 extends Component {
         <h1>Etapa 3 - Informações Gerais de Ensino</h1>
         <Form last={this.props.last} onSubmit={(e) => this.props.onComplete(e, 4)}>
           <PerguntaAberta
+            answer={this.props.motivo}
+            onChange={this.props.onChangeMotivo}
             questionType="motivo"
             label="5. Por que você não terminou um curso de graduação?"
           />
-          <PerguntaFechada 
+          <PerguntaFechada
+            answer={this.props.cursoComplementar}
+            onChange={this.props.onChangeCursoComplementar}
             questionType="curso-complementar"
             label="6. Você fez algum curso complementar?"
             options={[
-              {label: "Curso de inglês", value: 1},
-              {label: "Curso técnico", value: 2},
-              {label: "Não fiz curso complementar", value: 3}
+              "Não fiz curso complementar",
+              "Curso de inglês",
+              "Curso técnico"
             ]}
           />
         </Form>

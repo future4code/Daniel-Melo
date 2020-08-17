@@ -7,18 +7,8 @@ import PerguntaAberta from '../components/PerguntaAberta'
 import PerguntaFechada from '../components/PerguntaFechada'
 
 class Etapa1 extends Component {
-  state = {
-    escolaridade: 1
-  }
-
-  handleChangeEscolaridade = (e) => {
-    this.setState({
-      escolaridade: e.target.value
-    })
-  }
-
   setNextStep() {
-    return this.state.escolaridade === "3" || this.state.escolaridade === "4" ? 2 : 3
+    return this.props.escolaridade.includes('Ensino Superior') ? 2 : 3
   }
 
   render() {
@@ -27,33 +17,39 @@ class Etapa1 extends Component {
         <h1>Etapa 1 - Dados Gerais</h1>
         <Form last={this.props.last} onSubmit={(e) => this.props.onComplete(e, this.setNextStep())}>
           <PerguntaAberta 
+            answer = {this.props.nome}
+            onChange = {this.props.onChangeNome}
             questionType="nome"
             label="1. Qual o seu nome?"
             errorMessage="Insira seu nome!"
             required
           />
           <PerguntaAberta
+            answer = {this.props.idade}
+            onChange = {this.props.onChangeIdade}
             questionType="idade"
             label="2. Qual a sua idade?"
             errorMessage="Insira sua idade!"
             required
           />
           <PerguntaAberta
+            answer = {this.props.email}
+            onChange = {this.props.onChangeEmail}
             questionType="email"
             label="3. Qual seu email?"
             errorMessage="Insira um email válido!"
             required
           />
           <PerguntaFechada
-            answer = {this.state.escolaridade}
-            onChange = {this.handleChangeEscolaridade}
+            answer = {this.props.escolaridade}
+            onChange = {this.props.onChangeEscolaridade}
             questionType="escolaridade"
             label="4. Qual sua escolaridade?"
             options={[
-              {label: "Ensino Médio Incompleto", value: 1},
-              {label: "Ensino Médio Completo", value: 2},
-              {label: "Ensino Superior Incompleto", value: 3},
-              {label: "Ensino Superior Completo", value: 4}
+              "Ensino Médio Incompleto",
+              "Ensino Médio Completo",
+              "Ensino Superior Incompleto",
+              "Ensino Superior Completo"
             ]}
           />
         </Form>

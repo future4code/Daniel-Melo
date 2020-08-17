@@ -12,6 +12,8 @@ class Etapa2 extends Component {
         <h1>Etapa 2 - Informações do Ensino Superior</h1>
         <Form last={this.props.last} onSubmit={(e) => this.props.onComplete(e, 4)}>
           <PerguntaAberta
+            aswer={this.props.curso}
+            onChange={this.props.onChangeCurso}
             questionType="curso"
             label="5. Qual curso?"
             errorMessage="Insira seu curso"
@@ -19,6 +21,8 @@ class Etapa2 extends Component {
           />
 
           <PerguntaAberta
+            aswer={this.props.unidadeDeEnsino}
+            onChange={this.props.onChangeUnidadeDeEnsino}
             questionType="unidade-de-ensino"
             label="6. Qual unidade de ensino?"
             errorMessage="Insira sua unidade de ensino"

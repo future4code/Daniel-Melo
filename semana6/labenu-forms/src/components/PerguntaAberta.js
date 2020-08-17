@@ -33,18 +33,39 @@ class PerguntaAberta extends Component {
     })
   }
   
-  handleChange = () => {
-    this.setState({isInvalidInput: false})
-  }
-
   handleInputType() {
     switch (this.props.questionType) {
       case 'idade':
-        return <input id={this.props.questionType} type="number" min="0" required={this.props.required} onInvalid={this.handleInvalidInput} onChange={this.handleChange}/>
+        return (
+          <input 
+            id={this.props.questionType}
+            type="number"
+            min="0"
+            required={this.props.required}
+            onInvalid={this.handleInvalidInput}
+            value={this.props.answer}
+            onChange={this.props.onChange}
+          />)
       case 'email':
-        return <input id={this.props.questionType} type="email" required={this.props.required} onInvalid={this.handleInvalidInput} onChange={this.handleChange}/>
+        return (
+          <input 
+            id={this.props.questionType}
+            type="email"
+            required={this.props.required}
+            onInvalid={this.handleInvalidInput}
+            value={this.props.answer}
+            onChange={this.props.onChange}
+          />)
       default:
-        return <input id={this.props.questionType} type="text" required={this.props.required} onInvalid={this.handleInvalidInput} onChange={this.handleChange}/>
+        return (
+          <input 
+            id={this.props.questionType}
+            type="text"
+            required={this.props.required}
+            onInvalid={this.handleInvalidInput}
+            value={this.props.answer}
+            onChange={this.props.onChange}
+          />)
     }
   }
  

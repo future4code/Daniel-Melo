@@ -13,6 +13,7 @@ const StyledDiv = styled.div`
   padding: 10px;
   margin: 10px;
   min-width: 300px;
+  min-height: 300px;
 `
 
 const StyledUl = styled.ul`

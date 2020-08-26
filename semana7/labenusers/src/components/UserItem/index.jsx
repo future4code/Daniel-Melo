@@ -1,20 +1,26 @@
 import React from 'react'
 import api from '../../services/api'
-import {MdDelete, MdSearch} from 'react-icons/md'
+
+
+import {MdDelete, MdEdit} from 'react-icons/md'
 
 import { Container } from './styles'
+import { ButtonsContainer } from '../../styles/ButtonsContainer'
+import { StyledButton } from '../../styles/StyledButton'
+
 
 const UserItem = (props) => {
-  const deleteUser = () => {
+  const deleteUser = async () => {
     const confirmation = window.confirm(`Tem certeza que deseja deletar ${props.userName}?`) 
 
     if (confirmation) {
-      api.delete(`/users/${props.userId}`)
-        .then(_ => {
-          alert('Usuári@ deletad@ com sucesso!')
-          props.onDelete(props.userId)
-        })
-        .catch(_ => alert('Erro ao deletar usuári@!'))
+      try {
+        await api.delete(`/users/${props.userId}`)
+        alert('Usuári@ deletad@ com sucesso!')
+        props.onDelete(props.userId)
+      } catch (error) {
+        alert('Erro ao deletar usuári@!')
+      }
     }
   }
   
@@ -22,10 +28,10 @@ const UserItem = (props) => {
     <Container>
       <span>{props.userName}</span>
 
-      <div>
-        <button onClick={() => props.onDetail(props.userId)}><MdSearch /></button>
-        <button onClick={deleteUser}><MdDelete /></button>
-      </div>
+      <ButtonsContainer>
+        <StyledButton className="edit" onClick={() => props.onDetail(props.userId)}><MdEdit /></StyledButton>
+        <StyledButton onClick={deleteUser}><MdDelete /></StyledButton>
+      </ButtonsContainer>
     </Container>
 )}
 

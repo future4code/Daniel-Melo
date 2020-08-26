@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import PageRouter from '../../pages/PageRouter'
+import Router from '../../Router'
 import Header from '../Header'
 
 import { Container } from './styles'
@@ -9,17 +9,17 @@ class Layout extends Component {
     super(props)
 
     this.state = {
-      page: 1,
+      page: 2,
       currentUserId: null
     }
   }
 
   setUserRegisterPage = () => {
-    this.setState({page: 1})
+    this.setState({page: 1, currentUserId: null})
   }
 
   setUserListPage = () => {
-    this.setState({page: 2})
+    this.setState({page: 2, currentUserId: null})
   }
 
   getUserDetail = (id) => {
@@ -34,7 +34,7 @@ class Layout extends Component {
           onClickUserListPageButton={this.setUserListPage}
         />
         
-        <PageRouter
+        <Router
           page={this.state.page}
           currentUserId={this.state.currentUserId}
           setUserListPage={this.setUserListPage}

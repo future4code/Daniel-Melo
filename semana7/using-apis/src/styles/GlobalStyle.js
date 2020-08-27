@@ -30,4 +30,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+
+  button {
+    cursor: pointer;
+    margin: 2px;
+    padding: 2px;
+  }
 `

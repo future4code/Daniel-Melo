@@ -5,20 +5,42 @@ import { Container } from './styles'
 import Header from '../Header'
 import Main from '../Main'
 
+const initialState = {
+  page: 1
+}
+
 class Layout extends Component {
   constructor(props) {
     super(props)
+    this.state = initialState 
+  }
 
-    this.state = {
-      page: 1
-    }
+  handleViaCEPClick = () => {
+    this.setState({ page: 1 })
+  }
+
+  handleLyricsOVHClick = () => {
+    this.setState({ page: 2 })
+  }
+
+  handlePicsumClick = () => {
+    this.setState({ page: 3 })
+  }
+  handleTheStarWarsAPIClick = () => {
+    this.setState({ page: 4 })
   }
 
   render() {
     return (
       <Container>
-        <Header />
-        <Main />
+        <Header 
+          onClickViaCEP={this.handleViaCEPClick}
+          onClickLyricsOVH={this.handleLyricsOVHClick}
+          onClickPicsum={this.handlePicsumClick}
+          onClickTheStarWarsAPI={this.handleTheStarWarsAPIClick}
+        />
+
+        <Main page={this.state.page} />
       </Container>
     )  
   }

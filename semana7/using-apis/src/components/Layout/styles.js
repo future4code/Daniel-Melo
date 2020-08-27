@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  border: 1px solid black;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--ash-gray);
 `

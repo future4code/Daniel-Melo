@@ -34,6 +34,7 @@ class Layout extends Component {
     return (
       <Container>
         <Header 
+          page={this.state.page}
           onClickViaCEP={this.handleViaCEPClick}
           onClickLyricsOVH={this.handleLyricsOVHClick}
           onClickPicsum={this.handlePicsumClick}

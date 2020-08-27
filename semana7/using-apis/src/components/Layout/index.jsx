@@ -26,7 +26,7 @@ class Layout extends Component {
   handlePicsumClick = () => {
     this.setState({ page: 3 })
   }
-  handleTheStarWarsAPIClick = () => {
+  handleTellMeAJokeClick = () => {
     this.setState({ page: 4 })
   }
 
@@ -38,7 +38,7 @@ class Layout extends Component {
           onClickViaCEP={this.handleViaCEPClick}
           onClickLyricsOVH={this.handleLyricsOVHClick}
           onClickPicsum={this.handlePicsumClick}
-          onClickTheStarWarsAPI={this.handleTheStarWarsAPIClick}
+          onClickTellMeAJoke={this.handleTellMeAJokeClick}
         />
 
         <Main page={this.state.page} />

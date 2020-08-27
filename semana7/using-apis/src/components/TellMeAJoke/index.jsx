@@ -46,8 +46,6 @@ class FindAdress extends Component {
         this.setState({
           joke,
           searched: true,
-          firstNameInput: '',
-          lastNameInput: ''
         })
       } else {
         alert('Erro ao buscar piada')

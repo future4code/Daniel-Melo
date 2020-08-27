@@ -30,8 +30,6 @@ class FindPicture extends Component {
 
     this.setState({
       picture,
-      widthInput: '',
-      heightInput: '',
       searched: true
     })
   }

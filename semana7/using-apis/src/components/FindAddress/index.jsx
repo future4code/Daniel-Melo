@@ -52,7 +52,6 @@ class FindAdress extends Component {
         localidade,
         uf,
         searched: true,
-        cepInput: ''
       })
     } catch (err) {
       alert('Erro ao buscar CEP')

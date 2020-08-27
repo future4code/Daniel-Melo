@@ -48,8 +48,6 @@ class FindLyric extends Component {
         title,
         lyrics,
         searched: true,
-        artistInput: '',
-        titleInput: ''
       })
     } catch (err) {
       alert(err.response.data.error)

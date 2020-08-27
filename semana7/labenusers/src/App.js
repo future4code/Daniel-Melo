@@ -5,11 +5,11 @@ import Layout from './components/Layout'
 
 function App() {
   return (
-    <>
+    <React.Fragment>
       <GlobalStyles />
-
+      
       <Layout />
-    </>
+    </React.Fragment>
   );
 }
 

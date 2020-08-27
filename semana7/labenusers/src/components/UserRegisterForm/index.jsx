@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
 import api from '../../services/api'
 
-import { StyledForm, InputContainer, ButtonsContainer, StyledButton} from './styles'
+import Input from '../Input'
+import { MdSave, MdClear } from 'react-icons/md'
+
+import { StyledForm } from './styles'
+import { ButtonsContainer } from '../../styles/ButtonsContainer'
+import { StyledButton } from '../../styles/StyledButton'
+
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -21,7 +27,7 @@ class UserRegisterForm extends Component {
     this.setState({emailInput: e.target.value})
   }
 
-  createUser = (e) => {
+  createUser = async (e) => {
     e.preventDefault()
 
     const body = {
@@ -29,12 +35,13 @@ class UserRegisterForm extends Component {
       email: this.state.emailInput
     }
 
-    api.post('/users', body)
-      .then(response => {
-        alert('Usuári@ criad@ com sucesso!')
-        this.resetInputs()
-      })
-      .catch(err => alert('Erro ao criar usuári@'))
+    try {
+      await api.post('/users', body)
+      alert('Usuári@ cadastrad@ com sucesso!')
+      this.resetInputs()
+    } catch (error) {
+      alert('Erro ao cadastrar usuári@')
+    }
   }
 
   resetInputs = () => {
@@ -44,19 +51,27 @@ class UserRegisterForm extends Component {
   render() {
     return (
       <StyledForm onSubmit={this.createUser}>
-        <InputContainer>
-          <label htmlFor="name">Nome:</label>
-          <input id="name" type="text" value={this.state.nameInput} onChange={this.onChangeName} required/>
-        </InputContainer>
+        <Input
+          label="Nome:"
+          name="name"
+          type="text"
+          value={this.state.nameInput}
+          onChange={this.onChangeName}
+          required  
+        />
         
-        <InputContainer>
-          <label htmlFor="email">E-mail:</label>
-          <input id="email" type="email" value={this.state.emailInput} onChange={this.onChangeEmail} required/>
-        </InputContainer>
+        <Input
+          label="Email:"
+          name="email"
+          type="email"
+          value={this.state.emailInput}
+          onChange={this.onChangeEmail}
+          required  
+        />
   
         <ButtonsContainer>
-          <StyledButton type="submit">Salvar</StyledButton>
-          <StyledButton type="reset" onClick={this.resetInputs}>Cancelar</StyledButton>
+          <StyledButton className="primary" type="submit"><MdSave fontSize="1.2rem"/></StyledButton>
+          <StyledButton type="reset" onClick={this.resetInputs}><MdClear fontSize="1.2rem"/></StyledButton>
         </ButtonsContainer>
       </StyledForm>
     )

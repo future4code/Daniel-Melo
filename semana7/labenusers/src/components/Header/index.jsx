@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Container } from './styles'
+import { Container, StyledButton } from './styles'
 
 const Header = ({onClickUserRegisterPageButton, onClickUserListPageButton}) => {
   return (
     <Container>
-      <button onClick={onClickUserRegisterPageButton}>Cadastrar Usuários</button>
-      <button onClick={onClickUserListPageButton}>Buscar Usuários</button>
+      <StyledButton onClick={onClickUserRegisterPageButton}>Novo Usuário</StyledButton>
+      <StyledButton onClick={onClickUserListPageButton}>Buscar Usuários</StyledButton>
     </Container>
   )
 }

@@ -1,28 +1,17 @@
 import styled from 'styled-components'
 
 export const StyledForm = styled.form`
+  grid-area: content;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  justify-content: space-evenly;
+
+  height: 200px;
   padding: 10px;
-`
-
-export const InputContainer = styled.div`
-  display: flex;
-  margin-bottom: 10px;
-
-  label {
-    margin-right: 5px;
-  }
-`
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-`
-
-export const StyledButton = styled.button`
-  cursor: pointer;
-  margin: 0px 5px;
-  padding: 5px;
+  border: 1px solid var(--dark-sea-green);
+  border-radius: 20px;
+  background-color: var(--steel-teal);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
 `

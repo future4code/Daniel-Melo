@@ -5,7 +5,7 @@ import { Container } from './styles'
 const PlayListCard = (props) => {
   return (
     <Container>
-      <img src={props.image} alt="playlist-image"/>
+      <img src={props.image} alt="playlist"/>
       <h2>{props.name}</h2>
       
       <div>

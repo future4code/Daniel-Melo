@@ -4,15 +4,19 @@ import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 
 import { Container } from './styles'
 
+import CreatePlaylistForm from './CreatePlaylistForm'
 import PlayListCard from './PlaylistCard'
+
+const initialState = {
+  playlists: [],
+  newPlaylistNameInput: ''
+}
 
 class Playlists extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      playlists: []
-    }
+    this.state = initialState
   }
   
   componentDidMount = () => {
@@ -30,9 +34,34 @@ class Playlists extends Component {
     }
   }
 
+  handleNewPlaylistNameChange = (e) => {
+    this.setState({ newPlaylistNameInput: e.target.value })
+  }
+
+  createNewPlaylist = (e) => {
+    e.preventDefault()
+
+    console.log('Nova playlist:', this.state.newPlaylistNameInput)
+  }
+
+  clear = (e) => {
+    e.preventDefault()
+
+    this.setState({
+      newPlaylistNameInput: ''
+    })
+  }
+
   render () {
     return (
       <Container>
+        <CreatePlaylistForm
+          value={this.state.newPlaylistNameInput}
+          onChange={this.handleNewPlaylistNameChange}
+          onSubmit={this.createNewPlaylist}
+          onReset={this.clear}
+        />
+
         {
           this.state.playlists.map((playlist, i) => (
             <PlayListCard 

@@ -6,5 +6,13 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 'newPlaylistForm newPlaylistForm newPlaylistForm';
   gap: 10px;
+
+  form {
+    display: flex;
+    justify-content: center;
+
+    grid-area: newPlaylistForm;
+  }
 `

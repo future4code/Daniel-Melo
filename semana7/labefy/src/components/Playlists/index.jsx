@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getAllPlaylists } from '../../services/api'
+import { getAllPlaylists, createPlaylist } from '../../services/api'
 import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 
 import { Container } from './styles'
@@ -38,15 +38,25 @@ class Playlists extends Component {
     this.setState({ newPlaylistNameInput: e.target.value })
   }
 
-  createNewPlaylist = (e) => {
+  createNewPlaylist = async (e) => {
     e.preventDefault()
-
+    
     console.log('Nova playlist:', this.state.newPlaylistNameInput)
+
+    try {
+      await createPlaylist(this.state.newPlaylistNameInput)
+      this.setPlaylists()
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.message)
+      }
+      axiosErrorHandler(error)
+    }
+
+    this.clear()
   }
 
-  clear = (e) => {
-    e.preventDefault()
-
+  clear = () => {
     this.setState({
       newPlaylistNameInput: ''
     })

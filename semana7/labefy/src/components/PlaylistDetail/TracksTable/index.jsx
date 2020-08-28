@@ -17,11 +17,18 @@ const TracksTable = (props) => {
         </thead>
 
         <tbody>
-          <TrackItem
-            title='Título'
-            artists='Artistas'
-            source='http://spoti4.future4.com.br/1.mp3'
-          />
+          {
+            props.tracks.map((track, i) => (
+              <TrackItem
+                key={track.id}
+                trackId={track.id} 
+                title={track.name}
+                artists={track.artist}
+                source={`http://spoti4.future4.com.br/${i}.mp3`}
+                onDelete={props.onDelete}
+              />
+            ))
+          }
         </tbody>
     </Container>
   )

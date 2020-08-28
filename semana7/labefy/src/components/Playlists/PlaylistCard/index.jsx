@@ -10,7 +10,7 @@ const PlayListCard = (props) => {
       
       <div>
         <button>Inspecionar</button>
-        <button>Excluir</button>
+        <button onClick={() => props.onDelete(props.playlistId)}>Excluir</button>
       </div>
     </Container>
   )

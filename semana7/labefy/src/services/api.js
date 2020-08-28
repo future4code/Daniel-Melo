@@ -9,4 +9,6 @@ const api = axios.create({
 
 export const getAllPlaylists = () => api.get('/playlists')
 
+export const createPlaylist = (name) => api.post('/playlists', { name })
+
 export default api

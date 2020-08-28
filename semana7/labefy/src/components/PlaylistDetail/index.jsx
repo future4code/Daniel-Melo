@@ -29,7 +29,7 @@ class PlaylistDetail extends Component {
 
   setPlaylistTracks = async () => {
     try {
-      const response = await getPlaylistTracks('bd0019d1-bdac-40ed-a804-7392329372e6')
+      const response = await getPlaylistTracks(this.props.playlistId)
       const tracks = response.data.result.tracks
 
       this.setState({tracks})
@@ -43,7 +43,7 @@ class PlaylistDetail extends Component {
 
     try {
       await addTrackToPlaylist(
-        'bd0019d1-bdac-40ed-a804-7392329372e6',
+        this.props.playlistId,
         this.state.titleInput,
         this.state.artistInput,
         this.state.urlInput
@@ -58,7 +58,7 @@ class PlaylistDetail extends Component {
 
   deleteTrack = async (trackId) => {
     try{
-      await removeTrackFromPlaylist('bd0019d1-bdac-40ed-a804-7392329372e6', trackId)
+      await removeTrackFromPlaylist(this.props.playlistId, trackId)
       this.setPlaylistTracks()
     } catch (error) {
       axiosErrorHandler(error)

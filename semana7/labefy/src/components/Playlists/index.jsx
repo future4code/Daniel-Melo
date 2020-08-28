@@ -89,6 +89,7 @@ class Playlists extends Component {
               image={`https://picsum.photos/200?a=${i}`}
               name={playlist.name}
               onDelete={this.deletePlaylist}
+              onInspect={this.props.onClickInspect}
             />
           ))
         }

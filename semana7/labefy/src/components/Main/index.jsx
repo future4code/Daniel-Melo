@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 import { Container } from './styles'
 
 import Playlists from '../Playlists'
+import PlaylistDetail from '../PlaylistDetail'
 
 const initialState = {
-  page: 'PLAYLISTS'
+  page: 'PLAYLISTS',
+  currentPlaylistId: ''
 }
 
 class Main extends Component {
@@ -13,15 +15,20 @@ class Main extends Component {
     super(props)
     this.state = initialState
   }
+
+  onClickInspect = (playlistId) => {
+    this.setState({
+      page: 'DETAIL',
+      currentPlaylistId: playlistId
+    })
+  }
   
   setPageToRender = () => {
     switch (this.state.page) {
-      case 'PLAYLISTS':
-        return <Playlists />
       case 'DETAIL':
-        return <h1>Under construction</h1>
+        return <PlaylistDetail playlistId={this.state.currentPlaylistId}/>
       default:
-        return <Playlists />
+        return <Playlists onClickInspect={this.onClickInspect} />
     }
   }
 

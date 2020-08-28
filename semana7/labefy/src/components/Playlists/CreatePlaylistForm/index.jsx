@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { Container } from './styles'
+import CreateButton from '../../CreateButton'
+import ClearButton from '../../ClearButton'
 
 const CreatePlaylistForm = (props) => {
   return (
@@ -12,8 +14,8 @@ const CreatePlaylistForm = (props) => {
         placeholder="Nova Playlist"
         required
       />
-      <button type="submit">Create</button>
-      <button type="reset">Clear</button>
+      <CreateButton type="submit">Create</CreateButton>
+      <ClearButton type="reset">Clear</ClearButton>
     </Container>
   )
 }

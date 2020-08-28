@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Container } from './styles'
 
+import DeleteButton from '../../DeleteButton'
+
 const TrackItem = (props) => {
   return (
     <Container>
@@ -17,7 +19,7 @@ const TrackItem = (props) => {
       </td>
       
       <td>
-        <button onClick={() => props.onDelete(props.trackId)}>Excluir</button>
+        <DeleteButton onClick={() => props.onDelete(props.trackId)} />
       </td>
     </Container>
   )

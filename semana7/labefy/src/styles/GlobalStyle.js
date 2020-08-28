@@ -19,4 +19,19 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+
+  button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    margin: 2px;
+    padding: 2px;
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+
+    :active, :focus :focus:active {
+      box-shadow: none;
+    }
+  }
 `

@@ -19,6 +19,12 @@ export const Container = styled.div`
 
   form {
     grid-area: addTrack;
+    align-self: center;
+    justify-self: center;
+
+    input {
+      margin: 0 5px;
+    }
   }
 
   & > button {

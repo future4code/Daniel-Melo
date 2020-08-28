@@ -8,7 +8,7 @@ export const Container = styled.tr`
   td {
     text-align: center;
     border-bottom: 1px solid #ddd;
-    padding: 5px 0;
+    padding: 5px;
   }
 
   audio {

@@ -9,6 +9,9 @@ import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 import { Container } from './styles'
 
 import TracksTable from './TracksTable'
+import CreateButton from '../CreateButton'
+import ClearButton from '../ClearButton'
+import { MdHome } from 'react-icons/md'
 
 const initialState = {
   titleInput: '',
@@ -90,7 +93,7 @@ class PlaylistDetail extends Component {
       <Container>
         <h1>{this.props.playlistName}</h1>
 
-        <button onClick={this.props.backToHomePage}>Voltar</button>
+        <button onClick={this.props.backToHomePage}><MdHome font-size={24}/></button>
   
         <form onSubmit={this.addTrack} onReset={this.clear}>
           <input
@@ -114,8 +117,8 @@ class PlaylistDetail extends Component {
             placeholder="URL"
             required
           />
-          <button type="submit">Adicionar música</button>
-          <button type="reset">Limpar</button>
+          <CreateButton type="submit" />
+          <ClearButton type="reset" />
         </form>
   
         <TracksTable

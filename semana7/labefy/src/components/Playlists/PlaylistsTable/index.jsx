@@ -15,7 +15,7 @@ const PlaylistsTable = (props) => {
         </thead>
 
         <tbody>
-          {props.playlists.map((playlist, id) => (
+          {props.playlists.map((playlist) => (
             <PlaylistItem 
               key={playlist.id}
               playlistId={playlist.id}

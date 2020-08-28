@@ -5,7 +5,7 @@ import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 import { Container } from './styles'
 
 import CreatePlaylistForm from './CreatePlaylistForm'
-import PlayListCard from './PlaylistCard'
+import PlaylistsTable from './PlaylistsTable'
 
 const initialState = {
   playlists: [],
@@ -81,18 +81,11 @@ class Playlists extends Component {
           onReset={this.clear}
         />
 
-        {
-          this.state.playlists.map((playlist, i) => (
-            <PlayListCard 
-              key={playlist.id}
-              playlistId={playlist.id}
-              image={`https://picsum.photos/200?a=${i}`}
-              name={playlist.name}
-              onDelete={this.deletePlaylist}
-              onInspect={this.props.onClickInspect}
-            />
-          ))
-        }
+        <PlaylistsTable 
+          playlists={this.state.playlists}
+          onDelete={this.deletePlaylist}
+          onInspect={this.props.onClickInspect}
+        />
       </Container>
     )
   }

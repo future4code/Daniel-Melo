@@ -4,5 +4,5 @@ export const Container = styled.form`
   display: flex;
   justify-content: center;
 
-  grid-area: newPlaylistForm;
+  margin: 10px;
 `

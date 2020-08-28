@@ -11,7 +11,6 @@ export const Container = styled.tr`
     padding: 5px 0;
   }
 
-
   audio {
     outline: none;
   }

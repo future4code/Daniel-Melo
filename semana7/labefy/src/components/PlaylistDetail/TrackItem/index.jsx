@@ -17,7 +17,7 @@ const TrackItem = (props) => {
       </td>
       
       <td>
-        <button>Excluir</button>
+        <button onClick={() => props.onDelete(props.trackId)}>Excluir</button>
       </td>
     </Container>
   )

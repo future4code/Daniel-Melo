@@ -2,10 +2,12 @@ import React from 'react'
 
 import { Container } from './styles'
 
+import Playlists from '../Playlists'
+
 const Main = () => {
   return (
     <Container>
-      Main
+      <Playlists />
     </Container>
   )
 }

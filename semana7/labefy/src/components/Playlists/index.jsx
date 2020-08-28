@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { getAllPlaylists } from '../../services/api'
+import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 
 import { Container } from './styles'
 
@@ -9,43 +11,25 @@ class Playlists extends Component {
     super(props)
 
     this.state = {
-      playlists: [
-        {
-          id: 1,
-          name: "Playlist 1"
-        },
-        {
-          id: 2,
-          name: "Playlist 1"
-        },
-        {
-          id: 3,
-          name: "Playlist 1"
-        },
-        {
-          id: 4,
-          name: "Playlist 1"
-        },
-        {
-          id: 5,
-          name: "Playlist 1"
-        },
-        {
-          id: 6,
-          name: "Playlist 1"
-        },
-        {
-          id: 7,
-          name: "Playlist 1"
-        },
-        {
-          id: 8,
-          name: "Playlist 1"
-        },
-      ]
+      playlists: []
     }
   }
   
+  componentDidMount = () => {
+    this.setPlaylists()
+  }
+
+  setPlaylists = async () => {
+    try {
+      const response = await getAllPlaylists()
+      const playlists = response.data.result.list
+  
+      this.setState({playlists})
+    } catch (error) {
+      axiosErrorHandler(error)
+    }
+  }
+
   render () {
     return (
       <Container>

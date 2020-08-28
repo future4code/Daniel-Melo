@@ -88,7 +88,9 @@ class PlaylistDetail extends Component {
   render() {
     return (
       <Container>
-        <h1>Playlist</h1>
+        <h1>{this.props.playlistName}</h1>
+
+        <button onClick={this.props.backToHomePage}>Voltar</button>
   
         <form onSubmit={this.addTrack} onReset={this.clear}>
           <input

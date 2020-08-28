@@ -7,7 +7,8 @@ import PlaylistDetail from '../PlaylistDetail'
 
 const initialState = {
   page: 'PLAYLISTS',
-  currentPlaylistId: ''
+  currentPlaylistId: '',
+  curentPlaylistName: ''
 }
 
 class Main extends Component {
@@ -16,17 +17,27 @@ class Main extends Component {
     this.state = initialState
   }
 
-  onClickInspect = (playlistId) => {
+  onClickInspect = (playlistId, playlistName) => {
     this.setState({
       page: 'DETAIL',
-      currentPlaylistId: playlistId
+      currentPlaylistId: playlistId,
+      currentPlaylistName: playlistName
     })
+  }
+
+  backToHomePage = () => {
+    this.setState(initialState)
   }
   
   setPageToRender = () => {
     switch (this.state.page) {
       case 'DETAIL':
-        return <PlaylistDetail playlistId={this.state.currentPlaylistId}/>
+        return (
+          <PlaylistDetail
+            playlistId={this.state.currentPlaylistId}
+            playlistName={this.state.currentPlaylistName}
+            backToHomePage={this.backToHomePage}
+          />)
       default:
         return <Playlists onClickInspect={this.onClickInspect} />
     }

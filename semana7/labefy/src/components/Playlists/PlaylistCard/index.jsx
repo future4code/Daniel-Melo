@@ -9,7 +9,7 @@ const PlayListCard = (props) => {
       <h2>{props.name}</h2>
       
       <div>
-        <button onClick={() => props.onInspect(props.playlistId)}>Inspecionar</button>
+        <button onClick={() => props.onInspect(props.playlistId, props.name)}>Inspecionar</button>
         <button onClick={() => props.onDelete(props.playlistId)}>Excluir</button>
       </div>
     </Container>

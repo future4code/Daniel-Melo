@@ -14,8 +14,8 @@ const CreatePlaylistForm = (props) => {
         placeholder="Nova Playlist"
         required
       />
-      <CreateButton type="submit">Create</CreateButton>
-      <ClearButton type="reset">Clear</ClearButton>
+      <CreateButton type="submit" />
+      <ClearButton type="reset" />
     </Container>
   )
 }

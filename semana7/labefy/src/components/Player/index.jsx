@@ -5,7 +5,7 @@ import { Container } from './styles'
 const Footer = () => {
   return (
     <Container>
-      Footer
+      Player
     </Container>
   )
 }

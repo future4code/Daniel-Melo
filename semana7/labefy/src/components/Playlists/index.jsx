@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getAllPlaylists, createPlaylist } from '../../services/api'
+import { getAllPlaylists, createPlaylist, deletePlaylist } from '../../services/api'
 import { axiosErrorHandler } from '../../utils/axiosErrorHandler'
 
 import { Container } from './styles'
@@ -56,6 +56,15 @@ class Playlists extends Component {
     this.clear()
   }
 
+  deletePlaylist = async (id) => {
+    try {
+      await deletePlaylist(id)
+      this.setPlaylists()
+    } catch (error) {
+      axiosErrorHandler(error)
+    }
+  }
+
   clear = () => {
     this.setState({
       newPlaylistNameInput: ''
@@ -76,8 +85,10 @@ class Playlists extends Component {
           this.state.playlists.map((playlist, i) => (
             <PlayListCard 
               key={playlist.id}
+              playlistId={playlist.id}
               image={`https://picsum.photos/200?a=${i}`}
               name={playlist.name}
+              onDelete={this.deletePlaylist}
             />
           ))
         }

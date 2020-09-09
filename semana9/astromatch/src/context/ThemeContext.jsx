@@ -17,6 +17,11 @@ const ThemeContext = ({ children }) => {
             default: '#FEEFDD'
           }
         },
+        typography: {
+          h5: {
+            fontSize: '2rem'
+          }
+        },
         spacing: [0, 15, 30, 60, 90, 120]
       })
     

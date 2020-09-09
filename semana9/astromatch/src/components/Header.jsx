@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@material-ui/core/Box'
 import styled from 'styled-components'
 
@@ -12,6 +12,12 @@ const IconImg = styled.img`
 `
 
 const Header = () => {
+  const [page, setPage] = useState(1)
+
+  const switchPage = () => {
+    setPage(state => state === 1 ? 2 : 1)
+  }
+
   return (
     <Box
       height={70}
@@ -22,9 +28,9 @@ const Header = () => {
       px={2}
     >
       
-      <IconImg src={chooseUserIcon} alt='user matches icon' />
+      <IconImg onClick={switchPage}  src={chooseUserIcon} alt='user matches icon' active={page === 2}/>
       <img src={logo} alt='logo' />
-      <IconImg src={userMatchesIcon} alt='choose user icon' active/>
+      <IconImg onClick={switchPage} src={userMatchesIcon} alt='choose user icon' active={page === 1}/>
     </Box>
   )
 }

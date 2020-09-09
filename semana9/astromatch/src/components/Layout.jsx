@@ -13,7 +13,7 @@ const Layout = () => {
      borderRadius={8}
      bgcolor={common.white}
     >
-      <Header></Header>
+      <Header />
     </Box>
   )
 }

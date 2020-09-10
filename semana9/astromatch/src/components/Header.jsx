@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Box from '@material-ui/core/Box'
 import styled from 'styled-components'
 
@@ -11,13 +11,7 @@ const IconImg = styled.img`
   visibility: ${(props) => props.active ? 'visible' : 'hidden' };
 `
 
-const Header = () => {
-  const [page, setPage] = useState(1)
-
-  const switchPage = () => {
-    setPage(state => state === 1 ? 2 : 1)
-  }
-
+const Header = ({ page, onClickIcons }) => {
   return (
     <Box
       height={70}
@@ -28,9 +22,9 @@ const Header = () => {
       px={2}
     >
       
-      <IconImg onClick={switchPage}  src={chooseUserIcon} alt='user matches icon' active={page === 2}/>
+      <IconImg onClick={() => onClickIcons(1)}  src={chooseUserIcon} alt='user matches icon' active={page === 2}/>
       <img src={logo} alt='logo' />
-      <IconImg onClick={switchPage} src={userMatchesIcon} alt='choose user icon' active={page === 1}/>
+      <IconImg onClick={() => onClickIcons(2)} src={userMatchesIcon} alt='choose user icon' active={page === 1}/>
     </Box>
   )
 }

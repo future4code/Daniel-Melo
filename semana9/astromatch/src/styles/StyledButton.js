@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   border: 3px solid;
   border-color: ${props => props.color};
   border-radius: 50%;
-  transition: height 300ms ease-in, width 300ms ease-in, background-color 300ms ease-in, color 300ms ease-in;
+  transition: height 150ms ease-in, width 150ms ease-in, background-color 150ms ease-in, color 150ms ease-in;
   color: ${props => props.color};
 
   :hover {

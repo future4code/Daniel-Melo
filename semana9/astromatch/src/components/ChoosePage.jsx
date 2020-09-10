@@ -1,35 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '@material-ui/core/styles'
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ClearIcon from '@material-ui/icons/Clear';
 
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
+import StyledButton from '../styles/StyledButton'
+import ClearIcon from '@material-ui/icons/Clear';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 
 const StyledBox = styled(Box)`
   background-image: url(${(props) => props.bgImage});
-`
-
-const StyledButton = styled.button`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  width: 70px;
-  border: 3px solid;
-  border-color: ${props => props.color};
-  border-radius: 50%;
-  transition: height 300ms ease-in, width 300ms ease-in, background-color 300ms ease-in, color 300ms ease-in;
-  color: ${props => props.color};
-
-  :hover {
-    color: #FFF;
-    height: 75px;
-    width: 75px;
-    background-color: ${props => props.color}
-  }
 `
 
 const ChoosePage = () => {

@@ -10,7 +10,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const StyledBox = styled(Box)`
-  background-image: url(${(props) => props.bgImage});
+  background-image: url(${(props) => props.bgimage});
 `
 
 const ChoosePage = () => {
@@ -38,7 +38,7 @@ const ChoosePage = () => {
         borderRadius={8}
         color="common.white"
         boxShadow={4}
-        bgImage={'https://picsum.photos/370/450'}
+        bgimage={'https://picsum.photos/370/450'}
       >
         <Typography variant='h5'>
           <strong>Courney Henry</strong>, 27

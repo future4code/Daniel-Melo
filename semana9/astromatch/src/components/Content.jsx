@@ -7,6 +7,7 @@ const Content = () => {
   return (
     <Box
       m={2}
+      flexGrow={1}
     >
       <ChoosePage />
     </Box>

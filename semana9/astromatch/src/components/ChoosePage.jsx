@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getProfileToChoose, choosePerson } from '../services/api'
 import styled from 'styled-components'
 import { useTheme } from '@material-ui/core/styles'
 
@@ -11,11 +12,35 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const StyledBox = styled(Box)`
   background-image: url(${(props) => props.bgimage});
+  background-position: center;
+  background-clip: border-box;
+  background-size: cover;
 `
 
 const ChoosePage = () => {
   const theme = useTheme()
-  
+  const [profile, setProfile] = useState({})
+
+  const getProfile = () => {
+    getProfileToChoose()
+      .then(response => setProfile(response.data.profile))
+      .catch(_ => alert('Erro ao buscar profile'))
+  }
+
+  const handleChoice = (choice) => {
+    choosePerson(profile.id, choice)
+      .then(response => {
+        getProfile()
+        response.data.isMatch && alert("It's a match!")
+      })
+      .catch(_ => alert('Erro ao enviar escolha'))
+  }
+
+  useEffect(() => {
+    getProfile()
+  },[])
+
+
   return (
     <Box
      display='flex'
@@ -38,13 +63,13 @@ const ChoosePage = () => {
         borderRadius={8}
         color="common.white"
         boxShadow={4}
-        bgimage={'https://picsum.photos/370/450'}
+        bgimage={profile.photo}
       >
         <Typography variant='h5'>
-          <strong>Courney Henry</strong>, 27
+          <strong>{profile.name}</strong>, {profile.age}
         </Typography>
         <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in.
+          {profile.bio}
         </Typography>
       </StyledBox>
 
@@ -55,10 +80,10 @@ const ChoosePage = () => {
         minHeight={75}
         minWidth={255}
       >
-        <StyledButton color={theme.palette.error.main}>
+        <StyledButton onClick={() => handleChoice(false)} color={theme.palette.error.main}>
           <ClearIcon fontSize='large'/>
         </StyledButton>
-        <StyledButton color={theme.palette.success.main}>
+        <StyledButton onClick={() => handleChoice(true)} color={theme.palette.success.main}>
           <FavoriteIcon fontSize='large'/>
         </StyledButton>
       </Box>

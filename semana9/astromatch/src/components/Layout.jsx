@@ -18,9 +18,9 @@ const Layout = () => {
       flexDirection='column'
       width={430}
       height={680}
-      border={1}
       borderRadius={8}
       bgcolor={common.white}
+      boxShadow={10}
     >
       <Header page={page} onClickIcons={handlePageChanging}/>
       <Content page={page}/>

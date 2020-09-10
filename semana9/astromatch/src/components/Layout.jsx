@@ -8,11 +8,13 @@ import Content from './Content'
 const Layout = () => {
   return (
     <Box
-     width={430}
-     height={680}
-     border={1}
-     borderRadius={8}
-     bgcolor={common.white}
+      display='flex'
+      flexDirection='column'
+      width={430}
+      height={680}
+      border={1}
+      borderRadius={8}
+      bgcolor={common.white}
     >
       <Header />
       <Content />

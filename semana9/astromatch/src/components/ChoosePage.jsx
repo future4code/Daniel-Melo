@@ -5,12 +5,16 @@ import Typography from '@material-ui/core/Typography'
 import ProfileSlider from './ProfileSlider'
 import ButtonGroup from './ButtonGroup'
 import ProgressFeedback from './ProgressFeedback'
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+import Slide from '@material-ui/core/Slide'
 
 const ChoosePage = () => {
   const [loaded, setLoaded] = useState(false)
   const [profile, setProfile] = useState({})
   const [choosed, setChoosed] = useState(false)
   const [liked, setLiked] = useState(false)
+  const [match, setMatch] = useState(false)
 
   const getProfile = () => {
     setLoaded(false)
@@ -31,7 +35,8 @@ const ChoosePage = () => {
   
   const getNextProfile = () => {
     choosePerson(profile.id, liked)
-      .then(_ => {
+      .then(response => {
+        setMatch(response.data.isMatch)
         getProfile()
       })
       .catch(_ => alert('Erro ao enviar escolha'))
@@ -60,6 +65,18 @@ const ChoosePage = () => {
           </>
         : <Typography variant='h6' align='center'>Woow! Você zerou o astromatch!</Typography>
       }
+
+      <Snackbar 
+        open={match}
+        autoHideDuration={1000}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+        TransitionComponent={Slide}
+        onClose={() => setMatch(false)}
+      >
+        <Alert severity="success" variant="filled">
+          IT'S A MATCH!
+        </Alert>
+      </Snackbar>
     </Box>
   )
 }

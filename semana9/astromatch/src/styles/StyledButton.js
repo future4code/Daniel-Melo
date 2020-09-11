@@ -12,12 +12,13 @@ const StyledButton = styled.button`
   border-radius: 50%;
   transition: height 150ms ease-in, width 150ms ease-in, background-color 150ms ease-in, color 150ms ease-in;
   color: ${props => props.color};
+  background-color: #FFF;
 
   :hover {
     color: #FFF;
     height: 75px;
     width: 75px;
-    background-color: ${props => props.color}
+    background-color: ${props => props.color};
   }
 `
 

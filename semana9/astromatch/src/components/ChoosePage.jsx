@@ -58,7 +58,7 @@ const ChoosePage = () => {
             }
             <ButtonGroup handleClick={handleChoice} />
           </>
-        : <Typography variant='h6'>Woow! Você zerou o astromatch!</Typography>
+        : <Typography variant='h6' align='center'>Woow! Você zerou o astromatch!</Typography>
       }
     </Box>
   )

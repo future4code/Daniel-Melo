@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button';
 import MatchUser from './MatchUser'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 
 const StyledButton = styled(Button)`
@@ -40,10 +41,14 @@ const StyledBox = styled(Box)`
 const MatchesPage = () => {
   const theme = useTheme()
   const [matches, setMatches] = useState([])
+  const [loaded, setLoaded] = useState(false)
   
   useEffect(() => {
     getMatches()
-      .then(response => setMatches(response.data.matches))
+      .then(response => {
+          setLoaded(true)
+          setMatches(response.data.matches)
+        })
       .catch(_ => alert('Erro ao buscar matches'))
   }, [])
 
@@ -62,15 +67,30 @@ const MatchesPage = () => {
       justifyContent='space-between'
       height={550}
     >
-      <StyledBox
-        display='flex'
-        flexDirection='column'
-        height={450}
-        overflow='auto'
-        scrollbarcolor={theme.palette.primary.main}
-      >
-        {matches.map(match => <MatchUser key={match.id} avatar={match.photo} name={match.name}/> )}
-      </StyledBox>
+      {
+        loaded
+        ? 
+          <StyledBox
+            display='flex'
+            flexDirection='column'
+            height={450}
+            overflow='auto'
+            scrollbarcolor={theme.palette.primary.main}
+          >
+            {matches.map(match => <MatchUser key={match.id} avatar={match.photo} name={match.name}/> )}
+          </StyledBox>
+        : 
+          <Box
+            display='flex'
+            alignItems='center'
+            justifyContent='center'
+            height={450}
+            width={370}
+          >
+            <CircularProgress />
+          </Box>
+      }
+
       <Box
         display='flex'
         justifyContent='center'

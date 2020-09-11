@@ -21,6 +21,7 @@ const Layout = () => {
       borderRadius={8}
       bgcolor={common.white}
       boxShadow={10}
+      overflow="hidden"
     >
       <Header page={page} onClickIcons={handlePageChanging}/>
       <Content page={page}/>

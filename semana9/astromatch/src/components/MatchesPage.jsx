@@ -4,9 +4,19 @@ import { useTheme } from '@material-ui/core/styles'
 import { getMatches, clearAll } from '../services/api'
 
 import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button';
 import MatchUser from './MatchUser'
-import StyledButton from '../styles/StyledButton'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
+
+const StyledButton = styled(Button)`
+  background-color: ${props => props.buttoncolor};
+  color: ${props => props.textcolor};
+  
+  :hover {
+    background-color: ${props => props.onhovercolor}
+  }
+`
 
 const StyledBox = styled(Box)`
   /* width */
@@ -68,8 +78,16 @@ const MatchesPage = () => {
         minHeight={75}
         minWidth={255}
       >
-        <StyledButton onClick={handleClear} color={theme.palette.error.main}>
-          <DeleteForeverIcon fontSize='large'/>
+        <StyledButton
+          onClick={handleClear}
+          variant='contained'
+          startIcon={<DeleteForeverIcon/>}
+          size='large'
+          buttoncolor={theme.palette.error.main}
+          onhovercolor={theme.palette.error.dark}
+          textcolor={theme.palette.common.white}
+        >
+          Clear all Matches
         </StyledButton>
       </Box>
     </Box>

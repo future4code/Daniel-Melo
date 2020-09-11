@@ -1,6 +1,7 @@
 import React from 'react'
 import Box from '@material-ui/core/Box'
 import styled from 'styled-components'
+import { CHOOSE_PAGE, MATCHES_PAGE } from '../constants/pages'
 
 import chooseUserIcon from '../assets/img/mdi_account-switch.svg'
 import logo from '../assets/img/logo.svg'
@@ -22,9 +23,9 @@ const Header = ({ page, onClickIcons }) => {
       justifyContent='space-between'
       px={2}
     >
-      <IconImg onClick={() => onClickIcons(1)}  src={chooseUserIcon} alt='user matches icon' active={page === 2}/>
+      <IconImg onClick={() => onClickIcons(CHOOSE_PAGE)}  src={chooseUserIcon} alt='user matches icon' active={page === MATCHES_PAGE}/>
       <img src={logo} alt='logo' />
-      <IconImg onClick={() => onClickIcons(2)} src={userMatchesIcon} alt='choose user icon' active={page === 1}/>
+      <IconImg onClick={() => onClickIcons(MATCHES_PAGE)} src={userMatchesIcon} alt='choose user icon' active={page === CHOOSE_PAGE}/>
     </Box>
   )
 }

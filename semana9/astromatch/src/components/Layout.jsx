@@ -16,8 +16,8 @@ const Layout = () => {
     <Box
       display='flex'
       flexDirection='column'
-      width={430}
-      height={680}
+      height={600}
+      width={350}
       borderRadius={8}
       bgcolor={common.white}
       boxShadow={10}

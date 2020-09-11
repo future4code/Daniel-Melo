@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import styled from 'styled-components'
 import { useTheme } from '@material-ui/core/styles'
 import { getMatches, clearAll } from '../services/api'
 
@@ -7,6 +8,24 @@ import MatchUser from './MatchUser'
 import StyledButton from '../styles/StyledButton'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
+const StyledBox = styled(Box)`
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${props => props.scrollbarcolor};
+  border-radius: 10px;
+}
+`
 
 const MatchesPage = () => {
   const theme = useTheme()
@@ -22,7 +41,6 @@ const MatchesPage = () => {
     clearAll()
       .then(response => {
         setMatches([])
-        alert(response.data.message)
       })
       .catch(_ => alert('Erro ao limpar matches'))
   }
@@ -34,14 +52,15 @@ const MatchesPage = () => {
       justifyContent='space-between'
       height={550}
     >
-      <Box
+      <StyledBox
         display='flex'
         flexDirection='column'
         height={450}
         overflow='auto'
+        scrollbarcolor={theme.palette.primary.main}
       >
         {matches.map(match => <MatchUser key={match.id} avatar={match.photo} name={match.name}/> )}
-      </Box>
+      </StyledBox>
       <Box
         display='flex'
         justifyContent='center'

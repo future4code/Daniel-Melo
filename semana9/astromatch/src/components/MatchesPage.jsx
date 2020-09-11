@@ -22,7 +22,7 @@ const StyledButton = styled(Button)`
 const StyledBox = styled(Box)`
   /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */

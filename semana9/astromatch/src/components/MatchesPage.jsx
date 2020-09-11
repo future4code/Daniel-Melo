@@ -7,15 +7,15 @@ import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button';
 import MatchUser from './MatchUser'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import CircularProgress from '@material-ui/core/CircularProgress'
-
+import ProgressFeedback from './ProgressFeedback'
 
 const StyledButton = styled(Button)`
   background-color: ${props => props.buttoncolor};
   color: ${props => props.textcolor};
+  margin-top: 15px;
   
   :hover {
-    background-color: ${props => props.onhovercolor}
+    background-color: ${props => props.hovercolor}
   }
 `
 
@@ -62,38 +62,27 @@ const MatchesPage = () => {
       display='flex'
       flexDirection='column'
       justifyContent='space-between'
-      height={550}
+      height='100%'
     >
-      {
-        loaded
+      { loaded
         ? 
           <StyledBox
             display='flex'
             flexDirection='column'
-            height={450}
+            flexGrow={1}
+            maxHeight={400}
             overflow='auto'
             scrollbarcolor={theme.palette.primary.main}
           >
             {matches.map(match => <MatchUser key={match.id} avatar={match.photo} name={match.name}/> )}
           </StyledBox>
-        : 
-          <Box
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-            height={450}
-            width={370}
-          >
-            <CircularProgress />
-          </Box>
+        : <ProgressFeedback />
       }
 
       <Box
         display='flex'
         justifyContent='center'
         alignItems='center'
-        minHeight={75}
-        minWidth={255}
       >
         <StyledButton
           onClick={handleClear}
@@ -101,7 +90,7 @@ const MatchesPage = () => {
           startIcon={<DeleteForeverIcon/>}
           size='large'
           buttoncolor={theme.palette.error.main}
-          onhovercolor={theme.palette.error.dark}
+          hovercolor={theme.palette.error.dark}
           textcolor={theme.palette.common.white}
         >
           Clear all Matches

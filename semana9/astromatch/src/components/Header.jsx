@@ -15,13 +15,13 @@ const Header = ({ page, onClickIcons }) => {
   return (
     <Box
       height={70}
+      flexShrink={0}
       boxShadow={1}
       display='flex'
       alignItems='center'
       justifyContent='space-between'
       px={2}
     >
-      
       <IconImg onClick={() => onClickIcons(1)}  src={chooseUserIcon} alt='user matches icon' active={page === 2}/>
       <img src={logo} alt='logo' />
       <IconImg onClick={() => onClickIcons(2)} src={userMatchesIcon} alt='choose user icon' active={page === 1}/>

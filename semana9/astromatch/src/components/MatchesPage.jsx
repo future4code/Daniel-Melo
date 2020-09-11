@@ -53,11 +53,8 @@ const MatchesPage = () => {
   }, [])
 
   const handleClear = () => {
-    clearAll()
-      .then(response => {
-        setMatches([])
-      })
-      .catch(_ => alert('Erro ao limpar matches'))
+    setMatches([])
+    clearAll().catch(_ => alert('Erro ao limpar matches'))
   }
 
   return (

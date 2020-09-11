@@ -65,72 +65,78 @@ const ChoosePage = () => {
      height={550}
      width={370}
     >
-      { 
-        loaded 
+      {
+        profile
         ? 
           <>
-            <Slide 
-              direction={ liked ? "left" : "right"}
-              in={!choosed}
-              appear={false}
-              onExit={getNextProfile}
-              timeout={500}
-            >
-              <StyledBox
-                display='flex'
-                height={450}
-                width={370}
-                borderRadius={8}
-                boxShadow={4}
-                bgimage={profile.photo}
-                overflow='hidden'
-              >
+            { 
+              loaded 
+              ? 
+                <>
+                  <Slide 
+                    direction={ liked ? "left" : "right"}
+                    in={!choosed}
+                    appear={false}
+                    onExit={getNextProfile}
+                    timeout={500}
+                  >
+                    <StyledBox
+                      display='flex'
+                      height={450}
+                      width={370}
+                      borderRadius={8}
+                      boxShadow={4}
+                      bgimage={profile.photo}
+                      overflow='hidden'
+                    >
+                      <Box
+                        color='common.white'
+                        bgcolor='text.disabled'
+                        alignSelf="flex-end"
+                        px={1}
+                        pb={1}
+                        width='100%'
+                      >
+                        <Typography variant='h5'>
+                          <strong>{profile.name}</strong>, {profile.age}
+                        </Typography>
+                        <Typography>
+                          {profile.bio}
+                        </Typography>
+                      </Box>
+                    </StyledBox>
+                  </Slide>
+                </>
+              : 
                 <Box
-                  color='common.white'
-                  bgcolor='text.disabled'
-                  alignSelf="flex-end"
-                  px={1}
-                  pb={1}
-                  width='100%'
+                  display='flex'
+                  alignItems='center'
+                  justifyContent='center'
+                  height={450}
+                  width={370}
                 >
-                  <Typography variant='h5'>
-                    <strong>{profile.name}</strong>, {profile.age}
-                  </Typography>
-                  <Typography>
-                    {profile.bio}
-                  </Typography>
+                  <CircularProgress />
                 </Box>
-              </StyledBox>
-            </Slide>
-          </>
-        : 
-          <Box
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-            height={450}
-            width={370}
-          >
-            <CircularProgress />
-          </Box>
-      }
+            }
 
-      <Box
-        display='flex'
-        justifyContent='space-between'
-        alignItems='center'
-        minHeight={75}
-        minWidth={255}
-      >
-        <StyledButton onClick={() => handleChoice(false)} color={theme.palette.error.main}>
-          <ClearIcon fontSize='large'/>
-        </StyledButton>
-        <StyledButton onClick={() => handleChoice(true)} color={theme.palette.success.main}>
-          <FavoriteIcon fontSize='large'/>
-        </StyledButton>
-      </Box>
+            <Box
+              display='flex'
+              justifyContent='space-between'
+              alignItems='center'
+              minHeight={75}
+              minWidth={255}
+            >
+              <StyledButton onClick={() => handleChoice(false)} color={theme.palette.error.main}>
+                <ClearIcon fontSize='large'/>
+              </StyledButton>
+              <StyledButton onClick={() => handleChoice(true)} color={theme.palette.success.main}>
+                <FavoriteIcon fontSize='large'/>
+              </StyledButton>
+            </Box>
+          </>
+        : <Typography variant='h6'>Woow! Você zerou o astromatch!</Typography>
+      }
     </Box>
-    
   )
 }
 

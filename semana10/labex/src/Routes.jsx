@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from './context/AuthContext'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,22 +13,22 @@ import ListTripPage from './pages/ListTripPage'
 import TripDetailsPage from './pages/TripDetailsPage'
 import CreateTripPage from './pages/CreateTripPage'
 
-const isAuthenticated = true
-
-const PrivateRoute = ({ children, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-    >
-      {
-      isAuthenticated
-        ? children
-        : <Redirect to="/login" />}
-    </Route>
-  )
-}
-
 const Routes = () => {
+  const { isAuthorized } = useAuth()
+
+  const PrivateRoute = ({ children, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+      >
+        {
+        isAuthorized
+          ? children
+          : <Redirect to="/login" />}
+      </Route>
+    )
+  }
+  
   return (
     <Router>
       <Switch>
@@ -44,7 +45,7 @@ const Routes = () => {
           <ApplicationFormPage />
         </Route>
         <Route path='/login'>
-          {isAuthenticated ? <Redirect to="/trip/list" /> : <LoginPage />}
+          {isAuthorized ? <Redirect to="/trip/list" /> : <LoginPage />}
         </Route>
         <Route path='/'>
           <HomePage />

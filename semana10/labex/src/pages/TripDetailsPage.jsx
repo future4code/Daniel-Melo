@@ -1,10 +1,12 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext'
 import { Heading, Flex, Button } from '@chakra-ui/core';
 import { Link, useParams } from 'react-router-dom'
 
 
 const TripDetailsPage = () => {
   const { id } = useParams()
+  const { logout } = useAuth()
 
   return (
     <Flex justify="space-between">
@@ -18,11 +20,9 @@ const TripDetailsPage = () => {
         </Button>
       </Link>
       
-      <Link to='/'>
-        <Button variantColor='purple'>
-          SAIR
-        </Button>
-      </Link>
+      <Button variantColor='purple' onClick={logout}>
+        SAIR
+      </Button>
     </Flex>
   );
 };

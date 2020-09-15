@@ -1,19 +1,20 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext'
 import { Heading, Flex, Button, Text } from '@chakra-ui/core';
 import { Link } from 'react-router-dom'
 
 const ListTripPage = () => {
+  const { logout } = useAuth()
+
   return (
     <Flex justify="space-between">
       <Heading>
         ListTripPage
       </Heading>
 
-      <Link to='/'>
-        <Button variantColor='purple'>
-          SAIR
-        </Button>
-      </Link>
+      <Button variantColor='purple' onClick={logout}>
+        SAIR
+      </Button>
 
       <Link to='/trip/details/1'>
         <Text>Detalhes da Viagem 1</Text>

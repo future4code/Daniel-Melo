@@ -1,11 +1,11 @@
 import React from 'react';
 import ThemeContext from './context/ThemeContext'
-import { Heading } from '@chakra-ui/core'
+import Routes from './Routes'
 
 function App() {
   return (
     <ThemeContext>
-      <Heading size='sm'>Hello, world</Heading>
+      <Routes />
     </ThemeContext>
   );
 }

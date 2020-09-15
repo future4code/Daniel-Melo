@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ApplicationFormPage from './pages/ApplicationFormPage'
@@ -11,24 +12,39 @@ import ListTripPage from './pages/ListTripPage'
 import TripDetailsPage from './pages/TripDetailsPage'
 import CreateTripPage from './pages/CreateTripPage'
 
+const isAuthenticated = true
+
+const PrivateRoute = ({ children, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+    >
+      {
+      isAuthenticated
+        ? children
+        : <Redirect to="/login" />}
+    </Route>
+  )
+}
+
 const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/trip/details'>
+        <PrivateRoute path='/trip/details/:id'>
           <TripDetailsPage />
-        </Route>
-        <Route path='/trip/list'>
+        </PrivateRoute>
+        <PrivateRoute path='/trip/list'>
           <ListTripPage />
-        </Route>
-        <Route path='/trip/create'>
+        </PrivateRoute>
+        <PrivateRoute path='/trip/create'>
           <CreateTripPage />
-        </Route>
+        </PrivateRoute>
         <Route path='/application-form'>
           <ApplicationFormPage />
         </Route>
         <Route path='/login'>
-          <LoginPage />
+          {isAuthenticated ? <Redirect to="/trip/list" /> : <LoginPage />}
         </Route>
         <Route path='/'>
           <HomePage />

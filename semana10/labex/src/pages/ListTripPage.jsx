@@ -15,8 +15,17 @@ const ListTripPage = () => {
         </Button>
       </Link>
 
-      <Link to='/trip/details'>
-        <Text>Detalhes da Viagem</Text>
+      <Link to='/trip/details/1'>
+        <Text>Detalhes da Viagem 1</Text>
+      </Link>
+      <Link to='/trip/details/2'>
+        <Text>Detalhes da Viagem 2</Text>
+      </Link>
+      <Link to='/trip/details/3'>
+        <Text>Detalhes da Viagem 3</Text>
+      </Link>
+      <Link to='/trip/details/4'>
+        <Text>Detalhes da Viagem 4</Text>
       </Link>
 
       <Link to='/trip/create'>

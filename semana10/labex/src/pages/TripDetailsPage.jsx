@@ -1,13 +1,15 @@
 import React from 'react';
 import { Heading, Flex, Button } from '@chakra-ui/core';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 
 const TripDetailsPage = () => {
+  const { id } = useParams()
+
   return (
     <Flex justify="space-between">
       <Heading>
-        TripDetailsPage
+        TripDetailsPage {id}
       </Heading>
 
       <Link to='/trip/list'>

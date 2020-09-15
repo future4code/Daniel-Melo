@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     JSON.parse(localStorage.getItem('logged')) && setIsAuthorized(true);
   }, []);
 

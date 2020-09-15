@@ -1,29 +1,27 @@
 import React from 'react';
 import { Heading, Flex, Button } from '@chakra-ui/core';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const ApplicationFormPage = () => {
-  return (
-    <Flex
-      justify='space-between'
-    >
-      <Link to='/'>
-        <Heading>
-          ApplicationFormPage
-        </Heading>
-      </Link>
+const ApplicationFormPage = () => (
+  <Flex
+    justify="space-between"
+  >
+    <Link to="/">
+      <Heading>
+        ApplicationFormPage
+      </Heading>
+    </Link>
 
-      <Link to='/login'>
-        <Button size='md' variantColor='purple' variant="outline">
-          ADMIN
-        </Button>
-      </Link>
-
-      <Button size='lg' variantColor='yellow'>
-        FINALIZAR APLICAÇÃO
+    <Link to="/login">
+      <Button size="md" variantColor="purple" variant="outline">
+        ADMIN
       </Button>
-    </Flex>
-  );
-};
+    </Link>
+
+    <Button size="lg" variantColor="yellow">
+      FINALIZAR APLICAÇÃO
+    </Button>
+  </Flex>
+);
 
 export default ApplicationFormPage;

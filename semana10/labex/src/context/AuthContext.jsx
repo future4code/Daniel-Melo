@@ -1,30 +1,31 @@
-import React, {createContext, useContext, useState} from 'react';
-import { useEffect } from 'react';
+import React, {
+  createContext, useContext, useState, useEffect,
+} from 'react';
 
-const AuthorizationContext = createContext()
+const AuthorizationContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthorized, setIsAuthorized] = useState(false)
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
-    JSON.parse(localStorage.getItem('logged')) && setIsAuthorized(true)
-  }, [])
+    JSON.parse(localStorage.getItem('logged')) && setIsAuthorized(true);
+  }, []);
 
   const login = () => {
-    localStorage.setItem('logged', JSON.stringify(true))
-    setIsAuthorized(true)
-  }
+    localStorage.setItem('logged', JSON.stringify(true));
+    setIsAuthorized(true);
+  };
 
   const logout = () => {
-    localStorage.removeItem('logged')
-    setIsAuthorized(false)
-  }
-  
+    localStorage.removeItem('logged');
+    setIsAuthorized(false);
+  };
+
   return (
-    <AuthorizationContext.Provider value={{ isAuthorized, login, logout}}>
+    <AuthorizationContext.Provider value={{ isAuthorized, login, logout }}>
       {children}
     </AuthorizationContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthorizationContext)
+export const useAuth = () => useContext(AuthorizationContext);

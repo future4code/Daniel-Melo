@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext'
 import { Heading, Flex, Button } from '@chakra-ui/core';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
-  const { login } = useAuth()
+  const { login } = useAuth();
 
   return (
     <Flex justify="space-between">
@@ -12,13 +12,13 @@ const LoginPage = () => {
         LoginPage
       </Heading>
 
-      <Link to='/trip/list'>
+      <Link to="/trip/list">
         <Button variantColor="purple" onClick={login}>
           ENTRAR
         </Button>
       </Link>
 
-      <Link to='/'>
+      <Link to="/">
         <Button variantColor="yellow">
           VOLTAR
         </Button>

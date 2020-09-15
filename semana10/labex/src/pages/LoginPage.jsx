@@ -1,11 +1,26 @@
 import React from 'react';
-import { Heading } from '@chakra-ui/core';
+import { Heading, Flex, Button } from '@chakra-ui/core';
+import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
   return (
-    <Heading>
-      LoginPage
-    </Heading>
+    <Flex justify="space-between">
+      <Heading>
+        LoginPage
+      </Heading>
+
+      <Link to='/trip/list'>
+        <Button variantColor="purple">
+          ENTRAR
+        </Button>
+      </Link>
+
+      <Link to='/'>
+        <Button variantColor="yellow">
+          VOLTAR
+        </Button>
+      </Link>
+    </Flex>
   );
 };
 

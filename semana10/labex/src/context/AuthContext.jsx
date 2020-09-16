@@ -1,6 +1,7 @@
 import React, {
   createContext, useContext, useState, useEffect,
 } from 'react';
+import api from '../services/api';
 
 const AuthorizationContext = createContext();
 
@@ -8,17 +9,23 @@ export const AuthProvider = ({ children }) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
-    JSON.parse(localStorage.getItem('logged')) && setIsAuthorized(true);
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      api.defaults.headers.common.auth = token;
+      setIsAuthorized(true);
+    }
   }, []);
 
-  const login = () => {
-    localStorage.setItem('logged', JSON.stringify(true));
+  const login = (token) => {
+    localStorage.setItem('token', token);
+    api.defaults.headers.common.auth = token;
     setIsAuthorized(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('logged');
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common.auth;
     setIsAuthorized(false);
   };
 

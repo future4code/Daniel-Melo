@@ -45,7 +45,7 @@ const Header = ({ isPrivatePage, withBackButton }) => {
       height="70px"
       align="center"
       justify="space-between"
-      px={{ xl: 0, base: 10 }}
+      px={{ xl: 0, base: 15 }}
       w={{ xl: '1170px', base: '100%' }}
     >
       <Image src={logo} alt="logo" />

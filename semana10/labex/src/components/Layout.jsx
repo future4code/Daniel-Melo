@@ -5,6 +5,7 @@ const Layout = ({ children }) => (
   <Flex
     direction="column"
     align="center"
+    height="100vh"
   >
     { children }
   </Flex>

@@ -1,47 +1,98 @@
 import React from 'react';
-import { Heading, Flex, Button } from '@chakra-ui/core';
-import { Link } from 'react-router-dom';
+import {
+  Image, Flex, Button, Input, FormControl, FormLabel, useToast,
+} from '@chakra-ui/core';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
+import logo from '../assets/img/logo.svg';
+import useInput from '../hooks/useInput';
 
 const LoginPage = () => {
   const { login } = useAuth();
+  const history = useHistory();
+  const toast = useToast();
+  const [email, resetEmail, setEmail] = useInput('');
+  const [password, resetPassword, setPassword] = useInput('');
 
-  const handleLogin = async () => {
-    const body = {
-      email: 'daniel@melo.com',
-      password: '12345',
-    };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const body = { email, password };
 
     try {
       const response = await api.post('/login', body);
       const { token } = response.data;
       login(token);
+      history.push('/trip/list');
     } catch (error) {
       if (error.response.status === 401) {
-        console.log(error.response.data.message);
+        toast({
+          position: 'top-right',
+          title: error.response.data.message,
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        });
+
+        resetPassword();
+        resetEmail();
       }
     }
   };
 
   return (
-    <Flex justify="space-between">
-      <Heading>
-        LoginPage
-      </Heading>
+    <Flex
+      align="center"
+      justify="center"
+      height="100vh"
+    >
+      <Flex
+        direction="column"
+        width="sm"
+        p={8}
+        boxShadow="0px 0px 10px rgba(214, 158, 46, 0.25);"
+        borderRadius={8}
+      >
+        <Image src={logo} alt="logo" alignSelf="center" mb={16} />
 
-      <Link to="/trip/list">
-        <Button variantColor="purple" onClick={handleLogin}>
-          ENTRAR
-        </Button>
-      </Link>
+        <FormControl as="form" onSubmit={handleLogin}>
+          <FormLabel htmlFor="email">E-mail</FormLabel>
+          <Input
+            value={email}
+            onChange={setEmail}
+            mb={3}
+            id="email"
+            type="email"
+            placeholder="E-mail"
+            isRequired
+          />
 
-      <Link to="/">
-        <Button variantColor="yellow">
-          VOLTAR
-        </Button>
-      </Link>
+          <FormLabel htmlFor="password">Senha</FormLabel>
+          <Input
+            value={password}
+            onChange={setPassword}
+            mb={16}
+            id="password"
+            type="password"
+            placeholder="Senha"
+            isRequired
+          />
+
+          <Button type="submit" mb={3} variantColor="purple" width="100%">
+            ENTRAR
+          </Button>
+
+          <Link to="/">
+            <Button variantColor="yellow" width="100%">
+              VOLTAR
+            </Button>
+          </Link>
+        </FormControl>
+      </Flex>
+
     </Flex>
+
   );
 };
 

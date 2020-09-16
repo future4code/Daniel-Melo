@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Image, Flex, Button, Input, FormControl, FormLabel, useToast,
+  Image, Flex, Button, Input, FormControl, useToast,
 } from '@chakra-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -49,7 +49,7 @@ const LoginPage = () => {
     >
       <Flex
         direction="column"
-        width="sm"
+        width="xs"
         p={8}
         boxShadow="0px 0px 10px rgba(214, 158, 46, 0.25);"
         borderRadius={8}
@@ -57,7 +57,6 @@ const LoginPage = () => {
         <Image src={logo} alt="logo" alignSelf="center" mb={16} />
 
         <FormControl as="form" onSubmit={handleLogin}>
-          <FormLabel htmlFor="email">E-mail</FormLabel>
           <Input
             value={email}
             onChange={setEmail}
@@ -66,9 +65,9 @@ const LoginPage = () => {
             type="email"
             placeholder="E-mail"
             isRequired
+            variant="flushed"
           />
 
-          <FormLabel htmlFor="password">Senha</FormLabel>
           <Input
             value={password}
             onChange={setPassword}
@@ -77,6 +76,7 @@ const LoginPage = () => {
             type="password"
             placeholder="Senha"
             isRequired
+            variant="flushed"
           />
 
           <Button type="submit" mb={3} variantColor="purple" width="100%">

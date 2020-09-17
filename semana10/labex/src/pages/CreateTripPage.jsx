@@ -1,33 +1,17 @@
 import React from 'react';
-import { Heading, Flex, Button } from '@chakra-ui/core';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import Layout from '../components/Layout';
+import Header from '../components/Header';
+import Main from '../components/Main';
+import CreateTripForm from '../components/CreateTripForm';
 
-const CreateTripPage = () => {
-  const { logout } = useAuth();
+const CreateTripPage = () => (
+  <Layout>
+    <Header isPrivatePage withBackButton />
 
-  return (
-    <Flex justify="space-between">
-      <Heading>
-        CreateTripPage
-      </Heading>
-
-      <Link to="/trip/list">
-        <Button variantColor="yellow">
-          VOLTAR
-        </Button>
-      </Link>
-
-      <Button variantColor="purple" onClick={logout}>
-        SAIR
-      </Button>
-
-      <Button variantColor="yellow">
-        Criar Viagem
-      </Button>
-
-    </Flex>
-  );
-};
+    <Main>
+      <CreateTripForm />
+    </Main>
+  </Layout>
+);
 
 export default CreateTripPage;

@@ -27,7 +27,7 @@ const LoginForm = () => {
     } catch (error) {
       if (error.response.status === 401) {
         toast({
-          position: 'top-right',
+          position: 'top',
           title: error.response.data.message,
           status: 'error',
           duration: 3000,

@@ -21,8 +21,8 @@ const LoginPage = () => {
     const body = { email: form.email, password: form.password };
 
     try {
-      const response = await api.post('/login', body);
-      const { token } = response.data;
+      const { data: { token } } = await api.post('/login', body);
+
       login(token);
       history.push('/trip/list');
     } catch (error) {

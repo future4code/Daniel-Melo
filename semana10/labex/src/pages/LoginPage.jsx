@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import logo from '../assets/img/logo.svg';
 import useInput from '../hooks/useInput';
+import Main from '../components/Main';
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -42,11 +43,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Flex
-      align="center"
-      justify="center"
-      height="100vh"
-    >
+    <Main>
       <Flex
         direction="column"
         width="xs"
@@ -90,9 +87,7 @@ const LoginPage = () => {
           </Link>
         </FormControl>
       </Flex>
-
-    </Flex>
-
+    </Main>
   );
 };
 

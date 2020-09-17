@@ -46,6 +46,7 @@ const LoginForm = () => {
       p={8}
       boxShadow="0px 0px 10px rgba(214, 158, 46, 0.25);"
       borderRadius={8}
+      alignSelf="center"
     >
       <Image src={logo} alt="logo" alignSelf="center" mb={16} />
 

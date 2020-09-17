@@ -48,7 +48,9 @@ const Header = ({ isPrivatePage, withBackButton }) => {
       px={{ xl: 0, base: 15 }}
       w={{ xl: '1170px', base: '100%' }}
     >
-      <Image src={logo} alt="logo" />
+      <Link to="/">
+        <Image src={logo} alt="logo" />
+      </Link>
 
       {buttonsToRender()}
     </Flex>

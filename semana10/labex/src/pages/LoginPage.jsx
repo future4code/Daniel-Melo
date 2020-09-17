@@ -6,20 +6,19 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import logo from '../assets/img/logo.svg';
-import useInput from '../hooks/useInput';
+import useForm from '../hooks/useForm';
 import Main from '../components/Main';
 
 const LoginPage = () => {
   const { login } = useAuth();
   const history = useHistory();
   const toast = useToast();
-  const [email, resetEmail, setEmail] = useInput('');
-  const [password, resetPassword, setPassword] = useInput('');
+  const [form, setForm, resetForm] = useForm({ email: '', password: '' });
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const body = { email, password };
+    const body = { email: form.email, password: form.password };
 
     try {
       const response = await api.post('/login', body);
@@ -36,8 +35,7 @@ const LoginPage = () => {
           isClosable: true,
         });
 
-        resetPassword();
-        resetEmail();
+        resetForm();
       }
     }
   };
@@ -55,10 +53,11 @@ const LoginPage = () => {
 
         <FormControl as="form" onSubmit={handleLogin}>
           <Input
-            value={email}
-            onChange={setEmail}
+            value={form.email}
+            onChange={setForm}
             mb={3}
             id="email"
+            name="email"
             type="email"
             placeholder="E-mail"
             isRequired
@@ -66,10 +65,11 @@ const LoginPage = () => {
           />
 
           <Input
-            value={password}
-            onChange={setPassword}
+            value={form.password}
+            onChange={setForm}
             mb={16}
             id="password"
+            name="password"
             type="password"
             placeholder="Senha"
             isRequired

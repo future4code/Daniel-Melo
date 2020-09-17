@@ -6,17 +6,17 @@ const PageTitle = ({ title }) => (
     color="purple.500"
     direction="column"
     align="center"
-    mb={16}
+    mb={8}
   >
     <Box
-      w="25%"
+      w="70px"
       h="3px"
       bg="purple.500"
       mb={3}
       borderRadius="3px"
     />
 
-    <Heading>{title}</Heading>
+    <Heading size="lg">{title}</Heading>
   </Flex>
 );
 

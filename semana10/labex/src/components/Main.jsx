@@ -6,9 +6,9 @@ const Main = ({ row, children }) => (
     as="main"
     direction={row ? 'row' : 'column'}
     flexGrow={1}
-    align="center"
+    align={row ? 'center' : 'stretch'}
     justify={row ? { base: 'center', lg: 'space-between' } : 'flex-start'}
-    pt={row ? 0 : 16}
+    pt={row ? 0 : 8}
     px={{ xl: 0, base: 15 }}
     w={{ xl: '1170px', base: '100%' }}
   >

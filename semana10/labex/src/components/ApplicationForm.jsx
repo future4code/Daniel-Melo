@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Button, FormControl, Text, Stack, useToast,
+  Button, FormControl, useToast,
 } from '@chakra-ui/core';
 import InputField from './InputField';
 import SelectField from './SelectField';
+import TripDetails from './TripDetails';
 import useForm from '../hooks/useForm';
 import CountriesOptions from './CountriesOptions';
 import api from '../services/api';
@@ -161,28 +162,7 @@ const ApplicationForm = () => {
           }
       />
 
-      <Stack gridArea="tripDetail">
-        <Text color="yellow.500">
-          Descrição:
-          {' '}
-          <Text as="span" color="white">{currentTrip.description}</Text>
-        </Text>
-        <Text color="yellow.500">
-          Destino:
-          {' '}
-          <Text as="span" color="white">{currentTrip.planet}</Text>
-        </Text>
-        <Text color="yellow.500">
-          Data:
-          {' '}
-          <Text as="span" color="white">{currentTrip.date}</Text>
-        </Text>
-        <Text color="yellow.500">
-          Duração em dias:
-          {' '}
-          <Text as="span" color="white">{currentTrip.durationInDays}</Text>
-        </Text>
-      </Stack>
+      <TripDetails gridArea="tripDetail" trip={currentTrip} />
 
       <Button justifySelf="center" gridArea="button" type="submit" variantColor="yellow">
         APLICAR

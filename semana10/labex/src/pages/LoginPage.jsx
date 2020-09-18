@@ -1,11 +1,14 @@
 import React from 'react';
-import Main from '../components/Main';
 import LoginForm from '../components/LoginForm';
+import Layout from '../components/Layout';
+import Main from '../components/Main';
 
 const LoginPage = () => (
-  <Main>
-    <LoginForm />
-  </Main>
+  <Layout>
+    <Main>
+      <LoginForm />
+    </Main>
+  </Layout>
 );
 
 export default LoginPage;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Button, Input, FormControl, FormLabel, Flex, Select, Text, Stack, useToast,
+  Button, FormControl, Text, Stack, useToast,
 } from '@chakra-ui/core';
+import InputField from './InputField';
+import SelectField from './SelectField';
 import useForm from '../hooks/useForm';
 import CountriesOptions from './CountriesOptions';
 import api from '../services/api';
@@ -39,16 +41,8 @@ const ApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const body = {
-      name: form.name,
-      age: form.age,
-      applicationText: form.applicationText,
-      profession: form.profession,
-      country: form.country,
-    };
-
     try {
-      api.post(`/trips/${form.tripId}/apply`, body);
+      api.post(`/trips/${form.tripId}/apply`, form);
       toast({
         position: 'top-right',
         title: 'Aplicação submetida com sucesso',
@@ -86,77 +80,86 @@ const ApplicationForm = () => {
         '. button button .'
         "
     >
-      <Flex as="fieldset" direction="column" gridArea="name">
-        <FormLabel htmlFor="name" color="yellow.500">Nome</FormLabel>
-        <Input
-          name="name"
-          id="name"
-          type="text"
-          value={form.name}
-          onChange={setForm}
-          minLength={3}
-          isRequired
-        />
-      </Flex>
 
-      <Flex as="fieldset" direction="column" gridArea="age">
-        <FormLabel htmlFor="age" color="yellow.500">Idade</FormLabel>
-        <Input
-          name="age"
-          id="age"
-          type="number"
-          value={form.age}
-          onChange={setForm}
-          min={18}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="name"
+        inputId="name"
+        label="Nome"
+        value={form.name}
+        onChange={setForm}
+        inputProps={{
+          type: 'text',
+          minLength: 3,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="profession">
-        <FormLabel htmlFor="profession" color="yellow.500">Profissão</FormLabel>
-        <Input
-          name="profession"
-          id="profession"
-          type="text"
-          value={form.profession}
-          onChange={setForm}
-          minLength={10}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="age"
+        inputId="age"
+        label="Idade"
+        value={form.age}
+        onChange={setForm}
+        inputProps={{
+          type: 'number',
+          min: 18,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="country">
-        <FormLabel htmlFor="country" color="yellow.500">País</FormLabel>
-        <Select name="country" id="country" type="text" value={form.country} onChange={setForm} isRequired>
-          <option style={{ color: 'black' }} value="" disabled>Selecione seu país</option>
-          <CountriesOptions />
-        </Select>
-      </Flex>
+      <InputField
+        gridArea="profession"
+        inputId="profession"
+        label="Profissão"
+        value={form.profession}
+        onChange={setForm}
+        inputProps={{
+          type: 'text',
+          minLength: 10,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="applicationText">
-        <FormLabel htmlFor="applicationText" color="yellow.500">Apresentação</FormLabel>
-        <Input
-          name="applicationText"
-          id="applicationText"
-          type="text"
-          value={form.applicationText}
-          onChange={setForm}
-          minLength={30}
-          isRequired
-        />
-      </Flex>
+      <SelectField
+        gridArea="country"
+        selectId="country"
+        label="País"
+        placeholder="Selecione seu país"
+        value={form.country}
+        onChange={setForm}
+        isRequired
+        options={<CountriesOptions />}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="trip">
-        <FormLabel htmlFor="trip" color="yellow.500">Trip</FormLabel>
-        <Select name="tripId" id="trip" type="text" value={form.tripId} onChange={setForm} isRequired>
-          <option style={{ color: 'black' }} value="" disabled>Seleciona sua viagem</option>
-          {trips.map((trip) => (
-            <option key={trip.id} style={{ color: 'black' }} value={trip.id}>
-              {trip.name}
-            </option>
-          ))}
-        </Select>
-      </Flex>
+      <InputField
+        gridArea="applicationText"
+        inputId="applicationText"
+        label="Apresentação"
+        value={form.applicationText}
+        onChange={setForm}
+        inputProps={{
+          type: 'text',
+          minLength: 30,
+          isRequired: true,
+        }}
+      />
+
+      <SelectField
+        gridArea="trip"
+        selectId="tripId"
+        label="Trip"
+        placeholder="Selecione sua viagem"
+        value={form.tripId}
+        onChange={setForm}
+        isRequired
+        options={
+            trips.map((trip) => (
+              <option key={trip.id} style={{ color: 'black' }} value={trip.id}>
+                {trip.name}
+              </option>
+            ))
+          }
+      />
 
       <Stack gridArea="tripDetail">
         <Text color="yellow.500">

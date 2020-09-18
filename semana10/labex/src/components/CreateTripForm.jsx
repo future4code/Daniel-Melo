@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Button, Input, FormControl, FormLabel, Flex, Select, useToast,
+  Button, FormControl, useToast,
 } from '@chakra-ui/core';
+import InputField from './InputField';
+import SelectField from './SelectField';
 import useForm from '../hooks/useForm';
 import PlanetOptions from './PlanetOptions';
 import api from '../services/api';
@@ -31,16 +33,8 @@ const ApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const body = {
-      name: form.name,
-      planet: form.planet,
-      date: form.date,
-      description: form.description,
-      durationInDays: form.durationInDays,
-    };
-
     try {
-      api.post('/trips', body);
+      api.post('/trips', form);
       toast({
         position: 'top',
         title: 'Viagem criada com sucesso!',
@@ -76,67 +70,76 @@ const ApplicationForm = () => {
         '. button button .'
         "
     >
-      <Flex as="fieldset" direction="column" gridArea="name">
-        <FormLabel htmlFor="name" color="yellow.500">Nome</FormLabel>
-        <Input
-          name="name"
-          id="name"
-          type="text"
-          value={form.name}
-          onChange={setForm}
-          minLength={5}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="name"
+        inputId="name"
+        label="Nome"
+        value={form.name}
+        onChange={setForm}
+        inputProps={{
+          type: 'text',
+          minLength: 5,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="date">
-        <FormLabel htmlFor="date" color="yellow.500">Data</FormLabel>
-        <Input
-          name="date"
-          id="date"
-          type="date"
-          value={form.date}
-          min={today}
-          onChange={setForm}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="date"
+        inputId="date"
+        label="Data"
+        value={form.date}
+        onChange={setForm}
+        inputProps={{
+          type: 'date',
+          min: today,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="durationInDays">
-        <FormLabel htmlFor="durationInDays" color="yellow.500">Duração (em dias)</FormLabel>
-        <Input
-          name="durationInDays"
-          id="durationInDays"
-          type="number"
-          value={form.durationInDays}
-          onChange={setForm}
-          min={50}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="durationInDays"
+        inputId="durationInDays"
+        label="Duração (em dias)"
+        value={form.durationInDays}
+        onChange={setForm}
+        inputProps={{
+          type: 'number',
+          min: 50,
+          isRequired: true,
+        }}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="planet">
-        <FormLabel htmlFor="planet" color="yellow.500">Planeta Destino</FormLabel>
-        <Select name="planet" id="planet" type="text" value={form.planet} onChange={setForm} isRequired>
-          <option style={{ color: 'black' }} value="" disabled>Selecione o planeta</option>
-          <PlanetOptions />
-        </Select>
-      </Flex>
+      <SelectField
+        gridArea="planet"
+        selectId="planet"
+        label="Planeta Destino"
+        placeholder="Selecione o planeta"
+        value={form.planet}
+        onChange={setForm}
+        isRequired
+        options={<PlanetOptions />}
+      />
 
-      <Flex as="fieldset" direction="column" gridArea="description">
-        <FormLabel htmlFor="description" color="yellow.500">Descrição</FormLabel>
-        <Input
-          name="description"
-          id="description"
-          type="text"
-          value={form.description}
-          onChange={setForm}
-          minLength={30}
-          isRequired
-        />
-      </Flex>
+      <InputField
+        gridArea="description"
+        inputId="description"
+        label="Descrição"
+        value={form.description}
+        onChange={setForm}
+        inputProps={{
+          type: 'text',
+          minLength: 30,
+          isRequired: true,
+        }}
+      />
 
-      <Button mt={8} justifySelf="center" gridArea="button" type="submit" variantColor="yellow">
+      <Button
+        mt={8}
+        justifySelf="center"
+        gridArea="button"
+        type="submit"
+        variantColor="yellow"
+      >
         CRIAR VIAGEM
       </Button>
     </FormControl>

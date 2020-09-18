@@ -10,7 +10,12 @@ import axiosErrorHandler from '../utils/axiosErrorHandler';
 const ApplicationForm = () => {
   const toast = useToast();
   const [trips, setTrips] = useState([]);
-  const [currentTrip, setCurrentTrip] = useState();
+  const [currentTrip, setCurrentTrip] = useState({
+    description: '',
+    planet: '',
+    date: '',
+    durationInDays: '',
+  });
   const [form, setForm, resetForm] = useForm({
     name: '',
     age: '',
@@ -28,7 +33,7 @@ const ApplicationForm = () => {
 
   useEffect(() => {
     const choosenTrip = trips.find((trip) => form.tripId === trip.id);
-    setCurrentTrip(choosenTrip);
+    setCurrentTrip((state) => choosenTrip || state);
   }, [form, trips]);
 
   const handleSubmit = async (e) => {
@@ -157,22 +162,22 @@ const ApplicationForm = () => {
         <Text color="yellow.500">
           Descrição:
           {' '}
-          <Text as="span" color="white">{currentTrip && currentTrip.description}</Text>
+          <Text as="span" color="white">{currentTrip.description}</Text>
         </Text>
         <Text color="yellow.500">
           Destino:
           {' '}
-          <Text as="span" color="white">{currentTrip && currentTrip.planet}</Text>
+          <Text as="span" color="white">{currentTrip.planet}</Text>
         </Text>
         <Text color="yellow.500">
           Data:
           {' '}
-          <Text as="span" color="white">{currentTrip && currentTrip.date}</Text>
+          <Text as="span" color="white">{currentTrip.date}</Text>
         </Text>
         <Text color="yellow.500">
           Duração em dias:
           {' '}
-          <Text as="span" color="white">{currentTrip && currentTrip.durationInDays}</Text>
+          <Text as="span" color="white">{currentTrip.durationInDays}</Text>
         </Text>
       </Stack>
 

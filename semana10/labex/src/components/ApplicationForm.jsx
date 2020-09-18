@@ -42,9 +42,9 @@ const ApplicationForm = () => {
     e.preventDefault();
 
     try {
-      api.post(`/trips/${form.tripId}/apply`, form);
+      await api.post(`/trips/${form.tripId}/apply`, form);
       toast({
-        position: 'top-right',
+        position: 'top',
         title: 'Aplicação submetida com sucesso',
         status: 'success',
         duration: 3000,
@@ -53,7 +53,7 @@ const ApplicationForm = () => {
     } catch (error) {
       axiosErrorHandler(error);
       toast({
-        position: 'top-right',
+        position: 'top',
         title: 'Erro ao submeter aplicação',
         status: 'error',
         duration: 3000,

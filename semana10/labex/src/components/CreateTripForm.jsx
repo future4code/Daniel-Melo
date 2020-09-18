@@ -34,7 +34,7 @@ const ApplicationForm = () => {
     e.preventDefault();
 
     try {
-      api.post('/trips', form);
+      await api.post('/trips', form);
       toast({
         position: 'top',
         title: 'Viagem criada com sucesso!',

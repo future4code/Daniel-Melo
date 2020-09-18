@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Flex, Heading } from '@chakra-ui/core';
 
-const PageTitle = ({ title }) => (
+const PageTitle = ({ title, justified }) => (
   <Flex
     color="purple.500"
     direction="column"
-    align="center"
+    align={justified ? 'flex-start' : 'center'}
     mb={8}
   >
     <Box

@@ -71,22 +71,16 @@ const App = () => {
       <br />
       {showErrorMessage && <p>Não é permitido criar post vazio</p>}
 
-      {postsList.length > 0 && <p>Quantidade de posts: {postsList.length} </p>}
+      {postsList.length > 0 ? <p>Quantidade de posts: {postsList.length}</p> : <p>Nenhum post</p>}
       
-      {
-        postsList.length > 0 
-        ? postsList.map(post => {
-            return (
-              <Post
-                key={post.id}
-                post={post}
-                toggleLike={toggleLike}
-                deletePost={deletePost}
-              />
-            );
-          })
-        : <p>Nenhum post</p>
-      }
+      {postsList.map(post => (
+          <Post
+            key={post.id}
+            post={post}
+            toggleLike={toggleLike}
+            deletePost={deletePost}
+          />
+      ))}
     </div>
   );
 };

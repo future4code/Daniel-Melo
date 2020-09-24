@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 
-const TaskItem = ({ taskName, taskId }) => {
-  const [completed, setCompleted] = useState(false);
+const TaskItem = ({ taskName, taskId, isCompleted }) => {
+  const [completed, setCompleted] = useState(isCompleted);
 
   const handleDelete = (id) => {
     api.delete(`/${id}`);
   };
 
-  const toggleComplete = () => {
+  const toggleComplete = (id) => {
+    api.put(`/${id}`, { completed: !completed });
     setCompleted((state) => !state);
   };
 
@@ -17,8 +18,9 @@ const TaskItem = ({ taskName, taskId }) => {
     <div>
       <input
         type="checkbox"
+        value={completed}
         checked={completed}
-        onChange={toggleComplete}
+        onChange={() => toggleComplete(taskId)}
       />
       <span
         style={{

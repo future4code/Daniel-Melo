@@ -24,6 +24,7 @@ const CreateTaskForm = () => {
     api.post('', {
       text: form.task,
       day: form.weekDay,
+      completed: false,
     });
 
     resetForm();

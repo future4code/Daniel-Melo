@@ -117,11 +117,12 @@ describe('CreateTaskForm Component', () => {
 
     const text = 'Any Task';
     const day = 'monday';
+    const completed = false;
 
     await userEvent.type(input, 'Any Task');
     userEvent.selectOptions(select, 'monday');
     userEvent.click(button);
 
-    expect(api.post).toHaveBeenCalledWith('', { text, day });
+    expect(api.post).toHaveBeenCalledWith('', { text, day, completed });
   });
 });

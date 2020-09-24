@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import CreateTaskForm from './index';
 
 describe('CreateTaskForm Component', () => {
@@ -31,7 +32,8 @@ describe('CreateTaskForm Component', () => {
     expect(select).toHaveValue('');
   });
 
-  test('render all week days options', () => {
+  test('user should select any week day', async () => {
+    const select = screen.getByLabelText('Dia da Semana', { selector: 'select' });
     const sunday = screen.queryByText('Domingo');
     const monday = screen.queryByText('Segunda');
     const tuesday = screen.queryByText('Terça');
@@ -40,49 +42,37 @@ describe('CreateTaskForm Component', () => {
     const friday = screen.queryByText('Sexta');
     const saturday = screen.queryByText('Sábado');
 
-    expect(sunday).toBeInTheDocument();
-    expect(monday).toBeInTheDocument();
-    expect(tuesday).toBeInTheDocument();
-    expect(wednesday).toBeInTheDocument();
-    expect(thursday).toBeInTheDocument();
-    expect(friday).toBeInTheDocument();
-    expect(saturday).toBeInTheDocument();
+    userEvent.selectOptions(select, 'sunday');
+    expect(sunday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'monday');
+    expect(monday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'tuesday');
+    expect(tuesday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'wednesday');
+    expect(wednesday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'thursday');
+    expect(thursday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'friday');
+    expect(friday.selected).toBeTruthy();
+
+    userEvent.selectOptions(select, 'saturday');
+    expect(saturday.selected).toBeTruthy();
   });
 
-  test('user should select any week day', () => {
-    const select = screen.queryByLabelText('Dia da Semana', { selector: 'select' });
-
-    fireEvent.change(select, { target: { value: 'sunday' } });
-    expect(select).toHaveValue('sunday');
-
-    fireEvent.change(select, { target: { value: 'monday' } });
-    expect(select).toHaveValue('monday');
-
-    fireEvent.change(select, { target: { value: 'tuesday' } });
-    expect(select).toHaveValue('tuesday');
-
-    fireEvent.change(select, { target: { value: 'wednesday' } });
-    expect(select).toHaveValue('wednesday');
-
-    fireEvent.change(select, { target: { value: 'thursday' } });
-    expect(select).toHaveValue('thursday');
-
-    fireEvent.change(select, { target: { value: 'friday' } });
-    expect(select).toHaveValue('friday');
-
-    fireEvent.change(select, { target: { value: 'saturday' } });
-    expect(select).toHaveValue('saturday');
-  });
-
-  test('should return consistent form values', () => {
+  test('should return consistent form values', async () => {
     const input = screen.queryByPlaceholderText(/insira uma tarefa/i);
     const select = screen.queryByLabelText('Dia da Semana', { selector: 'select' });
 
     let task = 'Any Task';
     let weekDay = 'wednesday';
 
-    fireEvent.change(input, { target: { value: task } });
-    fireEvent.change(select, { target: { value: weekDay } });
+    await userEvent.type(input, task);
+    userEvent.selectOptions(select, weekDay);
 
     expect(screen.getByTestId('create-task-form')).toHaveFormValues({
       task,
@@ -92,19 +82,8 @@ describe('CreateTaskForm Component', () => {
     task = 'Another task';
     weekDay = 'sunday';
 
-    fireEvent.change(input, { target: { value: task } });
-    fireEvent.change(select, { target: { value: weekDay } });
-
-    expect(screen.getByTestId('create-task-form')).toHaveFormValues({
-      task,
-      weekDay,
-    });
-
-    task = 'One more task';
-    weekDay = 'friday';
-
-    fireEvent.change(input, { target: { value: task } });
-    fireEvent.change(select, { target: { value: weekDay } });
+    await userEvent.type(input, task);
+    userEvent.selectOptions(select, weekDay);
 
     expect(screen.getByTestId('create-task-form')).toHaveFormValues({
       task,
@@ -112,15 +91,15 @@ describe('CreateTaskForm Component', () => {
     });
   });
 
-  test('form should be cleaned after submit', () => {
+  test('form should be cleaned after submit', async () => {
     const button = screen.queryByText('Criar Tarefa');
     const input = screen.queryByPlaceholderText(/insira uma tarefa/i);
     const select = screen.queryByLabelText('Dia da Semana', { selector: 'select' });
     const form = screen.getByTestId('create-task-form');
 
-    fireEvent.change(input, { target: { value: 'Any Task' } });
-    fireEvent.change(select, { target: { value: 'wednesday' } });
-    fireEvent.click(button);
+    await userEvent.type(input, 'Any Task');
+    userEvent.selectOptions(select, 'wednesday');
+    userEvent.click(button);
 
     expect(form).toHaveFormValues({
       task: '',

@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CreateTaskForm from './index';
+import api from '../../services/api';
 
 describe('CreateTaskForm Component', () => {
   beforeEach(() => {
@@ -105,5 +106,22 @@ describe('CreateTaskForm Component', () => {
       task: '',
       weekDay: '',
     });
+  });
+
+  test('should send a post request to API when submit', async () => {
+    api.post = jest.fn().mockResolvedValue();
+
+    const input = screen.queryByPlaceholderText(/insira uma tarefa/i);
+    const select = screen.queryByLabelText('Dia da Semana', { selector: 'select' });
+    const button = screen.queryByText('Criar Tarefa');
+
+    const text = 'Any Task';
+    const day = 'monday';
+
+    await userEvent.type(input, 'Any Task');
+    userEvent.selectOptions(select, 'monday');
+    userEvent.click(button);
+
+    expect(api.post).toHaveBeenCalledWith('', { text, day });
   });
 });

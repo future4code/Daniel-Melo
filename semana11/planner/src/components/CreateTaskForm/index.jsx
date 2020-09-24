@@ -1,5 +1,6 @@
 import React from 'react';
 import useForm from '../../hooks/useForm';
+import api from '../../services/api';
 
 const CreateTaskForm = () => {
   const [form, setForm, resetForm] = useForm({
@@ -19,6 +20,12 @@ const CreateTaskForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    api.post('', {
+      text: form.task,
+      day: form.weekDay,
+    });
+
     resetForm();
   };
 

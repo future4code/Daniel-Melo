@@ -15,7 +15,7 @@ const TaskItem = ({ taskName, taskId, isCompleted }) => {
   };
 
   return (
-    <div>
+    <div data-testid="task-item">
       <input
         type="checkbox"
         value={completed}

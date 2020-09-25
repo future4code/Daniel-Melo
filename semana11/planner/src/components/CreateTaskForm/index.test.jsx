@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import CreateTaskForm from './index';
 import api from '../../services/api';
 
+jest.mock('../../services/api');
+
 describe('CreateTaskForm Component', () => {
   test('render task input', () => {
     render(<CreateTaskForm update={jest.fn()} />);
@@ -114,7 +116,6 @@ describe('CreateTaskForm Component', () => {
   });
 
   test('should send a post request to API when submit', async () => {
-    api.post = jest.fn();
     render(<CreateTaskForm update={jest.fn()} />);
 
     const input = await screen.findByPlaceholderText(/insira uma tarefa/i);

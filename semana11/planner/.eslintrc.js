@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'plugin:testing-library/recommended',
+    'plugin:testing-library/react',
     'plugin:jest-dom/recommended',
   ],
   globals: {

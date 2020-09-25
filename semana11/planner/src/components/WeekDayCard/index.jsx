@@ -13,7 +13,7 @@ const WeekDayCard = ({ weekDay, tasks, update }) => {
   };
 
   return (
-    <div>
+    <div data-testid="week-day-card">
       <h2>{days[weekDay]}</h2>
 
       {tasks.filter((task) => task.day === weekDay).map((task) => (

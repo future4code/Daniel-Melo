@@ -1,19 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TaskItem from '../TaskItem';
-import api from '../../services/api';
 
-const WeekDayCard = ({ weekDay }) => {
-  const [tasks, setTasks] = useState([]);
-
-  const getTasks = async () => {
-    const response = await api.get('');
-    setTasks(response.data);
-  };
-
-  useEffect(() => {
-    getTasks();
-  }, []);
-
+const WeekDayCard = ({ weekDay, tasks }) => {
   const days = {
     sunday: 'Domingo',
     monday: 'Segunda',

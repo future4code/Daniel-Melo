@@ -7,8 +7,8 @@ const TaskItem = ({
 }) => {
   const [completed, setCompleted] = useState(isCompleted);
 
-  const handleDelete = (id) => {
-    api.delete(`/${id}`);
+  const handleDelete = async (id) => {
+    await api.delete(`/${id}`);
     update();
   };
 

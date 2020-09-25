@@ -18,10 +18,10 @@ const CreateTaskForm = ({ update }) => {
     { value: 'saturday', label: 'Sábado' },
   ];
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    api.post('', {
+    await api.post('', {
       text: form.task,
       day: form.weekDay,
       completed: false,

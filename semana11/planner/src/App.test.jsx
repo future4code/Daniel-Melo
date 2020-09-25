@@ -41,7 +41,7 @@ describe('App component', () => {
     userEvent.selectOptions(select, 'wednesday');
     userEvent.click(button);
 
-    expect(api.get).toHaveBeenCalledTimes(2);
+    await wait(() => expect(api.get).toHaveBeenCalledTimes(2));
   });
 
   test('should call update tasks after delete task', async () => {

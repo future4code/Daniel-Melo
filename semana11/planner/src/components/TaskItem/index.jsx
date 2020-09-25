@@ -2,11 +2,14 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 
-const TaskItem = ({ taskName, taskId, isCompleted }) => {
+const TaskItem = ({
+  taskName, taskId, isCompleted, update,
+}) => {
   const [completed, setCompleted] = useState(isCompleted);
 
   const handleDelete = (id) => {
     api.delete(`/${id}`);
+    update();
   };
 
   const toggleComplete = (id) => {

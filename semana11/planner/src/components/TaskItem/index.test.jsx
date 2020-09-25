@@ -7,20 +7,20 @@ import TaskItem from './index';
 describe('TaskItem componente', () => {
   test('render the task name', () => {
     const taskName = 'Any task';
-    render(<TaskItem taskName={taskName} taskId={1} isCompleted={false} />);
+    render(<TaskItem taskName={taskName} taskId={1} isCompleted={false} update={jest.fn()} />);
 
     expect(screen.queryByText(taskName)).toBeTruthy();
   });
 
   test('render another task name', () => {
     const taskName = 'Another task';
-    render(<TaskItem taskName={taskName} taskId={1} isCompleted={false} />);
+    render(<TaskItem taskName={taskName} taskId={1} isCompleted={false} update={jest.fn()} />);
 
     expect(screen.queryByText(taskName)).toBeTruthy();
   });
 
   test('render a delete task button', () => {
-    render(<TaskItem taskName="Any" taskId={1} isCompleted={false} />);
+    render(<TaskItem taskName="Any" taskId={1} isCompleted={false} update={jest.fn()} />);
 
     expect(screen.queryByRole('button')).toBeTruthy();
   });
@@ -28,7 +28,7 @@ describe('TaskItem componente', () => {
   test('should make a delete request to api when click delete button', () => {
     const taskName = 'Any';
     const taskId = 1;
-    render(<TaskItem taskName={taskName} taskId={taskId} isCompleted={false} />);
+    render(<TaskItem taskName={taskName} taskId={taskId} isCompleted={false} update={jest.fn()} />);
 
     const button = screen.queryByRole('button');
     api.delete = jest.fn().mockResolvedValue();
@@ -43,7 +43,7 @@ describe('TaskItem componente', () => {
 
     const taskName = 'Any';
     const taskId = 1;
-    render(<TaskItem taskName={taskName} taskId={taskId} isCompleted={false} />);
+    render(<TaskItem taskName={taskName} taskId={taskId} isCompleted={false} update={jest.fn()} />);
 
     const span = screen.getByText(taskName);
     const checkbox = screen.getByRole('checkbox');

@@ -2,7 +2,7 @@ import React from 'react';
 import useForm from '../../hooks/useForm';
 import api from '../../services/api';
 
-const CreateTaskForm = () => {
+const CreateTaskForm = ({ update }) => {
   const [form, setForm, resetForm] = useForm({
     task: '',
     weekDay: '',
@@ -28,6 +28,7 @@ const CreateTaskForm = () => {
     });
 
     resetForm();
+    update();
   };
 
   return (

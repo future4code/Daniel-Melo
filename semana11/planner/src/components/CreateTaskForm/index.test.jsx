@@ -6,7 +6,7 @@ import api from '../../services/api';
 
 describe('CreateTaskForm Component', () => {
   beforeEach(() => {
-    render(<CreateTaskForm />);
+    render(<CreateTaskForm update={jest.fn()} />);
   });
 
   test('render task input', () => {

@@ -39,6 +39,7 @@ const CreateTaskForm = ({ update }) => {
         placeholder="Insira uma tarefa"
         value={form.task}
         onChange={setForm}
+        required
       />
 
       <label htmlFor="week-day">
@@ -48,6 +49,7 @@ const CreateTaskForm = ({ update }) => {
           name="weekDay"
           value={form.weekDay}
           onChange={setForm}
+          required
         >
           <option value="">-- Selecione o dia --</option>
           { options.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}

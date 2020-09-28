@@ -2,14 +2,15 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom';
+import { useAuth } from './context/AuthProvider';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import PostPage from './pages/PostPage';
 import FeedPage from './pages/FeedPage';
 
-const loggedIn = false;
-
 const Routes = () => {
+  const { loggedIn } = useAuth();
+
   const PrivateRoute = ({ children, path }) => (
     <Route path={path}>
       {loggedIn ? children : <Redirect to="/login" />}
@@ -23,7 +24,7 @@ const Routes = () => {
           <PostPage />
         </PrivateRoute>
         <Route path="/login">
-          <LoginPage />
+          {loggedIn ? <Redirect to="/feed" /> : <LoginPage />}
         </Route>
         <Route path="/signup">
           <SignupPage />

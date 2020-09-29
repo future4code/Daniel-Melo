@@ -1,14 +1,16 @@
 import React from 'react';
 import {
-  HStack, Image, Button, Input, InputGroup, InputLeftElement,
+  HStack, Image, Button, Input, InputGroup, InputLeftElement, useBreakpointValue,
 } from '@chakra-ui/core';
 import { SearchIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthProvider';
 import logo from '../assets/logo.svg';
+import mainLogo from '../assets/main_logo.svg';
 
 const Header = () => {
   const { logout } = useAuth();
+  const logoImage = useBreakpointValue({ base: logo, lg: mainLogo });
 
   return (
     <HStack
@@ -17,7 +19,7 @@ const Header = () => {
       height={16}
     >
       <Link to="/feed">
-        <Image src={logo} alt="logo" height="30px" />
+        <Image src={logoImage} alt="logo" height="30px" />
       </Link>
 
       <InputGroup size="sm" maxWidth={56}>

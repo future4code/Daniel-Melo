@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormControl, Image, Input, Button,
 } from '@chakra-ui/core';
@@ -9,6 +9,7 @@ import api from '../services/api';
 
 const LoginForm = () => {
   const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const [form, setForm, resetForm] = useForm({
     email: '',
     password: '',
@@ -16,11 +17,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const { data } = await api.post('/login', form);
       login(data);
     } catch (error) {
+      setIsLoading(false);
       resetForm();
     }
   };
@@ -35,9 +38,34 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Image src={logo} alt="logo" />
-      <Input id="login-email" name="email" mt={4} type="email" placeholder="E-mail" isRequired value={form.email} onChange={setForm} />
-      <Input id="login-password" name="password" mt={4} type="password" placeholder="Senha" isRequired value={form.password} onChange={setForm} />
-      <Button type="submit" mt={8} colorScheme="blue">Entrar</Button>
+      <Input
+        mt={4}
+        id="login-email"
+        name="email"
+        type="email"
+        placeholder="E-mail"
+        value={form.email}
+        onChange={setForm}
+        isRequired
+      />
+      <Input
+        mt={4}
+        id="login-password"
+        name="password"
+        type="password"
+        placeholder="Senha"
+        value={form.password}
+        onChange={setForm}
+        isRequired
+      />
+      <Button
+        isLoading={isLoading}
+        mt={8}
+        type="submit"
+        colorScheme="blue"
+      >
+        Entrar
+      </Button>
     </FormControl>
   );
 };

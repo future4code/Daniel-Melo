@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  HStack, Text, Button, Input, InputGroup, InputLeftElement,
+  HStack, Image, Button, Input, InputGroup, InputLeftElement,
 } from '@chakra-ui/core';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useAuth } from '../contexts/AuthProvider';
+import logo from '../assets/logo.svg';
 
 const Header = () => {
   const { logout } = useAuth();
@@ -13,9 +14,8 @@ const Header = () => {
       as="header"
       justify="space-between"
       height={16}
-      px={4}
     >
-      <Text>Logo</Text>
+      <Image src={logo} alt="logo" height="30px" />
       <InputGroup size="sm" maxWidth={56}>
         <InputLeftElement
           pointerEvents="none"

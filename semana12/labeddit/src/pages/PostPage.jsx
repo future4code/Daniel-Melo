@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Post from '../components/Post';

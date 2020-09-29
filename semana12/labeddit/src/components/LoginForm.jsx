@@ -24,8 +24,8 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Image src={logo} alt="logo" />
-      <Input mt={4} type="email" placeholder="E-mail" isRequired />
-      <Input mt={4} type="password" placeholder="Senha" isRequired />
+      <Input id="login-email" mt={4} type="email" placeholder="E-mail" isRequired />
+      <Input id="login-password" mt={4} type="password" placeholder="Senha" isRequired />
       <Button type="submit" mt={8} colorScheme="blue">Entrar</Button>
     </FormControl>
   );

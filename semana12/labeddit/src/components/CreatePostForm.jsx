@@ -40,11 +40,12 @@ const CreatePostForm = () => {
             <DrawerBody>
               <Stack spacing={4}>
                 <Input
+                  id="title"
                   ref={firstField}
                   placeholder="Título"
                 />
 
-                <Textarea placeholder="Texto" height="50vh" />
+                <Textarea id="post-text" placeholder="Texto" height="50vh" />
               </Stack>
             </DrawerBody>
 

@@ -6,7 +6,7 @@ const CreateCommentForm = () => (
   <HStack
     mt={4}
   >
-    <Input type="text" placeholder="Novo comentário" />
+    <Input id="comment" type="text" placeholder="Novo comentário" />
     <IconButton colorScheme="blue" icon={<CheckIcon />} />
   </HStack>
 );

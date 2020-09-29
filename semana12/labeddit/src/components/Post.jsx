@@ -3,6 +3,7 @@ import {
   VStack, Text, Heading, HStack, IconButton,
 } from '@chakra-ui/core';
 import { ChatIcon, TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 const Post = ({ post }) => (
   <VStack
@@ -13,7 +14,11 @@ const Post = ({ post }) => (
     boxShadow="0px 0px 5px 1px rgba(0,0,0,0.25)"
     borderRadius={8}
   >
-    <Heading size="lg">{post.title}</Heading>
+    <Heading size="lg">
+      <Link to={`/post/${post.id}`}>
+        {post.title}
+      </Link>
+    </Heading>
     <Text color="gray.500">{post.username}</Text>
     <Text>{post.text}</Text>
 

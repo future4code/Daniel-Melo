@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom';
 import { useAuth } from './contexts/AuthProvider';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
+import AuthPage from './pages/AuthPage';
 import PostPage from './pages/PostPage';
 import FeedPage from './pages/FeedPage';
 
@@ -13,7 +12,7 @@ const Routes = () => {
 
   const PrivateRoute = ({ children, path }) => (
     <Route path={path}>
-      {loggedIn ? children : <Redirect to="/login" />}
+      {loggedIn ? children : <Redirect to="/auth" />}
     </Route>
   );
 
@@ -23,11 +22,8 @@ const Routes = () => {
         <PrivateRoute path="/post/:id">
           <PostPage />
         </PrivateRoute>
-        <Route path="/login">
-          {loggedIn ? <Redirect to="/feed" /> : <LoginPage />}
-        </Route>
-        <Route path="/signup">
-          <SignupPage />
+        <Route path="/auth">
+          {loggedIn ? <Redirect to="/feed" /> : <AuthPage />}
         </Route>
         <PrivateRoute path="/feed">
           <FeedPage />

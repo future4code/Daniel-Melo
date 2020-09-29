@@ -8,8 +8,9 @@ import SignupForm from './SignupForm';
 const AuthForm = () => (
   <Box
     alignSelf="center"
+    mt={8}
   >
-    <Tabs>
+    <Tabs variant="enclosed">
       <TabList>
         <Tab>Login</Tab>
         <Tab>Signup</Tab>

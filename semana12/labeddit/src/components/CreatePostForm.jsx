@@ -2,22 +2,44 @@ import {
   useDisclosure,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   Button,
-  Stack,
   Input,
   Textarea,
+  FormControl,
 } from '@chakra-ui/core';
 import { AddIcon } from '@chakra-ui/icons';
 import React, { useRef } from 'react';
+import useForm from '../hooks/useForm';
+import api from '../services/api';
 
 const CreatePostForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = useRef();
+  const [form, setForm, resetForm] = useForm({
+    title: '',
+    text: '',
+  });
+
+  const handleDrawerClose = () => {
+    onClose();
+    resetForm();
+  };
+
+  const post = async (e) => {
+    e.preventDefault();
+
+    try {
+      await api.post('/posts', form);
+    } catch (error) {
+      console.log(error);
+    }
+
+    handleDrawerClose();
+  };
 
   return (
     <>
@@ -28,7 +50,7 @@ const CreatePostForm = () => {
         isOpen={isOpen}
         placement="right"
         initialFocusRef={firstField}
-        onClose={onClose}
+        onClose={handleDrawerClose}
       >
         <DrawerOverlay>
           <DrawerContent>
@@ -38,23 +60,44 @@ const CreatePostForm = () => {
             </DrawerHeader>
 
             <DrawerBody>
-              <Stack spacing={4}>
+              <FormControl
+                as="form"
+                display="flex"
+                flexDirection="column"
+                onSubmit={post}
+              >
                 <Input
+                  mt={4}
                   id="title"
+                  name="title"
                   ref={firstField}
                   placeholder="Título"
+                  value={form.title}
+                  onChange={setForm}
+                  isRequired
                 />
 
-                <Textarea id="post-text" placeholder="Texto" height="50vh" />
-              </Stack>
+                <Textarea
+                  mt={4}
+                  height="50vh"
+                  id="post-text"
+                  name="text"
+                  placeholder="Texto"
+                  value={form.text}
+                  onChange={setForm}
+                  isRequired
+                />
+
+                <Button
+                  mt={4}
+                  type="submit"
+                  colorScheme="blue"
+                >
+                  Postar
+                </Button>
+              </FormControl>
             </DrawerBody>
 
-            <DrawerFooter borderTopWidth="1px">
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancelar
-              </Button>
-              <Button colorScheme="blue">Postar</Button>
-            </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  VStack, Text, Heading, HStack, IconButton,
+  VStack, Text, Heading, HStack,
 } from '@chakra-ui/core';
-import { ChatIcon, TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { ChatIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
+import VoteCounter from './VoteCounter';
 
 const Post = ({ post }) => (
   <VStack
@@ -23,21 +24,10 @@ const Post = ({ post }) => (
     <Text>{post.text}</Text>
 
     <HStack alignSelf="stretch" justify="space-between">
-      <HStack spacing={1}>
-        <IconButton
-          size="xs"
-          icon={<TriangleUpIcon />}
-          variant="ghost"
-          color={post.userVoteDirection === 1 ? 'green.500' : 'gray.300'}
-        />
-        <Text>{post.votesCount}</Text>
-        <IconButton
-          size="xs"
-          icon={<TriangleDownIcon />}
-          variant="ghost"
-          color={post.userVoteDirection === -1 ? 'red.500' : 'gray.300'}
-        />
-      </HStack>
+      <VoteCounter
+        voteDirection={post.userVoteDirection}
+        votesCount={post.votesCount}
+      />
 
       <HStack>
         <ChatIcon />

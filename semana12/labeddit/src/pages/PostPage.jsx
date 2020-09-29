@@ -1,15 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const PostPage = () => {
   const params = useParams();
 
   return (
-    <div>
+    <Layout>
       PostPage
       {' '}
       {params.id}
-    </div>
+    </Layout>
   );
 };
 

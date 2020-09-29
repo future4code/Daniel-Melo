@@ -1,9 +1,10 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const SignupPage = () => (
-  <div>
+  <Layout>
     Signup Page
-  </div>
+  </Layout>
 );
 
 export default SignupPage;

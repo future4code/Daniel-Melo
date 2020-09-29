@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ThemeProvider from './context/ThemeProvider';
+import ThemeProvider from './contexts/ThemeProvider';
 import App from './App';
 
 ReactDOM.render(

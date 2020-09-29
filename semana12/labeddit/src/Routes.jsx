@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom';
-import { useAuth } from './context/AuthProvider';
+import { useAuth } from './contexts/AuthProvider';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import PostPage from './pages/PostPage';

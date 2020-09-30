@@ -16,7 +16,7 @@ const CreateCommentForm = ({ postId, onCreate }) => {
 
     try {
       await api.post(`/posts/${postId}/comment`, { text: comment });
-      onCreate();
+      await onCreate();
     } catch (error) {
       console.log(error);
     }

@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   VStack, Text,
 } from '@chakra-ui/core';
 import VoteCounter from './VoteCounter';
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, handleVote }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const createdAt = new Date(comment.createdAt);
+
+  const onVote = async (direction) => {
+    setIsLoading(true);
+    await handleVote(comment.id, direction);
+    setIsLoading(false);
+  };
 
   return (
     <VStack
@@ -20,8 +27,11 @@ const Comment = ({ comment }) => {
       <Text>{comment.text}</Text>
 
       <VoteCounter
+        isLoading={isLoading}
         voteDirection={comment.userVoteDirection}
         votesCount={comment.votesCount}
+        onVoteUp={() => onVote(1)}
+        onVoteDown={() => onVote(-1)}
       />
     </VStack>
   );

@@ -27,6 +27,22 @@ const PostPage = () => {
     getPostDetail();
   }, []);
 
+  const handleVote = async (commentId, direction) => {
+    const currentComment = post.comments.find((comment) => comment.id === commentId);
+
+    try {
+      if (direction === currentComment.userVoteDirection) {
+        await api.put(`/posts/${post.id}/comment/${commentId}/vote`, { direction: 0 });
+      } else {
+        await api.put(`/posts/${post.id}/comment/${commentId}/vote`, { direction });
+      }
+
+      await getPostDetail();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const orderCommentsByDate = () => [...post.comments].sort((a, b) => b.createdAt - a.createdAt);
 
   return (
@@ -38,7 +54,10 @@ const PostPage = () => {
             <>
               <Post post={post} />
               <CreateCommentForm postId={post.id} onCreate={getPostDetail} />
-              <CommentList comments={orderCommentsByDate()} />
+              <CommentList
+                handleVote={handleVote}
+                comments={orderCommentsByDate()}
+              />
             </>
           )
           : <CircularProgress isIndeterminate mt={4} alignSelf="center" color="blue.500" />

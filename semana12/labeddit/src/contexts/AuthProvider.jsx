@@ -6,14 +6,13 @@ import api from '../services/api';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   const login = ({ token, user: userInfo }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(userInfo));
     api.defaults.headers.common.Authorization = token;
-    setLoggedIn(true);
+    setUser(userInfo);
   };
 
   useEffect(() => {
@@ -28,13 +27,12 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     delete api.defaults.headers.common.Authorization;
-    setLoggedIn(false);
-    setUser({});
+    setUser(null);
   };
 
   return (
     <AuthContext.Provider value={{
-      loggedIn, user, login, logout,
+      user, login, logout,
     }}
     >
       {children}

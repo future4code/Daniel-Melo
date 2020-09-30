@@ -8,11 +8,11 @@ import PostPage from './pages/PostPage';
 import FeedPage from './pages/FeedPage';
 
 const Routes = () => {
-  const { loggedIn } = useAuth();
+  const { user } = useAuth();
 
   const PrivateRoute = ({ children, path }) => (
     <Route path={path}>
-      {loggedIn ? children : <Redirect to="/auth" />}
+      {user ? children : <Redirect to="/auth" />}
     </Route>
   );
 
@@ -23,7 +23,7 @@ const Routes = () => {
           <PostPage />
         </PrivateRoute>
         <Route path="/auth">
-          {loggedIn ? <Redirect to="/feed" /> : <AuthPage />}
+          {user ? <Redirect to="/feed" /> : <AuthPage />}
         </Route>
         <PrivateRoute path="/feed">
           <FeedPage />

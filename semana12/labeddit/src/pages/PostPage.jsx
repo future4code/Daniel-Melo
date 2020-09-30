@@ -1,54 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { CircularProgress } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Post from '../components/Post';
 import CommentList from '../components/CommentList';
 import CreateCommentForm from '../components/CreateCommentForm';
+import api from '../services/api';
 
-const post = {
-  comments: [
-    {
-      userVoteDirection: 1,
-      id: '8A9cABbO590XXNqqvO9L',
-      text: 'asdasdasda',
-      createdAt: 1596837544084,
-      username: 'hyago',
-      votesCount: 0,
-    },
-    {
-      userVoteDirection: -1,
-      id: '99kSphGsVA3Bi6OPK9RQ',
-      text: 'dasdas',
-      createdAt: 1600710229335,
-      username: 'astro',
-      votesCount: 0,
-    },
-    {
-      userVoteDirection: 0,
-      id: '9tBUQdMlPD21bWr0lQVw',
-      createdAt: 1600724982988,
-      username: 'camila.moura',
-      votesCount: 0,
-      text: 'Oi',
-    },
-  ],
-  userVoteDirection: 0,
-  id: '0m0ePGTzmgHWoofVSQ6k',
-  commentsCount: 16,
-  username: 'Octavio',
-  votesCount: 2,
-  title: 'teste de usuario',
-  createdAt: 1596761094771,
-  text: 'teste de usuario',
+const PostPage = () => {
+  const { id } = useParams();
+  const [post, setPost] = useState({
+    comments: [],
+  });
+
+  const getPostDetail = async () => {
+    try {
+      const { data } = await api.get(`/posts/${id}`);
+      setPost(data.post);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getPostDetail();
+  }, []);
+
+  const orderCommentsByDate = () => [...post.comments].sort((a, b) => b.createdAt - a.createdAt);
+
+  return (
+    <Layout>
+      <Header />
+      {
+        post.id
+          ? (
+            <>
+              <Post post={post} />
+              <CreateCommentForm />
+              <CommentList comments={orderCommentsByDate()} />
+            </>
+          )
+          : <CircularProgress isIndeterminate mt={4} alignSelf="center" color="blue.500" />
+      }
+    </Layout>
+  );
 };
-
-const PostPage = () => (
-  <Layout>
-    <Header />
-    <Post post={post} />
-    <CreateCommentForm />
-    <CommentList comments={post.comments} />
-  </Layout>
-);
 
 export default PostPage;

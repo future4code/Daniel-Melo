@@ -14,12 +14,13 @@ import {
 import { AddIcon } from '@chakra-ui/icons';
 import React, { useState, useRef } from 'react';
 import useForm from '../hooks/useForm';
-import api from '../services/api';
+import { usePosts } from '../contexts/PostsProvider';
 
 const CreatePostForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = useRef();
+  const { createPost } = usePosts();
   const [form, setForm, resetForm] = useForm({
     title: '',
     text: '',
@@ -33,13 +34,7 @@ const CreatePostForm = () => {
   const post = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
-    try {
-      await api.post('/posts', form);
-    } catch (error) {
-      console.log(error);
-    }
-
+    await createPost(form);
     setIsLoading(false);
     handleDrawerClose();
   };

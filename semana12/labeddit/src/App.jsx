@@ -1,10 +1,13 @@
 import React from 'react';
 import AuthProvider from './contexts/AuthProvider';
+import PostsProvider from './contexts/PostsProvider';
 import Routes from './Routes';
 
 const App = () => (
   <AuthProvider>
-    <Routes />
+    <PostsProvider>
+      <Routes />
+    </PostsProvider>
   </AuthProvider>
 );
 

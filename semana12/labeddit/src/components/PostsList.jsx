@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { VStack, CircularProgress } from '@chakra-ui/core';
+import { usePosts } from '../contexts/PostsProvider';
 import Post from './Post';
-import api from '../services/api';
 
 const PostsList = () => {
-  const [posts, setPosts] = useState([]);
-
-  const getPost = async () => {
-    try {
-      const { data } = await api.get('/posts');
-      setPosts(data.posts);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { posts, updatePosts } = usePosts();
 
   const postsByDate = () => {
     const newPosts = [...posts].sort((a, b) => b.createdAt - a.createdAt);
@@ -21,7 +12,7 @@ const PostsList = () => {
   };
 
   useEffect(() => {
-    getPost();
+    updatePosts();
   }, []);
 
   return (

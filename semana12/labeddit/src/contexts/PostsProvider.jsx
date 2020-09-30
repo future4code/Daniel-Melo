@@ -26,9 +26,13 @@ const PostsProvider = ({ children }) => {
     }
   };
 
-  const votePost = (postId, direction) => {
-    console.log('vote:', direction);
-    updatePosts();
+  const votePost = async (postId, direction) => {
+    try {
+      await api.put(`/posts/${postId}/vote`, { direction });
+      await updatePosts();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

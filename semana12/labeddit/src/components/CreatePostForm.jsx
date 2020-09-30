@@ -12,11 +12,12 @@ import {
   FormControl,
 } from '@chakra-ui/core';
 import { AddIcon } from '@chakra-ui/icons';
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import useForm from '../hooks/useForm';
 import api from '../services/api';
 
 const CreatePostForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = useRef();
   const [form, setForm, resetForm] = useForm({
@@ -31,6 +32,7 @@ const CreatePostForm = () => {
 
   const post = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       await api.post('/posts', form);
@@ -38,6 +40,7 @@ const CreatePostForm = () => {
       console.log(error);
     }
 
+    setIsLoading(false);
     handleDrawerClose();
   };
 
@@ -89,6 +92,7 @@ const CreatePostForm = () => {
                 />
 
                 <Button
+                  isLoading={isLoading}
                   mt={4}
                   type="submit"
                   colorScheme="blue"

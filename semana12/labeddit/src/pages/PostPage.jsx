@@ -37,7 +37,7 @@ const PostPage = () => {
           ? (
             <>
               <Post post={post} />
-              <CreateCommentForm />
+              <CreateCommentForm postId={post.id} onCreate={getPostDetail} />
               <CommentList comments={orderCommentsByDate()} />
             </>
           )

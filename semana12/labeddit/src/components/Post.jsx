@@ -41,7 +41,7 @@ const Post = ({ post }) => {
       <Text fontSize="sm" color="gray.500">
         {`${post.username} - ${createdAt.toLocaleString('pt-BR')}`}
       </Text>
-      <Text>{post.text}</Text>
+      <Text overflowWrap="anywhere">{post.text}</Text>
 
       <HStack alignSelf="stretch" justify="space-between">
         <VoteCounter

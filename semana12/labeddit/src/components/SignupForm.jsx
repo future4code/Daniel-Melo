@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  FormControl, Image, Input, Button,
+  FormControl, Image, Input, Button, useToast,
 } from '@chakra-ui/core';
 import logo from '../assets/main_logo.svg';
 import { useAuth } from '../contexts/AuthProvider';
@@ -8,6 +8,7 @@ import useForm from '../hooks/useForm';
 import api from '../services/api';
 
 const SignupForm = () => {
+  const toast = useToast();
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm, resetForm] = useForm({
@@ -24,7 +25,25 @@ const SignupForm = () => {
       const { data } = await api.post('/signup', form);
       login(data);
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 400) {
+        toast({
+          title: 'Signup',
+          description: error.response.data.message,
+          status: 'error',
+          position: 'top',
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: 'Signup',
+          description: 'Erro ao fazer cadastro',
+          status: 'error',
+          position: 'top',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
       resetForm();
     }
 

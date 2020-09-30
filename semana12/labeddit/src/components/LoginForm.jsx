@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  FormControl, Image, Input, Button,
+  FormControl, Image, Input, Button, useToast,
 } from '@chakra-ui/core';
 import logo from '../assets/main_logo.svg';
 import { useAuth } from '../contexts/AuthProvider';
@@ -8,6 +8,7 @@ import useForm from '../hooks/useForm';
 import api from '../services/api';
 
 const LoginForm = () => {
+  const toast = useToast();
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm, resetForm] = useForm({
@@ -23,6 +24,26 @@ const LoginForm = () => {
       const { data } = await api.post('/login', form);
       login(data);
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        toast({
+          title: 'Login',
+          description: error.response.data.message,
+          status: 'error',
+          position: 'top',
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: 'Login',
+          description: 'Erro ao fazer login',
+          status: 'error',
+          position: 'top',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+
       setIsLoading(false);
       resetForm();
     }

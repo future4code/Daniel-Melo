@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { CircularProgress } from '@chakra-ui/core';
+import { CircularProgress, useToast } from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Post from '../components/Post';
@@ -9,17 +9,28 @@ import CreateCommentForm from '../components/CreateCommentForm';
 import api from '../services/api';
 
 const PostPage = () => {
+  const toast = useToast();
   const { id } = useParams();
   const [post, setPost] = useState({
     comments: [],
   });
+
+  const showErrorMessage = () => {
+    toast({
+      title: 'Erro na requisição',
+      status: 'error',
+      position: 'top',
+      duration: 2000,
+      isClosable: true,
+    });
+  };
 
   const getPostDetail = async () => {
     try {
       const { data } = await api.get(`/posts/${id}`);
       setPost(data.post);
     } catch (error) {
-      console.log(error);
+      showErrorMessage();
     }
   };
 
@@ -39,7 +50,7 @@ const PostPage = () => {
 
       await getPostDetail();
     } catch (error) {
-      console.log(error);
+      showErrorMessage();
     }
   };
 

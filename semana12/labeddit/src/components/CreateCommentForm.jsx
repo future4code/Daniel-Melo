@@ -1,9 +1,12 @@
-import { HStack, Input, IconButton } from '@chakra-ui/core';
+import {
+  HStack, Input, IconButton, useToast,
+} from '@chakra-ui/core';
 import { CheckIcon } from '@chakra-ui/icons';
 import React, { useState } from 'react';
 import api from '../services/api';
 
 const CreateCommentForm = ({ postId, onCreate }) => {
+  const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [comment, setComment] = useState('');
 
@@ -18,7 +21,13 @@ const CreateCommentForm = ({ postId, onCreate }) => {
       await api.post(`/posts/${postId}/comment`, { text: comment });
       await onCreate();
     } catch (error) {
-      console.log(error);
+      toast({
+        title: 'Erro ao criar comentário',
+        status: 'error',
+        position: 'top',
+        duration: 2000,
+        isClosable: true,
+      });
     }
 
     setComment('');

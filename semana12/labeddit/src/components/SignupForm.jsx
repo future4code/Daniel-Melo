@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormControl, Image, Input, Button,
 } from '@chakra-ui/core';
 import logo from '../assets/main_logo.svg';
 import { useAuth } from '../contexts/AuthProvider';
+import useForm from '../hooks/useForm';
+import api from '../services/api';
 
 const SignupForm = () => {
   const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [form, setForm, resetForm] = useForm({
+    email: '',
+    password: '',
+    username: '',
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    login();
+    try {
+      const { data } = await api.post('/signup', form);
+      login(data);
+    } catch (error) {
+      console.log(error);
+      resetForm();
+    }
+
+    setIsLoading(false);
   };
 
   return (
@@ -23,10 +40,44 @@ const SignupForm = () => {
       onSubmit={handleSubmit}
     >
       <Image src={logo} alt="logo" />
-      <Input id="signup-username" mt={4} type="text" placeholder="Nome de usuário" isRequired />
-      <Input id="signup-email" mt={4} type="email" placeholder="E-mail" isRequired />
-      <Input id="signup-password" mt={4} type="password" placeholder="Senha" isRequired />
-      <Button type="submit" mt={8} colorScheme="blue">Cadastrar</Button>
+      <Input
+        id="signup-username"
+        mt={4}
+        type="text"
+        placeholder="Nome de usuário"
+        name="username"
+        value={form.username}
+        onChange={setForm}
+        isRequired
+      />
+      <Input
+        id="signup-email"
+        mt={4}
+        type="email"
+        placeholder="E-mail"
+        name="email"
+        value={form.email}
+        onChange={setForm}
+        isRequired
+      />
+      <Input
+        id="signup-password"
+        mt={4}
+        type="password"
+        placeholder="Senha"
+        name="password"
+        value={form.password}
+        onChange={setForm}
+        isRequired
+      />
+      <Button
+        isLoading={isLoading}
+        type="submit"
+        mt={8}
+        colorScheme="blue"
+      >
+        Cadastrar
+      </Button>
     </FormControl>
   );
 };
